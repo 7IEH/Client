@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{642265c6-b6ae-4f11-8f86-015482ecb222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Default">
+      <UniqueIdentifier>{560ee6b7-c1ab-4c19-b833-3fe860fc7f75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Default\소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Default\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Default\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Engine\02. Core">
+      <UniqueIdentifier>{375f0b96-88c2-49e8-9545-6eccd3c508d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\01. Header">
+      <UniqueIdentifier>{928fa863-9023-4d61-9c4b-c1201823a3cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager">
+      <UniqueIdentifier>{b6951256-1c0c-4e10-a00f-c31950873c6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object">
+      <UniqueIdentifier>{42b37c9c-3993-4370-8d6f-7dabfb77a0c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\CTimeMgr">
+      <UniqueIdentifier>{217da95b-d094-4f25-ba3c-319bec300c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\CKeyMgr">
+      <UniqueIdentifier>{7f0f1998-2115-4ef2-bd76-79e4831fb3bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene">
+      <UniqueIdentifier>{50c18e2c-ba06-4952-a67e-d629a7d7907a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\CSceneMgr">
+      <UniqueIdentifier>{dd0e003c-7e7d-44ba-abf2-66904724cbb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Start">
+      <UniqueIdentifier>{2642d81a-b698-4aca-9bbe-a33c8368726b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Tool">
+      <UniqueIdentifier>{c30d49b6-f1de-4dc1-b9c2-0db33763ff07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Stage_01">
+      <UniqueIdentifier>{9056d669-7197-4af8-a054-bf6ce176e9e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Stage_02">
+      <UniqueIdentifier>{6a34af24-64fc-4ffc-bbb5-b4190f3867a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Player">
+      <UniqueIdentifier>{4b9136b4-02eb-4ecd-a936-f033fe6e133f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_MISSILE">
+      <UniqueIdentifier>{75fb4a2d-63d7-4ee8-9c87-10e14538b378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Monster">
+      <UniqueIdentifier>{d36130ae-247f-41b7-a1e3-3797903dba7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Resource">
+      <UniqueIdentifier>{263fa1cb-c868-446d-a8bd-ec350d8c5f82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Resource\Texture">
+      <UniqueIdentifier>{1091492d-75f9-4a30-86bd-0653f00a87eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Resource\Sound">
+      <UniqueIdentifier>{7c888be0-5c54-40a3-bd2b-5f6887157eaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\CPathMgr">
+      <UniqueIdentifier>{6357fe37-28c0-4477-b8b1-c0bd1f602cc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\CResMgr">
+      <UniqueIdentifier>{bc0b471a-62d9-448e-a47d-69ac11d37f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Background">
+      <UniqueIdentifier>{6e6b4a70-1184-459b-8caf-cabfbd2fb176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Component">
+      <UniqueIdentifier>{fa26923c-1d90-42d9-ac1c-db630ef13965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module">
+      <UniqueIdentifier>{119e85e7-67d6-4c1d-b350-4e065e39c270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\CCollisionMgr">
+      <UniqueIdentifier>{7cdb3051-4589-4796-ad78-fd89b52f17f3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="WinApi_basic.h">
+      <Filter>Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CCore.h">
+      <Filter>Engine\02. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>Engine\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>Engine\03. Manager\CKeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="CObject.h">
+      <Filter>Engine\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>Engine\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>Engine\03. Manager\CTimeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>Engine\05. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneMgr.h">
+      <Filter>Engine\03. Manager\CSceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Start.h">
+      <Filter>Engine\05. Scene\Scene_Start</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_Player.h">
+      <Filter>Engine\04. Object\Object_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_Monster.h">
+      <Filter>Engine\04. Object\Object_Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_Missile.h">
+      <Filter>Engine\04. Object\Object_MISSILE</Filter>
+    </ClInclude>
+    <ClInclude Include="CRes.h">
+      <Filter>Engine\06. Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>Engine\06. Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>Engine\06. Resource\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="CPathMgr.h">
+      <Filter>Engine\03. Manager\CPathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CResMgr.h">
+      <Filter>Engine\03. Manager\CResMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_Background.h">
+      <Filter>Engine\04. Object\Object_Background</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Engine\07. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectGDI.h">
+      <Filter>Engine\08. Module</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>Engine\03. Manager\CCollisionMgr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Default\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CCore.cpp">
+      <Filter>Engine\02. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>Engine\03. Manager\CKeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>Engine\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>Engine\03. Manager\CTimeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>Engine\05. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneMgr.cpp">
+      <Filter>Engine\03. Manager\CSceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Start.cpp">
+      <Filter>Engine\05. Scene\Scene_Start</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_Player.cpp">
+      <Filter>Engine\04. Object\Object_Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_Monster.cpp">
+      <Filter>Engine\04. Object\Object_Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_Missile.cpp">
+      <Filter>Engine\04. Object\Object_MISSILE</Filter>
+    </ClCompile>
+    <ClCompile Include="CRes.cpp">
+      <Filter>Engine\06. Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>Engine\06. Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>Engine\06. Resource\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>Engine\03. Manager\CPathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResMgr.cpp">
+      <Filter>Engine\03. Manager\CResMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_Background.cpp">
+      <Filter>Engine\04. Object\Object_Background</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Engine\07. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectGDI.cpp">
+      <Filter>Engine\08. Module</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>Engine\03. Manager\CCollisionMgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinApi_basic.rc">
+      <Filter>Default\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Default\리소스 파일</Filter>
+    </Image>
+    <Image Include="WinApi_basic.ico">
+      <Filter>Default\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
