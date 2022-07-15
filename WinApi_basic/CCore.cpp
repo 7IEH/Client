@@ -67,7 +67,6 @@ int CCore::init(HWND _hWnd, POINT _ptResolution) {
 	CKeyMgr::GetInst()->init();
 	CTimeMgr::GetInst()->init();
 	CSceneMgr::GetInst()->init();
-	CCollisionMgr::GetInst()->init();
 
 
 	return S_OK;	

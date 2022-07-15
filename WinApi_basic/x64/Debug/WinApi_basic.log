@@ -1,9 +1,6 @@
 ﻿  CCollider.cpp
   CCollisionMgr.cpp
-  CCore.cpp
-  CObject_Background.cpp
+  CObject.cpp
   CObject_Monster.cpp
   CObject_Player.cpp
-  CScene.cpp
-  CSceneMgr.cpp
   WinApi_basic.vcxproj -> C:\Users\youki\source\repos\graphics\WinApi_basic\Output\bin_debug\WinApi_basic.exe

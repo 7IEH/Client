@@ -60,5 +60,5 @@ void CScene_Start::Enter()
 
 void CScene_Start::Exit()
 {
-
+	CCollisionMgr::GetInst()->Reset();
 }

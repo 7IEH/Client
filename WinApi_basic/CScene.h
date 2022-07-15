@@ -14,11 +14,6 @@ private:
 public:
 	void SetName(const wstring& _strName) { m_strName = _strName; }
 	const wstring& getName() { return m_strName; }
-	
-	vector<CObject*> vGetObject(GROUP_TYPE _eType)
-	{
-		return m_arrObj[(UINT)_eType];
-	}
 
 	void update();
 	void finalupdate();
@@ -31,6 +26,11 @@ public:
 	void pushObject(UINT _GROUP_TYPE, CObject* _pObj)
 	{
 		m_arrObj[_GROUP_TYPE].push_back(_pObj);
+	}
+
+	const vector<CObject*>& vGetObject(GROUP_TYPE _eType)
+	{
+		return m_arrObj[(UINT)_eType];
 	}
 
 public:

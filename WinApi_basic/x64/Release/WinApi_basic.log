@@ -1,27 +1,7 @@
 ﻿  CCollider.cpp
-  CCollisionMgr.cpp
-  CCore.cpp
-  CKeyMgr.cpp
-  CObject.cpp
-  CObject_Background.cpp
-  CObject_Missile.cpp
-  CObject_Monster.cpp
-  CObject_Player.cpp
-  CPathMgr.cpp
-C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CPathMgr.cpp(21,36): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  CRes.cpp
-  CResMgr.cpp
-  CScene.cpp
-  CSceneMgr.cpp
-  CScene_Start.cpp
-  CSound.cpp
-  CTexture.cpp
-  CTimeMgr.cpp
-  main.cpp
-  SelectGDI.cpp
   코드를 생성하고 있습니다.
-  363 of 458 functions (79.3%) were compiled, the rest were copied from previous compilation.
-    190 functions were new in current compilation
-    19 functions had inline decision re-evaluated but remain unchanged
+  0 of 542 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   WinApi_basic.vcxproj -> C:\Users\youki\source\repos\graphics\WinApi_basic\Output\bin\WinApi_basic.exe
