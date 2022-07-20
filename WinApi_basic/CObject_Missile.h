@@ -12,12 +12,14 @@ private:
     
     vec2             mi_vDir;
 
-    CTexture*   mi_miTex;
+    CTexture*   mi_miTex;  
  
 public:
     virtual void update();
     virtual void render(HDC _dc);
-
+    
+    //virtual void OnCollisionEnter(CCollider* _pOther);
+    
 public:
     void SetTheta(float _fTheta)
     {

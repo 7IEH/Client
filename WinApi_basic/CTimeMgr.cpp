@@ -33,6 +33,13 @@ void CTimeMgr::update()
 	
 	// 이전 카운터를 현재 카운터로 바꿔준다.(prevcount는 처음 CTimeMgr이 생성되고 나서 들어간 값이기 때문)	
 	m_llPrevCount = m_llCurCount;
+
+
+#ifdef _DEBUG
+	if (m_dDT > 1. / 60.)
+		m_dDT = (1. / 60.);
+#endif // _DEBUG
+
 }
 
 void CTimeMgr::render()

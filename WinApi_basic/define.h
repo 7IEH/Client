@@ -19,11 +19,12 @@
 
 enum class GROUP_TYPE
 {
-	DEFAULT,
-	PLAYER,
+	DEFAULT,	
 	MISSILE,
+	PLAYER,
 	MONSTER,
-
+	PROJ_PLAYER,
+	PROJ_MONSTER,
 
 	END=32,
 };
@@ -55,4 +56,13 @@ enum class PEN_TYPE
 
 
 	END
+};
+
+enum class EVENT_TYPE
+{
+	CREATE_OBJECT,
+	DELETE_OBJECT,
+	SCENE_CHANGE,
+
+	END,
 };

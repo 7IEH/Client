@@ -21,6 +21,9 @@ public:
     void SetCenterPos(vec2 _vPos) { m_vCenterPos = _vPos; }
 
 public:
+    virtual void OnCollisionEnter(CCollider* _pOther);
+
+public:
     virtual void update();
     virtual void render(HDC _dc);
 

@@ -51,11 +51,11 @@ void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 		for (size_t j = 0; j < vecRight.size(); ++j)
 		{
 			// vecRight 타입의 오브젝트에 충돌체가 없을경우 와 서로 같은 오브젝트일 경우
-			if (nullptr == vecRight[i]->GetCollider()|| (vecLeft[i] == vecRight[i]))
+			if (nullptr == vecRight[j]->GetCollider()|| (vecLeft[i] == vecRight[j]))
 				continue;
 
 			CCollider* pLeftRow = vecLeft[i]->GetCollider();
-			CCollider* pRightCol = vecRight[i]->GetCollider();
+			CCollider* pRightCol = vecRight[j]->GetCollider();
 
 			// 두 충돌체 조합 아이디
 			COLLIDER_ID ID;
@@ -77,13 +77,13 @@ void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 				if (iter->second)
 				{
 					// 여전히 충돌 중이다.
-					pLeftRow->OnCollision(vecRight[i]->GetCollider());
+					pLeftRow->OnCollision(vecRight[j]->GetCollider());
 					pRightCol->OnCollision(vecLeft[i]->GetCollider());
 				}
 				else
 				{
 					// 이전에는 충돌하지 않았다.
-					pLeftRow->OnCollisionEnter(vecRight[i]->GetCollider());
+					pLeftRow->OnCollisionEnter(vecRight[j]->GetCollider());
 					pRightCol->OnCollisionEnter(vecLeft[i]->GetCollider());
 					iter->second = true;
 				}
@@ -93,7 +93,7 @@ void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 				// 충돌 하지 않았을 경우
 				if (iter->second)
 				{
-					pLeftRow->OnCollisionExit(vecRight[i]->GetCollider());
+					pLeftRow->OnCollisionExit(vecRight[j]->GetCollider());
 					pRightCol->OnCollisionExit(vecLeft[i]->GetCollider());
 					iter->second = false;
 				}

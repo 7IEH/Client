@@ -15,9 +15,11 @@ using std::make_pair;
 using std::string;
 using std::wstring;
 
-#include"struct.h"
+#include "struct.h"
 #include "define.h"
+#include "func.h"
 
 #include<cassert>
 
 #pragma comment(lib,"Msimg32.lib")
+

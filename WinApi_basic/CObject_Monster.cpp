@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CObject_Monster.h"
+#include "CCore.h"
 
+#include "CEventMgr.h"
 #include "CTimeMgr.h"
 #include "CScene.h"
 #include "CSceneMgr.h"
@@ -8,6 +10,8 @@
 #include "CTexture.h"
 #include"CResMgr.h"
 #include "CCollider.h"
+
+#include"SelectGDI.h"
 
 CObject_Monster::CObject_Monster()
 	:m_fSpeed(100.f)
@@ -37,7 +41,7 @@ void CObject_Monster::update()
 		vCurPos.x += GetSpeed() * fDT;
 		if (m_vCenterPos.x + m_fMaxDistance < vCurPos.x) {
 			m_iDir = -1;
-			createMissile();
+			//createMissile();
 		}
 	}
 
@@ -46,7 +50,7 @@ void CObject_Monster::update()
 		vCurPos.x -= GetSpeed() * fDT;
 		if (m_vCenterPos.x - m_fMaxDistance > vCurPos.x) {
 			m_iDir = 1;
-			createMissile();
+			//createMissile();
 		}
 	}
 	SetPos(vCurPos);
@@ -76,7 +80,19 @@ void CObject_Monster::createMissile()
 	miObj->SetPos(vMissilePos);
 	miObj->SetScale(vec2(10.f, 10.f));
 	miObj->SetTheta(-270.f);
+	miObj->SetName(L"Missile_Monster");
 
-	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
-	pCurScene->pushObject((UINT)GROUP_TYPE::MISSILE, miObj);
+	CreateObject(miObj, GROUP_TYPE::PROJ_MONSTER);
+
+	/*CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
+	pCurScene->pushObject((UINT)GROUP_TYPE::MISSILE, miObj);*/
+}
+
+void CObject_Monster::OnCollisionEnter(CCollider* _pOther)
+{
+	CObject* pOtherObj = _pOther->GetObj();
+	if (pOtherObj->GetName() == L"Missile_Player")
+	{
+		DeleteObject(this);
+	}
 }

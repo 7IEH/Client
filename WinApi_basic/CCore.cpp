@@ -8,6 +8,7 @@
 #include "CPathMgr.h"
 #include "CResMgr.h"
 #include "CCollisionMgr.h"
+#include "CEventMgr.h"
 
 CCore::CCore() :	m_hWnd(0), 
 								m_ptResolution{}, 
@@ -74,12 +75,19 @@ int CCore::init(HWND _hWnd, POINT _ptResolution) {
 
 
 void CCore::progress() 
-{
+{	
+	// =============
 	// Manager update
+	// =============
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
 
+	// =============
+	// Scene Update
+	// =============
 	CSceneMgr::GetInst()->update();
+
+	// 충돌 체크
 	CCollisionMgr::GetInst()->update();
 	
 	// =============
@@ -94,6 +102,12 @@ void CCore::progress()
 		m_memDC, 0, 0, SRCCOPY);
 
 	CTimeMgr::GetInst()->render();
+
+
+	// =============
+	// 이벤트 지연처리
+	// =============
+	CEventMgr::GetInst()->update();
 }
 
 void CCore::CreateBrushPen()

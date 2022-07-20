@@ -10,7 +10,7 @@
 #include"CTexture.h"
 #include"CResMgr.h"
 #include"CCollider.h"
-
+#include "CEventMgr.h"
 
 CObject_Player::CObject_Player()
 	:m_pTex(nullptr)
@@ -45,7 +45,6 @@ void CObject_Player::update()
 	{
 		SetPos(vec2(GetPos().x + 200.f * fDT, GetPos().y));
 	}
-
 	if (KEY_CHECK(Q, TAP))
 	{
 		createMissile();
@@ -86,10 +85,12 @@ void CObject_Player::createMissile()
 
 	CObject_Missile* miObj = new CObject_Missile;
 	miObj->SetPos(vMissilePos);
-	miObj->SetScale(vec2(10.f, 10.f));
-	miObj->SetTheta(0);
+	miObj->SetScale(vec2(30.f, 30.f));
+	miObj->SetTheta(10.f);
+	miObj->SetName(L"Missile_Player");
 
-	CScene *pCurScene=CSceneMgr::GetInst()->GetCurScene();
-	pCurScene->pushObject((UINT)GROUP_TYPE::MISSILE, miObj);
+	CreateObject(miObj, GROUP_TYPE::PROJ_PLAYER);
+
+	/*CScene *pCurScene=CSceneMgr::GetInst()->GetCurScene();
+	pCurScene->pushObject((UINT)GROUP_TYPE::PROJ_PLAYER, miObj);*/
 }
-
