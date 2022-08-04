@@ -94,6 +94,39 @@
     <Filter Include="Engine\03. Manager\CEvenMgr">
       <UniqueIdentifier>{e48d3c0e-35a2-49fa-92da-81c28e76b4fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Title">
+      <UniqueIdentifier>{a5b19746-03e6-48ee-bddf-60cbbb834c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Background\Scene_Start">
+      <UniqueIdentifier>{099ca350-803b-4f61-92a1-a41b8e11bb24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Background\Scene_Title">
+      <UniqueIdentifier>{5d752c98-9516-4040-8e1d-8a7e1439efd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Component\Animator">
+      <UniqueIdentifier>{ac8c107f-c8d5-48a9-9108-f88737e0ecb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Component\Collider">
+      <UniqueIdentifier>{db900d7a-394e-49ba-9d77-d30f147e5be2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Component\Animator\Animation">
+      <UniqueIdentifier>{bef6453b-a6f9-4bc1-9866-e813c2b3ad1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\Camera">
+      <UniqueIdentifier>{28ad2817-ed19-4e10-b51c-f0ac7b924a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Tile">
+      <UniqueIdentifier>{94b81cc8-93dd-49d7-9ce8-befb05ffdd33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_UI">
+      <UniqueIdentifier>{919d68c7-1006-4466-b1e9-3f7cf398dbdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\CUIMgr">
+      <UniqueIdentifier>{eb4b4186-67a6-46b7-9b72-15ca4693a66e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_UI\PanelUI">
+      <UniqueIdentifier>{79ee4b53-8b07-4077-a938-7822a9ddd4f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -160,12 +193,6 @@
     <ClInclude Include="CResMgr.h">
       <Filter>Engine\03. Manager\CResMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CObject_Background.h">
-      <Filter>Engine\04. Object\Object_Background</Filter>
-    </ClInclude>
-    <ClInclude Include="CCollider.h">
-      <Filter>Engine\07. Component</Filter>
-    </ClInclude>
     <ClInclude Include="SelectGDI.h">
       <Filter>Engine\08. Module</Filter>
     </ClInclude>
@@ -177,6 +204,45 @@
     </ClInclude>
     <ClInclude Include="func.h">
       <Filter>Engine\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Tool.h">
+      <Filter>Engine\05. Scene\Scene_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Title.h">
+      <Filter>Engine\05. Scene\Scene_Title</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_Background.h">
+      <Filter>Engine\04. Object\Object_Background\Scene_Start</Filter>
+    </ClInclude>
+    <ClInclude Include="Background_Title.h">
+      <Filter>Engine\04. Object\Object_Background\Scene_Title</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Engine\07. Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Engine\07. Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimation.h">
+      <Filter>Engine\07. Component\Animator\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Engine\03. Manager\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_Tile.h">
+      <Filter>Engine\04. Object\Object_Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Engine\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_UI.h">
+      <Filter>Engine\04. Object\Object_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIMgr.h">
+      <Filter>Engine\03. Manager\CUIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_PanelUI.h">
+      <Filter>Engine\04. Object\Object_UI\PanelUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -228,12 +294,6 @@
     <ClCompile Include="CResMgr.cpp">
       <Filter>Engine\03. Manager\CResMgr</Filter>
     </ClCompile>
-    <ClCompile Include="CObject_Background.cpp">
-      <Filter>Engine\04. Object\Object_Background</Filter>
-    </ClCompile>
-    <ClCompile Include="CCollider.cpp">
-      <Filter>Engine\07. Component</Filter>
-    </ClCompile>
     <ClCompile Include="SelectGDI.cpp">
       <Filter>Engine\08. Module</Filter>
     </ClCompile>
@@ -245,6 +305,42 @@
     </ClCompile>
     <ClCompile Include="func.cpp">
       <Filter>Engine\01. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Tool.cpp">
+      <Filter>Engine\05. Scene\Scene_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Title.cpp">
+      <Filter>Engine\05. Scene\Scene_Title</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_Background.cpp">
+      <Filter>Engine\04. Object\Object_Background\Scene_Start</Filter>
+    </ClCompile>
+    <ClCompile Include="Background_Title.cpp">
+      <Filter>Engine\04. Object\Object_Background\Scene_Title</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Engine\07. Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Engine\07. Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimation.cpp">
+      <Filter>Engine\07. Component\Animator\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Engine\03. Manager\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_Tile.cpp">
+      <Filter>Engine\04. Object\Object_Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_UI.cpp">
+      <Filter>Engine\04. Object\Object_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIMgr.cpp">
+      <Filter>Engine\03. Manager\CUIMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_PanelUI.cpp">
+      <Filter>Engine\04. Object\Object_UI\PanelUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

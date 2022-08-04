@@ -15,10 +15,11 @@
 
 CObject_Monster::CObject_Monster()
 	:m_fSpeed(100.f)
-	,m_vCenterPos(vec2(0.f,0.f))
-	,m_fMaxDistance(100.f)
-	,m_iDir(1)
-	,m_mTex(nullptr)
+	, m_vCenterPos(vec2(0.f, 0.f))
+	, m_fMaxDistance(100.f)
+	, m_iDir(1)
+	, m_mTex(nullptr)
+	, m_iHp(0)
 {
 	// texture »ý¼º
 	m_mTex = CResMgr::GetInst()->LoadTexture(L"MonsterTex", L"texture\\enemy.bmp");
@@ -54,15 +55,23 @@ void CObject_Monster::update()
 		}
 	}
 	SetPos(vCurPos);
+
+	if (m_iHp <=0 )
+	{
+		DeleteObject(this);
+	}
 }
 
 void CObject_Monster::render(HDC _dc) 
 {
 	int iWidth = (int)m_mTex->Width();
 	int iHeight = (int)m_mTex->Height();
+
+	vec2 vRenderPos = RENDERPOS(GetPos());
+
 	BitBlt(_dc
-		, (int)(GetPos().x - float(iWidth / 2))
-		, (int)(GetPos().y - float(iHeight / 2))
+		, (int)(vRenderPos.x - float(iWidth / 2))
+		, (int)(vRenderPos.y - float(iHeight / 2))
 		, iWidth, iHeight
 		, m_mTex->GetDC()
 		, 0, 0, SRCCOPY);
@@ -93,6 +102,6 @@ void CObject_Monster::OnCollisionEnter(CCollider* _pOther)
 	CObject* pOtherObj = _pOther->GetObj();
 	if (pOtherObj->GetName() == L"Missile_Player")
 	{
-		DeleteObject(this);
+		m_iHp -= 10;
 	}
 }

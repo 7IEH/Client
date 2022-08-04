@@ -6,9 +6,14 @@
 #include "CObject_Monster.h"
 #include "CObject_Background.h"
 
-#include "CTexture.h"
-#include "CPathMgr.h"
+//#include "CTexture.h"
+//#include "CPathMgr.h"
 #include "CCollisionMgr.h"
+
+#include "CKeyMgr.h"
+//#include"CEventMgr.h"
+#include "CCamera.h"
+#include"CCore.h"
 
 CScene_Start::CScene_Start()
 {
@@ -18,6 +23,21 @@ CScene_Start::CScene_Start()
 CScene_Start::~CScene_Start()
 {
 
+}
+
+void CScene_Start::update()
+{
+	CScene::update();
+	if (KEY_CHECK(ENTER, TAP))
+	{
+		ChangeScene(SCENE_TYPE::TOOL);
+	}
+
+	if (KEY_CHECK(LBTN, TAP))
+	{
+		vec2 vLookAt=CCamera::GetInst()->GetRealPos(MOUSE_POS);
+		CCamera::GetInst()->SetLookAt(vLookAt);
+	}
 }
 
 void CScene_Start::Enter()
@@ -31,12 +51,15 @@ void CScene_Start::Enter()
 
 	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);
 
+	//CCamera::GetInst()->SetTarget(pObj);
+
 	CObject_Monster* mObj = new CObject_Monster;
 
 	mObj->SetName(L"Monster");
 	mObj->SetPos(vec2(200.f, 200.f));
 	mObj->SetScale(vec2(50, 50));
 	mObj->SetCenterPos(vec2(200.f, 200.f));
+	mObj->SetHp(100);
 
 	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);
 
@@ -46,6 +69,7 @@ void CScene_Start::Enter()
 	mObj->SetPos(vec2(500.f, 200.f));
 	mObj->SetScale(vec2(50, 50));
 	mObj->SetCenterPos(vec2(500.f, 200.f));
+	mObj->SetHp(100);
 
 	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);
 
@@ -56,13 +80,19 @@ void CScene_Start::Enter()
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PLAYER);
-	// 시발 멍청한 유기태
+	// stupid
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
+
+	// Camera Look 지정
+	vec2 vResolution = CCore::GetInst()->GetResolution();
+	CCamera::GetInst()->SetLookAt(vResolution/2.f);
 }
 
 
 
 void CScene_Start::Exit()
 {
+	DeleteAll();
+
 	CCollisionMgr::GetInst()->Reset();
 }

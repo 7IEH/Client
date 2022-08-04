@@ -12,15 +12,29 @@
 #include"CCollider.h"
 #include "CEventMgr.h"
 
+// 컴포넌트
+#include "CAnimator.h"
+#include "CAnimation.h"
+
+
+
 CObject_Player::CObject_Player()
-	:m_pTex(nullptr)
 {
 	// Texture 로딩하기
-	 m_pTex=CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\player.bmp");
+	//m_pTex=CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\player.bmp");
 
 	 // Collider 생성
 	 CreateCollider();
 	 GetCollider()->SetScale(vec2(100.f, 100.f));
+
+	 CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\player_ani.bmp");
+	 CreateAnimator();
+	 GetAnimator()->CreateAnimation(L"WALK_DOWN",pTex, vec2(0.f, 0.f), vec2(94.5f, 133.f), vec2(94.5f, 0.f),0.2f, 4);
+	 GetAnimator()->Play(L"WALK_DOWN", true);
+
+	 CAnimation* pAnim=GetAnimator()->FindAnimation(L"WALK_DOWN");
+	 for(UINT i=0;i<pAnim->GetMaxFrame();++i)
+	 pAnim->GetFrame(i).vOffset=vec2(0.f,-20.f);
 }
 
 CObject_Player::~CObject_Player()
@@ -39,7 +53,7 @@ void CObject_Player::update()
 	}
 	if (KEY_CHECK(A, HOLD))
 	{
-		SetPos(vec2(GetPos().x - 200.f * fDT, GetPos().y));
+		SetPos(vec2(GetPos().x - 200.f * fDT, GetPos().y));	
 	}
 	if (KEY_CHECK(D, HOLD))
 	{
@@ -53,10 +67,8 @@ void CObject_Player::update()
 
 void CObject_Player::render(HDC _dc)
 {
-	int iWidth=(int)m_pTex->Width();
-	int iHeight=(int)m_pTex->Height();
+	//m_pAnimator
 
-	vec2 vPos = GetPos();
 
 	/*BitBlt(_dc
 		, int(vPos.x - (float)(iWidth / 2))
@@ -65,16 +77,16 @@ void CObject_Player::render(HDC _dc)
 		, m_pTex->GetDC()
 		,0,0,SRCCOPY);*/
 
-	TransparentBlt(_dc
+	   /*TransparentBlt(_dc
 		, int(vPos.x - (float)(iWidth / 2))
 		, int(vPos.y - (float)(iHeight / 2))
 		, iWidth, iHeight
 		, m_pTex->GetDC()
 		, 0, 0, iWidth, iHeight
-		, RGB(165,72,201));
+		, RGB(165,72,201));*/
 
 	// 컴포넌트(충돌체, etc ...) 가 있는 경우 렌더
-	component_Render(_dc);
+		component_Render(_dc);
 }
 
 

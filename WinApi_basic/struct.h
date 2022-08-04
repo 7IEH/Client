@@ -26,6 +26,12 @@ public:
 		return vec2(x + _num.x, y + _num.y);
 	}
 
+	void operator+=(const vec2 _num)
+	{
+		x += _num.x;
+		y += _num.y;
+	}
+
 	vec2 operator-(const vec2& _num)
 	{
 		return vec2(x - _num.x, y - _num.y);
@@ -36,9 +42,29 @@ public:
 		return vec2(x * _num.x, y * _num.y);
 	}
 
-	vec2 operator/(const vec2& _num)
+	vec2 operator*(const int	_i)
+	{
+		return vec2(x * (float)_i, y *(float) _i);
+	}
+
+	vec2 operator*(const float	_i)
+	{
+		return vec2(x * _i, y * _i);
+	}
+
+	vec2 operator*(const UINT	_i)
+	{
+		return vec2(x * _i, y * _i);
+	}
+
+	vec2 operator/( vec2& _num)
 	{
 		return vec2(x / _num.x, y / _num.y);
+	}
+
+	vec2 operator/(float _f)
+	{
+		return vec2(x / _f, y / _f);
 	}
 
 

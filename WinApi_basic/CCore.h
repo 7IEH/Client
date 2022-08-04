@@ -70,6 +70,11 @@ public:
 	HBRUSH GetBrush(BRUSH_TYPE _type) { return m_arrBrush[(UINT)_type]; }
 	HPEN GetPen(PEN_TYPE _type) { return m_arrPen[(UINT)_type]; }
 
+	vec2 GetResolution() 
+	{
+		vec2 temp = vec2(m_ptResolution.x, m_ptResolution.y);
+		return temp;
+	}
 
 private:
 	void CreateBrushPen();

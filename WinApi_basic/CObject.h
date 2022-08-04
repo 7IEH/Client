@@ -1,19 +1,23 @@
 #pragma once
 
+#include "CCamera.h"
 
 class CCollider;
+class CAnimator;
 
 class CObject
 {
 private:
-	wstring		m_strName;
+	wstring				m_strName;
 
-	vec2			 m_vPos;
-	vec2			 m_vScale;
+	vec2					m_vPos;
+	vec2					m_vScale;
 
-	CCollider*	 m_pCollider;
+	// component;
+	CCollider*			m_pCollider;
+	CAnimator*		m_pAnimator;
 
-	bool			 m_bAlive;
+	bool					m_bAlive;
 
 public:
 	void SetName(const wstring _strName)	{ m_strName = _strName; }
@@ -29,7 +33,10 @@ public:
 	
 
 	void CreateCollider();
+	void CreateAnimator();
+
 	CCollider* GetCollider() { return m_pCollider; }
+	CAnimator* GetAnimator() { return m_pAnimator; }
 
 	virtual void OnCollision(CCollider* _pOther) {}
 	virtual void OnCollisionEnter(CCollider* _pOther) {}
@@ -40,13 +47,18 @@ private:
 
 public:
 	virtual void update();
-	virtual void finalupdate()final;
+	virtual void finalupdate();
 	virtual void render(HDC _dc);
 
 	void component_Render(HDC _dc);
 
+
+	// 나 자신의 복제버전을 되돌려 주는 역할
+	virtual CObject* clone() = 0;
+
 public:
 	CObject();
+	CObject(const CObject& _origin);
 	virtual ~CObject();
 
 	friend class CEventMgr;

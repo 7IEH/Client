@@ -11,23 +11,19 @@ CResMgr::CResMgr()
 
 CResMgr::~CResMgr()
 {
-	map<wstring, CTexture*>::iterator iter = m_mapTex.begin();
-	for (; iter != m_mapTex.end(); ++iter)
-	{
-		delete iter->second;
-	}
+	Safe_Delte_Map(m_mapTex);
 }
 
 CTexture* CResMgr::FindTexture(const wstring& _strKey)
 {
-	map<wstring, CTexture*>::iterator iter = m_mapTex.find(_strKey);
+	map<wstring, CRes*>::iterator iter = m_mapTex.find(_strKey);
 
 	if (iter == m_mapTex.end())
 	{
 		return nullptr;
 	}
 
-	return iter->second;
+	return (CTexture*)iter->second;
 }
 
 CTexture* CResMgr::LoadTexture(const wstring& _strKey, const wstring& _strRelativePath)

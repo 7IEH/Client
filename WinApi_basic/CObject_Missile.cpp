@@ -8,8 +8,7 @@
 
 CObject_Missile::CObject_Missile()
 	:mi_fTheta(1.f)
-	,mi_fSpeed(100.f)
-	,mi_vDir(vec2(1.f,1.f))
+	,mi_fSpeed(200.f)
 	,mi_miTex(nullptr)
 {
 	mi_miTex = CResMgr::GetInst()->LoadTexture(L"MissileTex", L"texture\\missile.bmp");
@@ -28,11 +27,13 @@ void CObject_Missile::render(HDC _dc)
 	int iWidth = (int)mi_miTex->Width();
 	int iHeight = (int)mi_miTex->Height();
 
+	vec2 vRenderPos = RENDERPOS(GetPos());
+
 	Ellipse(_dc
-		, (int)(GetPos().x - (float)GetScale().x / 2)
-		, (int)(GetPos().y - (float)GetScale().y / 2)
-		, (int)(GetPos().x + (float)GetScale().x / 2)
-		, (int)(GetPos().y + (float)GetScale().y / 2));
+		, (int)(vRenderPos.x - (float)GetScale().x / 2)
+		, (int)(vRenderPos.y - (float)GetScale().y / 2)
+		, (int)(vRenderPos.x + (float)GetScale().x / 2)
+		, (int)(vRenderPos.y + (float)GetScale().y / 2));
 
 	/*BitBlt(_dc
 		, (int)(GetPos().x - (float)(iWidth / 2))
@@ -41,6 +42,16 @@ void CObject_Missile::render(HDC _dc)
 		, 0, 0, SRCCOPY);*/
 
 	component_Render(_dc);
+}
+
+void CObject_Missile::OnCollisionEnter(CCollider* _pOther)
+{
+	CObject* pOtherObj = _pOther->GetObj();
+
+	if (pOtherObj->GetName() == L"Monster")
+	{
+		DeleteObject(this);
+	}
 }
 
 void CObject_Missile::update()
@@ -55,3 +66,4 @@ void CObject_Missile::update()
 
 	SetPos(vCurPos);
 }
+

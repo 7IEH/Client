@@ -9,7 +9,7 @@ SelectGDI::SelectGDI(HDC _dc,PEN_TYPE _ePenType)
 	,m_hDefaultBrush(nullptr)
 {
 	HPEN hPen = CCore::GetInst()->GetPen(_ePenType);
-	HPEN hDefaultPen=(HPEN)SelectObject(_dc, hPen);
+	m_hDefaultPen =(HPEN)SelectObject(_dc, hPen);
 }
 
 SelectGDI::SelectGDI(HDC _dc, BRUSH_TYPE _eBrushType)
@@ -18,7 +18,7 @@ SelectGDI::SelectGDI(HDC _dc, BRUSH_TYPE _eBrushType)
 	,m_hDefaultBrush(nullptr)
 {
 	HBRUSH hBrush = CCore::GetInst()->GetBrush(_eBrushType);
-	HBRUSH hDefaultBrush = (HBRUSH)SelectObject(_dc, hBrush);
+	m_hDefaultBrush = (HBRUSH)SelectObject(_dc, hBrush);
 }
 
 SelectGDI::~SelectGDI()

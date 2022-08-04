@@ -38,6 +38,9 @@ int g_arrVK[(int)KEY::LAST] = {
 	ENTER,
 	ESC,
 
+	LBTN,
+	RBTN,
+
 	LAST,*/
 	VK_LEFT,
 	VK_RIGHT,
@@ -72,6 +75,8 @@ int g_arrVK[(int)KEY::LAST] = {
 	VK_SPACE,
 	VK_RETURN,
 	VK_ESCAPE,
+	VK_LBUTTON,
+	VK_RBUTTON
 };
 
 
@@ -124,6 +129,12 @@ void CKeyMgr::update()
 				m_vecKey[i].bPrevPush = false;
 			}
 		}
+		POINT ptPos = {};
+		GetCursorPos(&ptPos); 
+		// 현재 스크린에서 특정 핸드까지의 좌표 계산
+		ScreenToClient(CCore::GetInst()->getHWND(), &ptPos);
+
+		m_vCurMousePos = vec2(ptPos.x, ptPos.y);
 	}
 	else 
 	{

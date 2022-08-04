@@ -18,8 +18,8 @@ void CPathMgr::init()
 {
 	GetCurrentDirectory(255, m_szContentPath);
 	// 상위 폴더
-	int iLen = wcslen(m_szContentPath);
-
+	int iLen = (int)wcslen(m_szContentPath);
+	
 	for (int i = iLen - 1; i >= 0; --i)
 	{
 		if ('\\' == m_szContentPath[i])
@@ -30,5 +30,6 @@ void CPathMgr::init()
 	} 
 	
 	wcscat_s(m_szContentPath, 255, L"\\bin\\content\\");
+	// window title에 표시
 	SetWindowText(CCore::GetInst()->getHWND(), m_szContentPath);
 }

@@ -76,16 +76,30 @@ void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 				// 현재 충돌중
 				if (iter->second)
 				{
-					// 여전히 충돌 중이다.
-					pLeftRow->OnCollision(vecRight[j]->GetCollider());
-					pRightCol->OnCollision(vecLeft[i]->GetCollider());
+					if (vecLeft[i]->IsDead() || vecRight[j]->IsDead())
+					{
+						// 충돌체 중 하나가 dead했을경우
+						pLeftRow->OnCollisionExit(vecRight[j]->GetCollider());
+						pRightCol->OnCollisionExit(vecLeft[i]->GetCollider());
+						iter->second = false;
+					}
+					else
+					{
+						// 여전히 충돌 중이다.
+						pLeftRow->OnCollision(vecRight[j]->GetCollider());
+						pRightCol->OnCollision(vecLeft[i]->GetCollider());
+					}
+					
 				}
 				else
 				{
-					// 이전에는 충돌하지 않았다.
-					pLeftRow->OnCollisionEnter(vecRight[j]->GetCollider());
-					pRightCol->OnCollisionEnter(vecLeft[i]->GetCollider());
-					iter->second = true;
+					// 이전에는 충돌하지 않았다. 둘 중하나가 dead할 경우에는 이 충돌 자체가 일어나지 않은 걸로 한다.
+					if (!vecLeft[i]->IsDead() && !vecRight[j]->IsDead())
+					{
+						pLeftRow->OnCollisionEnter(vecRight[j]->GetCollider());
+						pRightCol->OnCollisionEnter(vecLeft[i]->GetCollider());
+						iter->second = true;
+					}
 				}
 			}
 			else
