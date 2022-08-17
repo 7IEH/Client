@@ -31,3 +31,15 @@ void CTexture::Load(const wstring& _strFilePath)
 	// 비트맵 정보 m_bitInfo 안에 bitmap에 대한 size 정보등을 넣음
 	GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
 }
+
+void CTexture::Create(UINT _iWidth, UINT _iHeight)
+{
+	HDC maindc = CCore::GetInst()->GetMainDC();
+	m_hBit = CreateCompatibleBitmap(maindc, _iWidth, _iHeight);
+	m_dc = CreateCompatibleDC(maindc);
+
+	HBITMAP hOldBit = (HBITMAP)SelectObject(m_dc, m_hBit);
+	DeleteObject(hOldBit);
+
+	//GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
+}

@@ -73,9 +73,10 @@ void CScene_Start::Enter()
 
 	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);
 
-	CObject* bObj = new CObject_Background;
+	/*CObject* bObj = new CObject_Background;
 	mObj->SetPos(vec2(640.f, 384.f));
-	pushObject((UINT)GROUP_TYPE::DEFAULT, bObj);
+	pushObject((UINT)GROUP_TYPE::DEFAULT, bObj);*/
+
 
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크

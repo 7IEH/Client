@@ -3,12 +3,27 @@
 
 #include"CKeyMgr.h"
 
+#include "SelectGDI.h"
+
 CObject_UI::CObject_UI(bool _bCamAff)
 	: m_pParentUI(nullptr)
 	, m_bCamAffected(_bCamAff)
 	, m_bMouseOn(false)
 {
 
+}
+
+CObject_UI::CObject_UI(const CObject_UI& _origin)
+	: CObject(_origin)
+	, m_pParentUI(_origin.m_pParentUI)
+	, m_bCamAffected(_origin.m_bCamAffected)
+	, m_bMouseOn(false)
+	, m_bLbtnDown(false)
+{
+	for (size_t i = 0; i < _origin.m_vecChildUI.size(); ++i)
+	{
+		AddChild(_origin.m_vecChildUI[i]->clone());
+	}
 }
 
 CObject_UI::~CObject_UI()
@@ -50,11 +65,24 @@ void CObject_UI::render(HDC _dc)
 		vPos = CCamera::GetInst()->GetRenderPos(vPos);
 	}
 
-	Rectangle(_dc
-	,int(vPos.x)
-	,int(vPos.y)
-	,int(vPos.x+vScale.x)
-	,int(vPos.y+vScale.y));
+	if (m_bLbtnDown)
+	{
+		SelectGDI select(_dc, PEN_TYPE::GREEN);
+
+		Rectangle(_dc
+			, int(vPos.x)
+			, int(vPos.y)
+			, int(vPos.x + vScale.x)
+			, int(vPos.y + vScale.y));
+	}
+	else
+	{ 
+		Rectangle(_dc
+			, int(vPos.x)
+			, int(vPos.y)
+			, int(vPos.x + vScale.x)
+			, int(vPos.y + vScale.y));
+	}
 
 	// child ui render
 	render_child(_dc);

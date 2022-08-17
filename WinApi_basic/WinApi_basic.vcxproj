@@ -166,6 +166,7 @@
     <ClInclude Include="CKeyMgr.h" />
     <ClInclude Include="CObject.h" />
     <ClInclude Include="CObject_Background.h" />
+    <ClInclude Include="CObject_BtnUI.h" />
     <ClInclude Include="CObject_Missile.h" />
     <ClInclude Include="CObject_Monster.h" />
     <ClInclude Include="CObject_PanelUI.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="CKeyMgr.cpp" />
     <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CObject_Background.cpp" />
+    <ClCompile Include="CObject_BtnUI.cpp" />
     <ClCompile Include="CObject_Missile.cpp" />
     <ClCompile Include="CObject_Monster.cpp" />
     <ClCompile Include="CObject_PanelUI.cpp" />

@@ -52,3 +52,13 @@ void CObject_Tile::render(HDC _dc)
 		, SRCCOPY
 	);
 }
+
+void CObject_Tile::Save(FILE* _pFile)
+{
+	fwrite(&m_iImgIdx, sizeof(int), 1, _pFile);
+}
+
+void CObject_Tile::Load(FILE* _pFile)
+{
+	fread(&m_iImgIdx, sizeof(int), 1, _pFile);
+}

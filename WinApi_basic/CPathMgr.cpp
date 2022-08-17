@@ -3,7 +3,8 @@
 #include	"CCore.h"
 
 CPathMgr::CPathMgr()
-	:m_szContentPath{}
+	: m_szContentPath{}
+	, m_szRelativePath{}
 {
 
 }
@@ -32,4 +33,16 @@ void CPathMgr::init()
 	wcscat_s(m_szContentPath, 255, L"\\bin\\content\\");
 	// window title¿¡ Ç¥½Ã
 	SetWindowText(CCore::GetInst()->getHWND(), m_szContentPath);
+}
+
+wstring CPathMgr::GetRelativePath(const wchar_t* _filePath)
+{
+	wstring strFilePath = (wstring)_filePath;
+
+	size_t iPos = wcslen(m_szContentPath);
+	size_t iEnd = strFilePath.length();
+
+	wstring strRelativePath = strFilePath.substr(iPos, iEnd-iPos);
+
+	return strRelativePath;
 }

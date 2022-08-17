@@ -33,6 +33,8 @@
 // 이 방식에 단점은 원할때 release를 못함
 #include "pch.h"
 
+class CTexture;
+
 class CCore {
 public:
 	SINGLE(CCore);
@@ -57,8 +59,7 @@ private:
 	POINT					m_ptResolution;     //메인 윈도우 해상도
 	HDC						m_hDC;						  //메인 윈도우에 Draw 할 DC
 
-	HBITMAP			m_hBit;
-	HDC						m_memDC;
+	CTexture*			m_pMemTex;				// 백버퍼 텍스처
 
 	// 자주 사용하는 GDI object
 	HBRUSH				m_arrBrush[(UINT)BRUSH_TYPE::END];

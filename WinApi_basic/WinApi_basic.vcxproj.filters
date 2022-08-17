@@ -28,9 +28,6 @@
     <Filter Include="Engine\03. Manager">
       <UniqueIdentifier>{b6951256-1c0c-4e10-a00f-c31950873c6b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object">
-      <UniqueIdentifier>{42b37c9c-3993-4370-8d6f-7dabfb77a0c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\03. Manager\CTimeMgr">
       <UniqueIdentifier>{217da95b-d094-4f25-ba3c-319bec300c11}</UniqueIdentifier>
     </Filter>
@@ -55,15 +52,6 @@
     <Filter Include="Engine\05. Scene\Scene_Stage_02">
       <UniqueIdentifier>{6a34af24-64fc-4ffc-bbb5-b4190f3867a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object\Object_Player">
-      <UniqueIdentifier>{4b9136b4-02eb-4ecd-a936-f033fe6e133f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\Object_MISSILE">
-      <UniqueIdentifier>{75fb4a2d-63d7-4ee8-9c87-10e14538b378}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\Object_Monster">
-      <UniqueIdentifier>{d36130ae-247f-41b7-a1e3-3797903dba7b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\06. Resource">
       <UniqueIdentifier>{263fa1cb-c868-446d-a8bd-ec350d8c5f82}</UniqueIdentifier>
     </Filter>
@@ -78,9 +66,6 @@
     </Filter>
     <Filter Include="Engine\03. Manager\CResMgr">
       <UniqueIdentifier>{bc0b471a-62d9-448e-a47d-69ac11d37f35}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\Object_Background">
-      <UniqueIdentifier>{6e6b4a70-1184-459b-8caf-cabfbd2fb176}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\07. Component">
       <UniqueIdentifier>{fa26923c-1d90-42d9-ac1c-db630ef13965}</UniqueIdentifier>
@@ -97,12 +82,6 @@
     <Filter Include="Engine\05. Scene\Scene_Title">
       <UniqueIdentifier>{a5b19746-03e6-48ee-bddf-60cbbb834c17}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object\Object_Background\Scene_Start">
-      <UniqueIdentifier>{099ca350-803b-4f61-92a1-a41b8e11bb24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\Object_Background\Scene_Title">
-      <UniqueIdentifier>{5d752c98-9516-4040-8e1d-8a7e1439efd5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\07. Component\Animator">
       <UniqueIdentifier>{ac8c107f-c8d5-48a9-9108-f88737e0ecb3}</UniqueIdentifier>
     </Filter>
@@ -115,17 +94,41 @@
     <Filter Include="Engine\03. Manager\Camera">
       <UniqueIdentifier>{28ad2817-ed19-4e10-b51c-f0ac7b924a3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\CUIMgr">
+      <UniqueIdentifier>{eb4b4186-67a6-46b7-9b72-15ca4693a66e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object">
+      <UniqueIdentifier>{42b37c9c-3993-4370-8d6f-7dabfb77a0c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Player">
+      <UniqueIdentifier>{4b9136b4-02eb-4ecd-a936-f033fe6e133f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_MISSILE">
+      <UniqueIdentifier>{75fb4a2d-63d7-4ee8-9c87-10e14538b378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Monster">
+      <UniqueIdentifier>{d36130ae-247f-41b7-a1e3-3797903dba7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Background">
+      <UniqueIdentifier>{6e6b4a70-1184-459b-8caf-cabfbd2fb176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Background\Scene_Start">
+      <UniqueIdentifier>{099ca350-803b-4f61-92a1-a41b8e11bb24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_Background\Scene_Title">
+      <UniqueIdentifier>{5d752c98-9516-4040-8e1d-8a7e1439efd5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Engine\04. Object\Object_Tile">
       <UniqueIdentifier>{94b81cc8-93dd-49d7-9ce8-befb05ffdd33}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\04. Object\Object_UI">
       <UniqueIdentifier>{919d68c7-1006-4466-b1e9-3f7cf398dbdb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\CUIMgr">
-      <UniqueIdentifier>{eb4b4186-67a6-46b7-9b72-15ca4693a66e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\04. Object\Object_UI\PanelUI">
       <UniqueIdentifier>{79ee4b53-8b07-4077-a938-7822a9ddd4f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_UI\BtnUI">
+      <UniqueIdentifier>{4f11a431-2a01-4d48-b5d6-36c7c3371077}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +247,9 @@
     <ClInclude Include="CObject_PanelUI.h">
       <Filter>Engine\04. Object\Object_UI\PanelUI</Filter>
     </ClInclude>
+    <ClInclude Include="CObject_BtnUI.h">
+      <Filter>Engine\04. Object\Object_UI\BtnUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -341,6 +347,9 @@
     </ClCompile>
     <ClCompile Include="CObject_PanelUI.cpp">
       <Filter>Engine\04. Object\Object_UI\PanelUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_BtnUI.cpp">
+      <Filter>Engine\04. Object\Object_UI\BtnUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

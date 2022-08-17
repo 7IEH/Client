@@ -3,6 +3,7 @@
 #include "CObject.h"
 #include "CObject_Tile.h"
 
+#include "CPathMgr.h"
 #include "CResMgr.h"
 
 CScene::CScene()
@@ -92,6 +93,8 @@ void CScene::DeleteAll()
 
 void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 {
+	DeleteGroup(GROUP_TYPE::TILE);
+
 	m_iTileX = _iXCount;
 	m_iTileY = _iYCount;
 
@@ -110,4 +113,37 @@ void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 			pushObject((UINT)GROUP_TYPE::TILE, pTile);
 		}
 	}
+}
+
+void CScene::LoadTile(const wstring& _strRelativePath)
+{
+	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+	strFilePath += _strRelativePath;
+
+	// 커널 오브젝트;
+	FILE* pFile = nullptr;
+
+	_wfopen_s(&pFile, strFilePath.c_str(), L"rb");
+
+	assert(pFile);
+
+	// 타일 가로세로 갯수 불러오기
+	UINT xCount;
+	UINT yCount;
+
+	fread(&xCount, sizeof(UINT), 1, pFile);
+	fread(&yCount, sizeof(UINT), 1, pFile);
+
+	CreateTile(xCount, yCount);
+
+	// 타일들을 개별적 특징들 불러오기
+	const vector<CObject*>& vecTile = vGetObject(GROUP_TYPE::TILE);
+
+	for (size_t i = 0; i < vecTile.size(); ++i)
+	{
+		((CObject_Tile*)vecTile[i])->Load(pFile);
+	}
+
+	fclose(pFile);
+
 }

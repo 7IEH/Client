@@ -4,11 +4,15 @@
 #include "CObject_Tile.h"
 #include "CCore.h"
 #include "CSceneMgr.h"
-
+#include "CUIMgr.h"
 #include "CResMgr.h"
 #include "CKeyMgr.h"
+#include "CPathMgr.h"
 #include "resource.h"
-#include "CObject_UI.h"
+#include "CObject_PanelUI.h"
+#include"CObject_BtnUI.h"
+
+void changeScene(DWORD_PTR, DWORD_PTR);
 
 CScene_Tool::CScene_Tool()
 {
@@ -20,24 +24,31 @@ CScene_Tool::~CScene_Tool()
 
 void CScene_Tool::Enter()
 {
-
 	// 타일 생성
 	CreateTile(5, 5);
 
 	// UI 생성
-	CObject_UI* pUI = new CObject_UI(false);
+	CObject_UI* pPanelUI = new CObject_PanelUI;
 
 	vec2 vResolution = CCore::GetInst()->GetResolution();
-	pUI->SetScale(vec2(500.f, 300.f));
-	pUI->SetPos(vec2(vResolution.x-pUI->GetScale().x,0.f));
+	pPanelUI->SetName(L"ParentUI");
+	pPanelUI->SetScale(vec2(500.f, 300.f));
+	pPanelUI->SetPos(vec2(vResolution.x- pPanelUI->GetScale().x,0.f));
 	
-	/*CObject_UI* pChildUI = new CObject_UI;
-	pChildUI->SetScale(vec2(100.f, 40.f));
-	pChildUI->SetPos(vec2(0.f,0.f));
+	CObject_BtnUI* pBtnUI = new CObject_BtnUI;
+	pBtnUI->SetName(L"ChildUI");
+	pBtnUI->SetScale(vec2(100.f, 40.f));
+	pBtnUI->SetPos(vec2(0.f,0.f));
+	((CObject_BtnUI*)pBtnUI)->SetClickedCallBack(this, (SCENE_MEMFUNC)&CScene_Tool::saveTileData);
+	pPanelUI->AddChild(pBtnUI);
+	pushObject((UINT)GROUP_TYPE::UI, pPanelUI);
 
-	pUI->AddChild(pChildUI);*/
+	CObject_UI* pClonePanel = pPanelUI->clone();
+	pClonePanel->SetPos(vec2(vResolution.x - pPanelUI->GetScale().x, vResolution.y - pPanelUI->GetScale().y));
+	((CObject_BtnUI*)pClonePanel->GetChildUI()[0])->SetClickedCallBack(changeScene, 0, 0);
+	pushObject((UINT)GROUP_TYPE::UI, pClonePanel);
 
-	pushObject((UINT)GROUP_TYPE::UI, pUI);
+	m_pUI = pClonePanel;
 
 	// 카메라
 	CCamera::GetInst()->SetLookAt(vResolution / 2.f);
@@ -45,6 +56,7 @@ void CScene_Tool::Enter()
 
 void CScene_Tool::Exit()
 {
+	DeleteAll();
 }
 
 void CScene_Tool::update()
@@ -52,6 +64,23 @@ void CScene_Tool::update()
 	CScene::update();
 
 	SetTileIdx();
+
+	if (KEY_CHECK(LSHIFT, TAP))
+	{
+
+		// UI 포커싱 강제로 바꾸기
+		// CUIMgr::GetInst()->SetFocusedUI(m_pUI);
+		saveTileData();
+	}
+
+	if (KEY_CHECK(CTRL, TAP))
+	{
+
+		// UI 포커싱 강제로 바꾸기
+		// CUIMgr::GetInst()->SetFocusedUI(m_pUI);
+
+		LoadTileData();
+	}
 }
 
 void CScene_Tool::SetTileIdx()
@@ -80,9 +109,98 @@ void CScene_Tool::SetTileIdx()
 	}
 }
 
+void CScene_Tool::saveTileData()
+{
+	wchar_t szName[256] = {};
+
+	OPENFILENAME ofn = {};
+
+	ofn.lStructSize = sizeof(OPENFILENAME);						// 구조체 사이즈
+	ofn.hwndOwner = CCore::GetInst()->getHWND();		// 윈도우 핸들 지정
+	ofn.lpstrFile = szName;														// 경로	
+	ofn.nMaxFile = sizeof(szName);											// 경로 이름 byte 수
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";					// 필터 들
+	ofn.nFilterIndex = 0;															// 처음 열었을 때 filter 지정자
+	ofn.lpstrFileTitle = nullptr;													
+	ofn.nMaxFileTitle = 0;
+
+	wstring strTileFolder = CPathMgr::GetInst()->GetContentPath();
+	strTileFolder += L"tile";
+
+	ofn.lpstrInitialDir = strTileFolder.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+	// Modal
+	if (GetSaveFileName(&ofn))
+	{
+		SaveTile(szName);
+	}
+}
+
+void CScene_Tool::SaveTile(const wstring& _strFilePath)
+{
+	wstring strFilePath = _strFilePath;
+
+	// 커널 오브젝트
+	FILE* pFile = nullptr;
+
+	_wfopen_s(&pFile,strFilePath.c_str(),L"wb");
+	// 파일 열기 실패
+	assert(pFile);
+
+	// 데이터 저장
+	// 타일 가로세로 갯수 저장
+	UINT xCount = GetTileX();
+	UINT yCount = GetTileY();
+
+	fwrite(&xCount, sizeof(UINT), 1, pFile);
+	fwrite(&yCount, sizeof(UINT), 1, pFile);
+
+	// 타일들을 개별적으로 저장할 데이터를 저장하게 함
+	const vector<CObject*>& vecTile = vGetObject(GROUP_TYPE::TILE);
+
+	for (size_t i = 0; i < vecTile.size(); ++i)
+	{
+		((CObject_Tile*)vecTile[i])->Save(pFile);
+	}
+
+	fclose(pFile);
+}
+
+void CScene_Tool::LoadTileData()
+{
+	wchar_t szName[256] = {};
+
+	OPENFILENAME ofn = {};
+
+	ofn.lStructSize = sizeof(OPENFILENAME);						// 구조체 사이즈
+	ofn.hwndOwner = CCore::GetInst()->getHWND();		// 윈도우 핸들 지정
+	ofn.lpstrFile = szName;														// 경로	
+	ofn.nMaxFile = sizeof(szName);											// 경로 이름 byte 수
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";					// 필터 들
+	ofn.nFilterIndex = 0;															// 처음 열었을 때 filter 지정자
+	ofn.lpstrFileTitle = nullptr;
+	ofn.nMaxFileTitle = 0;
+
+	wstring strTileFolder = CPathMgr::GetInst()->GetContentPath();
+	strTileFolder += L"tile";
+
+	ofn.lpstrInitialDir = strTileFolder.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+	// Modal
+	if (GetOpenFileName(&ofn))
+	{
+		LoadTile(CPathMgr::GetInst()->GetRelativePath(szName));
+	}
+}
 
 
 
+void changeScene(DWORD_PTR , DWORD_PTR )
+{
+	ChangeScene(SCENE_TYPE::START);
+}
 
 
 

@@ -86,7 +86,31 @@ void CObject_Player::render(HDC _dc)
 		, RGB(165,72,201));*/
 
 	// 컴포넌트(충돌체, etc ...) 가 있는 경우 렌더
-		component_Render(_dc);
+		//component_Render(_dc);
+
+		CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"Player", L"texture\\player_A.bmp");
+
+		vec2 vPos = GetPos();
+		vPos = CCamera::GetInst()->GetRenderPos(vPos);
+
+		float width = (float)pTex->Width();
+		float height = (float)pTex->Height();
+
+
+		BLENDFUNCTION bf = {};
+
+		bf.BlendOp = AC_SRC_OVER;
+		bf.BlendFlags = 0;
+		bf.AlphaFormat = AC_SRC_ALPHA;
+		bf.SourceConstantAlpha = 127;
+
+		AlphaBlend(_dc
+			, (int)(vPos.x - width/2.f)
+			, (int)(vPos.y - height / 2.f)
+			, (int)(width), int(height)
+			, pTex->GetDC()
+			, 0, 0, (int)width, (int)height
+			, bf);
 }
 
 

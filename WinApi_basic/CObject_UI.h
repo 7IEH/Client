@@ -13,14 +13,16 @@ private:
     
     bool                                           m_bCamAffected;        // UI 가 카메라에 영향을 받는 유무
     bool                                           m_bMouseOn;                // UI 위에 마우스가 있는지
-    bool                                           m_bLbtnDown;              // UI 에 왼쪽버튼이 눌린적이 있는지
+    bool                                           m_bLbtnDown;              // UI 에 왼쪽버튼이 눌린적이 있는
 
 public:
     vec2 GetFinalPos() { return m_vFinalPos; }
     CObject_UI* GetParent() { return m_pParentUI; }
     bool IsMouseOn() { return m_bMouseOn; }
+    bool IsLbtnDown() { return m_bLbtnDown; }
 
     void AddChild(CObject_UI* _pUI) { m_vecChildUI.push_back(_pUI); _pUI->m_pParentUI = this; }
+    const vector<CObject_UI*>& GetChildUI() { return m_vecChildUI; }
 
 public:
     virtual void update();
@@ -44,10 +46,11 @@ private:
     void MouseOnCheck();
 
 public:
-    CLONE(CObject_UI);
+    virtual CObject_UI* clone() = 0;
 
 public:
     CObject_UI(bool _bCamAff);
+    CObject_UI(const CObject_UI& _origin);
     virtual ~CObject_UI();
 
     friend class CUIMgr;

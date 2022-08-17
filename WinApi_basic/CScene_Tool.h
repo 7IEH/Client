@@ -1,12 +1,13 @@
 #pragma once
 #include "CScene.h"
 
-
+class CObject_UI;
 
 class CScene_Tool :
     public CScene
 {
 private:
+    CObject_UI* m_pUI;
 
 public:
     virtual void Enter();
@@ -15,6 +16,11 @@ public:
 
 public:
     void SetTileIdx();
+
+    void saveTileData();
+    void SaveTile(const wstring& _strFilePath);
+
+    void LoadTileData();
 
 public:
     CScene_Tool ();

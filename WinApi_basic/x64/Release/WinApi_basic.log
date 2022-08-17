@@ -1,24 +1,9 @@
-﻿  Background_Title.cpp
-  CAnimation.cpp
-C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CAnimation.h(47,20): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  CAnimator.cpp
-C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CAnimation.h(47,20): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  CCamera.cpp
-  CCollider.cpp
-  CCollisionMgr.cpp
-  CCore.cpp
-  CEventMgr.cpp
-  CObject.cpp
-  CObject_Background.cpp
-  CObject_Missile.cpp
-  CObject_Monster.cpp
-  CObject_Player.cpp
-C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CAnimation.h(47,20): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  CScene.cpp
-  CScene_Start.cpp
-  CScene_Title.cpp
+﻿  unity_PYW9Y0QPGW9RU1ML.cpp
+  unity_HQRN1M61V6SU8OXP.cpp
+  unity_E37MAQ2IG0KME9Q0.cpp
   코드를 생성하고 있습니다.
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 871 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1045 of 1049 functions (99.6%) were compiled, the rest were copied from previous compilation.
+    182 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   WinApi_basic.vcxproj -> C:\Users\youki\source\repos\graphics\WinApi_basic\Output\bin\WinApi_basic.exe
