@@ -20,6 +20,7 @@ using std::wstring;
 #include "struct.h"
 #include "define.h"
 #include "func.h"
+#include "Dsound.h"
 
 #include<cassert>
 

@@ -15,10 +15,7 @@ CCamera::CCamera()
 	, m_fTime(0.5f)
 	, m_fSpeed(0.f)
 	, m_fAccTime(0.5f)
-	, m_eEffect(CAM_EFFECT::NONE)
 	, m_pVeilTex(nullptr)
-	, m_fEffectDuration(0.f)
-	, m_fCurTime(0.f)
 {
 }
 
@@ -31,12 +28,8 @@ void CCamera::update()
 	if(KEY_CHECK(Z, TAP))
 	{
 		FadeOut(10.f);
+		FadeIn(10.f);
 	}
-	/*
-	if (KEY_CHECK(X, TAP))
-	{
-		FadeIn();
-	}*/
 
 	if (m_pTargetObj)
 	{
@@ -73,32 +66,37 @@ void CCamera::init()
 
 void CCamera::render(HDC _dc)
 {
-
-	if (CAM_EFFECT::NONE == m_eEffect)
+	if (m_vecCamEffect.empty())
 		return;
 
+
+	tCamEffect& effect = m_vecCamEffect.front();
+	effect.m_fCurTime += fDT;
+
 	float fRatio = 0.f; // 이펙트 진행 비율
+	fRatio = effect.m_fCurTime / effect.m_fDuration;
+	
+	if (fRatio < 0.f)
+		fRatio = 0.f;
+	if (fRatio > 1.f)
+		fRatio = 1.f;
 
-	if (CAM_EFFECT::FADE_OUT == m_eEffect)
+	int iAlpha = 0;
+
+	if (CAM_EFFECT::FADE_OUT == effect.eEffect)
 	{
-		// 시간 누적값을 체크해서
-		m_fCurTime += fDT;
-
-		// 진행 시간이 이펙트 최대 지정 시간을 넘어선 경우
-		if (m_fEffectDuration < m_fCurTime)
-		{
-			// 효과 종료
-			m_eEffect=CAM_EFFECT::NONE;
-			return;
-		}
-
-		fRatio = m_fCurTime / m_fEffectDuration;
+		iAlpha = (int)(255.f * fRatio);
+	}
+	else if (CAM_EFFECT::FADE_IN == effect.eEffect)
+	{
+		iAlpha = (int)(255.f * (1.f-fRatio));
 	}
 
-	int iAlpha = (int)(255.f * fRatio);
-
-	/*if (CAM_EFFECT::FADE_IN == m_eEffect)
-		return;*/
+	if (CAM_EFFECT::NONE == m_vecCamEffect.front().eEffect)
+	{
+		m_vecCamEffect.erase(m_vecCamEffect.begin());
+		return;
+	}
 
 	BLENDFUNCTION bf = {};
 
@@ -116,6 +114,13 @@ void CCamera::render(HDC _dc)
 		, m_pVeilTex->GetDC()
 		, 0, 0, (int)vResolution.x, (int)vResolution.y
 		, bf);
+
+	// 진행 시간이 이펙트 최대 지정 시간을 넘어선 경우
+	if (effect.m_fDuration < effect.m_fCurTime)
+	{
+		// 효과 종료
+		m_vecCamEffect.erase(m_vecCamEffect.begin());
+	}
 }
 
 void CCamera::CalDiff()

@@ -130,6 +130,9 @@
     <Filter Include="Engine\04. Object\Object_UI\BtnUI">
       <UniqueIdentifier>{4f11a431-2a01-4d48-b5d6-36c7c3371077}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\CSoundMgr">
+      <UniqueIdentifier>{18230899-5906-4689-b1d3-86d2175c8f75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -250,6 +253,9 @@
     <ClInclude Include="CObject_BtnUI.h">
       <Filter>Engine\04. Object\Object_UI\BtnUI</Filter>
     </ClInclude>
+    <ClInclude Include="CSoundMgr.h">
+      <Filter>Engine\03. Manager\CSoundMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -350,6 +356,9 @@
     </ClCompile>
     <ClCompile Include="CObject_BtnUI.cpp">
       <Filter>Engine\04. Object\Object_UI\BtnUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundMgr.cpp">
+      <Filter>Engine\03. Manager\CSoundMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

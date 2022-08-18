@@ -1,2 +1,10 @@
-﻿  unity_E37MAQ2IG0KME9Q0.cpp
+﻿  unity_PYW9Y0QPGW9RU1ML.cpp
+  unity_HQRN1M61V6SU8OXP.cpp
+  unity_M4JWFPAECXE4M1ED.cpp
+  unity_53GDEQB9T5C234Q5.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CScene.cpp(101,32): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다. (소스 파일 컴파일 중 C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\Unity\unity_HQRN1M61V6SU8OXP.cpp)
+C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CScene.cpp(102,32): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다. (소스 파일 컴파일 중 C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\Unity\unity_HQRN1M61V6SU8OXP.cpp)
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
   WinApi_basic.vcxproj -> C:\Users\youki\source\repos\graphics\WinApi_basic\Output\bin_debug\WinApi_basic.exe

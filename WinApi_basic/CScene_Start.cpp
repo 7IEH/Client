@@ -51,7 +51,7 @@ void CScene_Start::Enter()
 
 	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);
 
-	//CCamera::GetInst()->SetTarget(pObj);
+	CCamera::GetInst()->SetTarget(pObj);
 
 	CObject_Monster* mObj = new CObject_Monster;
 

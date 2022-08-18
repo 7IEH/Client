@@ -26,6 +26,7 @@ public:
 	virtual void update();
 	virtual void finalupdate();
 	virtual void render(HDC _dc);
+	void render_tile(HDC _dc);
 
 	virtual void Enter() = 0;
 	virtual void Exit() = 0;

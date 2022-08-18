@@ -1,9 +1,10 @@
-﻿  unity_PYW9Y0QPGW9RU1ML.cpp
-  unity_HQRN1M61V6SU8OXP.cpp
-  unity_E37MAQ2IG0KME9Q0.cpp
+﻿  unity_HQRN1M61V6SU8OXP.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CScene.cpp(101,32): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CScene.cpp(102,32): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
   코드를 생성하고 있습니다.
-  1045 of 1049 functions (99.6%) were compiled, the rest were copied from previous compilation.
-    182 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+  41 of 1163 functions ( 3.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    32 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   WinApi_basic.vcxproj -> C:\Users\youki\source\repos\graphics\WinApi_basic\Output\bin\WinApi_basic.exe

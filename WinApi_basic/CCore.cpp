@@ -12,6 +12,7 @@
 #include "CCamera.h"
 #include "CUIMgr.h"
 #include "CTexture.h"
+#include "CSound.h"
 
 CCore::CCore() 
 	:m_hWnd(0)
@@ -62,9 +63,16 @@ int CCore::init(HWND _hWnd, POINT _ptResolution) {
 	CKeyMgr::GetInst()->init();
 	CTimeMgr::GetInst()->init();
 	CCamera::GetInst()->init();
+	CSoundMgr::GetInst()->init();
 	CSceneMgr::GetInst()->init();
 	
 
+	// Sound 로드 테스트
+	CResMgr::GetInst()->LoadSound(L"BGM_01", L"sound\\DM.wav");
+	CSound* pNewSound = CResMgr::GetInst()->FindSound(L"BGM_01");
+
+	pNewSound->SetVolume(2.f);
+	pNewSound->Play();
 
 	return S_OK;	
 }
