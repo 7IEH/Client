@@ -10,6 +10,7 @@
 //#include "CPathMgr.h"
 #include "CCollisionMgr.h"
 
+#include "CTimeMgr.h"
 #include "CKeyMgr.h"
 //#include"CEventMgr.h"
 #include "CCamera.h"
@@ -38,6 +39,10 @@ void CScene_Start::update()
 		vec2 vLookAt=CCamera::GetInst()->GetRealPos(MOUSE_POS);
 		CCamera::GetInst()->SetLookAt(vLookAt);
 	}
+	/*vector<CObject*> BackImage = vGetObject(GROUP_TYPE::BACK_IMAGE);
+	vec2 CurPos = ((CObject_Background*)BackImage.front())->GetPos();
+	CurPos = CurPos * fDT;
+	BackImage.front()->SetPos(vec2(CurPos.x, 0.f));*/
 }
 
 void CScene_Start::Enter()
@@ -73,9 +78,10 @@ void CScene_Start::Enter()
 
 	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);
 
-	/*CObject* bObj = new CObject_Background;
-	mObj->SetPos(vec2(640.f, 384.f));
-	pushObject((UINT)GROUP_TYPE::DEFAULT, bObj);*/
+	CObject* bObj = new CObject_Background;
+	bObj->SetPos(vec2(0.f, 0.f));
+	bObj->SetName(L"BACK_IMAGE");
+	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj);
 
 
 	// 충돌 지정

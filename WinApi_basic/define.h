@@ -25,6 +25,7 @@
 enum class GROUP_TYPE
 {
 	DEFAULT,
+	BACK_IMAGE,
 	TILE,
 	MISSILE,
 	MONSTER,

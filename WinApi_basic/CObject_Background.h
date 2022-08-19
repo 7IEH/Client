@@ -10,8 +10,12 @@ private:
     CTexture* m_pTex;
 
 public:
+    virtual void update();
     virtual void render(HDC _dc);
-   CLONE(CObject_Background)
+    CLONE(CObject_Background)
+   
+public:
+    //void BackGroundSlide();
 
 public:
     CObject_Background();

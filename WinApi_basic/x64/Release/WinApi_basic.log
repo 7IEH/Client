@@ -3,8 +3,7 @@
 C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CScene.cpp(101,32): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
 C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CScene.cpp(102,32): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
   코드를 생성하고 있습니다.
-  41 of 1163 functions ( 3.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    32 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 1163 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   코드를 생성했습니다.
   WinApi_basic.vcxproj -> C:\Users\youki\source\repos\graphics\WinApi_basic\Output\bin\WinApi_basic.exe

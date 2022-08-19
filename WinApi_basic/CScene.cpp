@@ -98,8 +98,8 @@ void CScene::render_tile(HDC _dc)
 	{
 		for (int iCurCol = iLTCol; iCurCol < (iLTCol + iClientWidth); ++iCurCol)
 		{
-			if (iCurCol < 0 || m_iTileX <= iCurCol
-				|| iCurRow < 0 || m_iTileY <= iCurRow)
+			if (iCurCol < 0 || (int)m_iTileX <= iCurCol
+				|| iCurRow < 0 || (int)m_iTileY <= iCurRow)
 				continue;
 
 			int iIdx = (m_iTileX * iCurRow) + iCurCol;

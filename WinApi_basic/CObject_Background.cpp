@@ -13,14 +13,28 @@ CObject_Background::~CObject_Background()
 {
 }
 
+//void CObject_Background::BackGroundSlide()
+//{
+//	vec2 vCurPos = GetPos();
+//	
+//}
+
+void CObject_Background::update()
+{
+	// Slide
+	vec2 vCurPos = GetPos();
+	vCurPos.x -=5.f * fDT;
+	SetPos(vCurPos);
+}
+
 void CObject_Background::render(HDC _dc)
 {
 	int iWidth = (int)m_pTex->Width();
 	int iHeight = (int)m_pTex->Height();
 
 	BitBlt(_dc
-		, 0
-		, 0
+		, (int)GetPos().x
+		, (int)GetPos().y
 		, iWidth
 		, iHeight
 		, m_pTex->GetDC()
