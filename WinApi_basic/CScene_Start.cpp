@@ -83,6 +83,10 @@ void CScene_Start::Enter()
 	bObj->SetName(L"BACK_IMAGE");
 	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj);
 
+	CObject* bObj2 = new CObject_Background;
+	bObj2->SetPos(vec2(1280.f, 0.f));
+	bObj2->SetName(L"BACK_IMAGE");
+	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj2);
 
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크

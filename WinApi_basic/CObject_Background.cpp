@@ -23,8 +23,13 @@ void CObject_Background::update()
 {
 	// Slide
 	vec2 vCurPos = GetPos();
-	vCurPos.x -=5.f * fDT;
+	vCurPos.x -=50.f * fDT;
 	SetPos(vCurPos);
+
+	if (vCurPos.x <= -1280.f) 
+	{
+		SetPos(vec2(1280.f, 0.f));
+	}
 }
 
 void CObject_Background::render(HDC _dc)
