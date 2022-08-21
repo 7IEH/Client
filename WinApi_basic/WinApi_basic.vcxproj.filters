@@ -133,6 +133,9 @@
     <Filter Include="Engine\03. Manager\CSoundMgr">
       <UniqueIdentifier>{18230899-5906-4689-b1d3-86d2175c8f75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Component\Rigidbody">
+      <UniqueIdentifier>{9cba2d94-75af-4da2-9fd8-ba0d5b9d4308}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -256,6 +259,9 @@
     <ClInclude Include="CSoundMgr.h">
       <Filter>Engine\03. Manager\CSoundMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CRigidBody.h">
+      <Filter>Engine\07. Component\Rigidbody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -359,6 +365,9 @@
     </ClCompile>
     <ClCompile Include="CSoundMgr.cpp">
       <Filter>Engine\03. Manager\CSoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CRigidBody.cpp">
+      <Filter>Engine\07. Component\Rigidbody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

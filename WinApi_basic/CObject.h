@@ -4,6 +4,7 @@
 
 class CCollider;
 class CAnimator;
+class CRigidBody;
 
 class CObject
 {
@@ -16,6 +17,7 @@ private:
 	// component;
 	CCollider*			m_pCollider;
 	CAnimator*		m_pAnimator;
+	CRigidBody*		m_pRigidBody;
 
 	bool					m_bAlive;
 

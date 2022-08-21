@@ -15,6 +15,7 @@
 // 컴포넌트
 #include "CAnimator.h"
 #include "CAnimation.h"
+#include "CRigidBody.h"
 
 
 
@@ -26,6 +27,8 @@ CObject_Player::CObject_Player()
 	 // Collider 생성
 	 CreateCollider();
 	 GetCollider()->SetScale(vec2(100.f, 100.f));
+
+	 CreateRigidBody();
 
 	 CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\player_ani.bmp");
 	 CreateAnimator();
@@ -43,6 +46,10 @@ CObject_Player::~CObject_Player()
 
 void CObject_Player::update()
 {
+	CRigidBody* pRigid = GetRigidBody();
+
+	pRigid->AddForce();
+
 	if (KEY_CHECK(W,HOLD))
 	{
 		SetPos(vec2(GetPos().x,GetPos().y- 200.f * fDT));

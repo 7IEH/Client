@@ -9,7 +9,8 @@ CObject::CObject()
 	: m_vPos{}
 	, m_vScale{}
 	, m_pCollider(nullptr)
-	,m_pAnimator(nullptr)
+	, m_pAnimator(nullptr)
+	, m_pRigidBody(nullptr)
 	, m_bAlive(true)
 {
 }
