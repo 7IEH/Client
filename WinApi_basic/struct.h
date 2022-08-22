@@ -39,6 +39,36 @@ public:
 		y += _num.y;
 	}
 
+	void operator+=(const float _f)
+	{
+		x += _f;
+		y += _f;
+	}
+
+	void operator-=(const vec2 _num)
+	{
+		x -= _num.x;
+		y -= _num.y;
+	}
+
+	void operator-=(const float _f)
+	{
+		x -= _f;
+		y -= _f;
+	}
+
+	void operator*=(const vec2 _num)
+	{
+		x *= _num.x;
+		y *= _num.y;
+	}
+
+	void operator*=(const float _f)
+	{
+		x *= _f;
+		y *= _f;
+	}
+
 	vec2 operator-(const vec2& _num)
 	{
 		return vec2(x - _num.x, y - _num.y);
@@ -72,6 +102,11 @@ public:
 	vec2 operator/(float _f)
 	{
 		return vec2(x / _f, y / _f);
+	}
+
+	vec2 operator - ()
+	{
+		return vec2(-x, -y);
 	}
 
 

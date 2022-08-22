@@ -39,10 +39,6 @@ void CScene_Start::update()
 		vec2 vLookAt=CCamera::GetInst()->GetRealPos(MOUSE_POS);
 		CCamera::GetInst()->SetLookAt(vLookAt);
 	}
-	/*vector<CObject*> BackImage = vGetObject(GROUP_TYPE::BACK_IMAGE);
-	vec2 CurPos = ((CObject_Background*)BackImage.front())->GetPos();
-	CurPos = CurPos * fDT;
-	BackImage.front()->SetPos(vec2(CurPos.x, 0.f));*/
 }
 
 void CScene_Start::Enter()
@@ -56,7 +52,7 @@ void CScene_Start::Enter()
 
 	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);
 
-	CCamera::GetInst()->SetTarget(pObj);
+	//CCamera::GetInst()->SetTarget(pObj);
 
 	CObject_Monster* mObj = new CObject_Monster;
 
@@ -78,7 +74,7 @@ void CScene_Start::Enter()
 
 	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);
 
-	CObject* bObj = new CObject_Background;
+	/*CObject* bObj = new CObject_Background;
 	bObj->SetPos(vec2(0.f, 0.f));
 	bObj->SetName(L"BACK_IMAGE");
 	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj);
@@ -86,7 +82,7 @@ void CScene_Start::Enter()
 	CObject* bObj2 = new CObject_Background;
 	bObj2->SetPos(vec2(1280.f, 0.f));
 	bObj2->SetName(L"BACK_IMAGE");
-	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj2);
+	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj2);*/
 
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크

@@ -9,10 +9,10 @@
 
 #include"CTexture.h"
 #include"CResMgr.h"
-#include"CCollider.h"
 #include "CEventMgr.h"
 
 // ÄÄÆ÷³ÍÆ®
+#include"CCollider.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
 #include "CRigidBody.h"
@@ -48,27 +48,43 @@ void CObject_Player::update()
 {
 	CRigidBody* pRigid = GetRigidBody();
 
-	pRigid->AddForce();
-
 	if (KEY_CHECK(W,HOLD))
 	{
-		SetPos(vec2(GetPos().x,GetPos().y- 200.f * fDT));
+		pRigid->AddForce(vec2(0.f,-200.f));
 	}
+	
 	if (KEY_CHECK(S, HOLD))
 	{
-		SetPos(vec2(GetPos().x, GetPos().y + 200.f * fDT));
+		pRigid->AddForce(vec2(0.f, 200.f));
 	}
+	
 	if (KEY_CHECK(A, HOLD))
 	{
-		SetPos(vec2(GetPos().x - 200.f * fDT, GetPos().y));	
+		pRigid->AddForce(vec2(-200.f, 0.f));
 	}
 	if (KEY_CHECK(D, HOLD))
 	{
-		SetPos(vec2(GetPos().x + 200.f * fDT, GetPos().y));
+		pRigid->AddForce(vec2(200.f, 0.f));
 	}
 	if (KEY_CHECK(Q, TAP))
 	{
 		createMissile();
+	}
+	if (KEY_CHECK(W, TAP))
+	{
+		pRigid->AddVelocity(vec2(0.f, -100.f));
+	}
+	if (KEY_CHECK(S, TAP))
+	{
+		pRigid->AddVelocity(vec2(0.f, 100.f));
+	}
+	if (KEY_CHECK(A, TAP))
+	{
+		pRigid->AddVelocity(vec2(-100.f, 0.f));
+	}
+	if (KEY_CHECK(D, TAP))
+	{
+		pRigid->AddVelocity(vec2(100.f, 0.f));
 	}
 }
 
