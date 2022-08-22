@@ -86,6 +86,10 @@ void CObject_Player::update()
 	{
 		pRigid->AddVelocity(vec2(100.f, 0.f));
 	}
+	if (KEY_CHECK(SPACE, TAP))
+	{
+		pRigid->AddVelocity(vec2(0.f,-100.f));
+	}
 }
 
 void CObject_Player::render(HDC _dc)

@@ -12,8 +12,10 @@ private:
 	vec2			m_vVelocity;						// 속도 ( 크기 : 속력, 방향)
 
 	float			m_fMass;							// 질량
-	float			m_fMaxSpeed;				// 최대 속력
+	float			m_fMaxSpeed;					// 최대 속력
 	float			m_fFriCoeff;						// 마찰 계수
+
+	float			m_fACLRT_GRVTY;				//중력 가속도
 	// F = M * A
 	// V += A * DT(내 현재속도)
 
