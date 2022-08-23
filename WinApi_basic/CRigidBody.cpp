@@ -2,8 +2,9 @@
 #include "CRigidBody.h"
 #include "CTimeMgr.h"
 
-#include"CObject.h"
-#include"CCamera.h"
+#include "CObject.h"
+#include "CObject_Player.h"
+#include "CCamera.h"
 
 CRigidBody::CRigidBody()
 	: m_pOwner(nullptr)
@@ -59,10 +60,23 @@ void CRigidBody::finalupdate()
 	vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_pOwner->GetPos());
 	vec2 vCurPos = m_pOwner->GetPos();
 
-	if (vCurPos.y<718.f)
+	if (vCurPos.y < 718.f)
 	{
-		vec2 vFriction = vec2(0.f,4.f) * m_fACLRT_GRVTY * fDT;
+		vec2 vFriction = vec2(0.f,7.f) * m_fACLRT_GRVTY * fDT;
 		m_vVelocity += vFriction;
+	}
+	else
+	{
+		if ((((CObject_Player*)m_pOwner)->GetIsJump()))
+		{
+			vec2 vFriction = vec2(0.f, 7.f) * m_fACLRT_GRVTY * fDT;
+			m_vVelocity += vFriction;
+			((CObject_Player*)m_pOwner)->SetIsJump(false);
+		}
+		else 
+		{
+			m_vVelocity.y *= 0.f;
+		}
 	}
 
 	// 속도 제한 검사
@@ -75,6 +89,9 @@ void CRigidBody::finalupdate()
 	// 속도에 따른 이동
 	Move();
 
+	//// 중력 가속도의 영향을 받는 점프
+	//Jump();
+
 	// 힘 초기화
 	m_vForce = vec2(0.f, 0.f);
 }
@@ -86,7 +103,7 @@ void CRigidBody::Move()
 
 	if (0.f != fSpeed)
 	{
-		// 이동 방향
+		// 이동 방향과 속력을 모두 포함한 속도가 m_vVelocity
 		vec2 vDir = m_vVelocity;
 		vDir.Normalize();
 
@@ -96,4 +113,9 @@ void CRigidBody::Move()
 
 		m_pOwner->SetPos(vPos);
 	}	
+}
+
+void CRigidBody::Jump()
+{
+
 }

@@ -36,6 +36,7 @@ public:
 
 private:
 	void Move();
+	void Jump();
 
 public:
 	CRigidBody();

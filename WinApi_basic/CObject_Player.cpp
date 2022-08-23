@@ -20,6 +20,7 @@
 
 
 CObject_Player::CObject_Player()
+	:m_IsJump(false)
 {
 	// Texture 로딩하기
 	//m_pTex=CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\player.bmp");
@@ -48,10 +49,10 @@ void CObject_Player::update()
 {
 	CRigidBody* pRigid = GetRigidBody();
 
-	if (KEY_CHECK(W,HOLD))
+	/*if (KEY_CHECK(W,HOLD))
 	{
 		pRigid->AddForce(vec2(0.f,-200.f));
-	}
+	}*/
 	
 	if (KEY_CHECK(S, HOLD))
 	{
@@ -70,10 +71,10 @@ void CObject_Player::update()
 	{
 		createMissile();
 	}
-	if (KEY_CHECK(W, TAP))
+	/*if (KEY_CHECK(W, TAP))
 	{
 		pRigid->AddVelocity(vec2(0.f, -100.f));
-	}
+	}*/
 	if (KEY_CHECK(S, TAP))
 	{
 		pRigid->AddVelocity(vec2(0.f, 100.f));
@@ -88,7 +89,8 @@ void CObject_Player::update()
 	}
 	if (KEY_CHECK(SPACE, TAP))
 	{
-		pRigid->AddVelocity(vec2(0.f,-100.f));
+		m_IsJump = true;
+		pRigid->AddVelocity(vec2(0.f,-200.f));
 	}
 }
 

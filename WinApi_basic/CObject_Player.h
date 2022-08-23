@@ -6,9 +6,17 @@ class CTexture;
 class CObject_Player :
     public CObject
 { 
+private:
+    bool			m_IsJump;
+        
 public:
     virtual void update();
     virtual void render(HDC _dc);
+
+public:
+    void SetIsJump(bool _b) { m_IsJump = _b; }
+
+    bool GetIsJump() { return m_IsJump; }
 
     CLONE(CObject_Player)
 private:
