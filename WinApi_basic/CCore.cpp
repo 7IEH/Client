@@ -21,7 +21,6 @@ CCore::CCore()
 	, m_arrBrush{}
 	, m_arrPen{}
 {
-
 }
 
 CCore::~CCore() 

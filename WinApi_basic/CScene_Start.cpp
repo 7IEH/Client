@@ -54,7 +54,7 @@ void CScene_Start::Enter()
 
 	//CCamera::GetInst()->SetTarget(pObj);
 
-	CObject_Monster* mObj = new CObject_Monster;
+	/*CObject_Monster* mObj = new CObject_Monster;
 
 	mObj->SetName(L"Monster");
 	mObj->SetPos(vec2(200.f, 200.f));
@@ -72,9 +72,9 @@ void CScene_Start::Enter()
 	mObj->SetCenterPos(vec2(500.f, 200.f));
 	mObj->SetHp(100);
 
-	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);
+	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);*/
 
-	/*CObject* bObj = new CObject_Background;
+	CObject* bObj = new CObject_Background;
 	bObj->SetPos(vec2(0.f, 0.f));
 	bObj->SetName(L"BACK_IMAGE");
 	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj);
@@ -82,7 +82,7 @@ void CScene_Start::Enter()
 	CObject* bObj2 = new CObject_Background;
 	bObj2->SetPos(vec2(1280.f, 0.f));
 	bObj2->SetName(L"BACK_IMAGE");
-	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj2);*/
+	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj2);
 
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크

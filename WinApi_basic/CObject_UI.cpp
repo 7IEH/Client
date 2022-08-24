@@ -4,6 +4,7 @@
 #include"CKeyMgr.h"
 
 #include "SelectGDI.h"
+#include "CCamera.h"
 
 CObject_UI::CObject_UI(bool _bCamAff)
 	: m_pParentUI(nullptr)
