@@ -2,7 +2,7 @@
 #include "CScene.h"
 #include "CObject.h"
 #include "CObject_BtnUI.h"
-
+#include "CTexture.h"
 
 CObject_BtnUI::CObject_BtnUI()
 	: CObject_UI(false)
@@ -11,8 +11,34 @@ CObject_BtnUI::CObject_BtnUI()
 	, m_param2(0)
 	, m_pSceneInst(nullptr)
 	, m_pSceneFunc(nullptr)
+	, m_pTex(nullptr)
 {
 }
+
+//void CObject_BtnUI::render(HDC _dc)
+//{
+//	if (nullptr != m_pTex)
+//	{
+//		vec2 vCurPos = GetPos();
+//		int Width = m_pTex->Width();
+//		int Height = m_pTex->Height();
+//
+//
+//		BitBlt(_dc
+//			, (int)vCurPos.x
+//			, (int)vCurPos.y
+//			, Width
+//			, Height
+//			, m_pTex->GetDC()
+//			, Width
+//			, Height
+//			, SRCCOPY);
+//	}
+//	else 
+//	{
+//		CObject_UI::render(_dc);
+//	}
+//}
 
 CObject_BtnUI::~CObject_BtnUI()
 {

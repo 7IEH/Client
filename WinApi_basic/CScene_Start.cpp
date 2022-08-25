@@ -5,11 +5,15 @@
 #include "CObject_Player.h"
 #include "CObject_Monster.h"
 #include "CObject_Background.h"
+#include "CObject_UI.h"
+#include "CObject_PanelUI.h"
+#include "CObject_BtnUI.h"
 
-//#include "CTexture.h"
+#include "CTexture.h"
 //#include "CPathMgr.h"
 #include "CCollisionMgr.h"
 
+#include "CResMgr.h"
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 //#include"CEventMgr.h"
@@ -43,14 +47,14 @@ void CScene_Start::update()
 
 void CScene_Start::Enter()
 {
-	// Object 추가
-	CObject* pObj = new CObject_Player;
+	// player_object 추가
+	/*CObject* pObj = new CObject_Player;
 	
 	pObj->SetName(L"Player");
 	pObj->SetPos(vec2(640.f,640.f));
 	pObj->SetScale(vec2(100.f,100.f));
 
-	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);
+	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);*/
 
 	//CCamera::GetInst()->SetTarget(pObj);
 
@@ -74,6 +78,8 @@ void CScene_Start::Enter()
 
 	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);*/
 
+	vec2 vResolution = CCore::GetInst()->GetResolution();
+
 	CObject* bObj = new CObject_Background;
 	bObj->SetPos(vec2(0.f, 0.f));
 	bObj->SetName(L"BACK_IMAGE");
@@ -84,6 +90,21 @@ void CScene_Start::Enter()
 	bObj2->SetName(L"BACK_IMAGE");
 	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj2);
 
+	CObject_UI* PanelUI = new CObject_PanelUI;
+	PanelUI->SetPos(vec2(vResolution.x - 400.f, 50.f));
+	PanelUI->SetScale(vec2(390.f, 500.f));
+	
+
+	CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"RoadTile", L"texture\\road_tile.bmp");
+
+	CObject_BtnUI* BtnUI = new CObject_BtnUI;
+	BtnUI->SetPos(vec2(0.f,0.f));
+	BtnUI->SetScale(vec2(100.f, 100.f));
+	BtnUI->SetTexture(_pTex);
+	PanelUI->AddChild(BtnUI);
+	
+	pushObject((UINT)GROUP_TYPE::UI, PanelUI);
+
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PLAYER);
@@ -91,7 +112,6 @@ void CScene_Start::Enter()
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
 
 	// Camera Look 지정
-	vec2 vResolution = CCore::GetInst()->GetResolution();
 	CCamera::GetInst()->SetLookAt(vResolution/2.f);
 }
 

@@ -3,6 +3,7 @@
 
 class CScene;
 class CObject;
+class CTexture;
 
 typedef void(*BTN_FUNC) (DWORD_PTR, DWORD_PTR);
 
@@ -17,6 +18,8 @@ private:
     BTN_FUNC            m_pFunc;
     DWORD_PTR        m_param1;
     DWORD_PTR        m_param2;
+
+    CTexture*           m_pTex;
 
 
     SCENE_MEMFUNC m_pSceneFunc;
@@ -40,6 +43,10 @@ public:
         m_pSceneInst = _pScene;
         m_pSceneFunc = _pSceneFunc;
     }
+
+    void SetTexture(CTexture* _pTex) { m_pTex = _pTex; }
+
+    //virtual void render(HDC _dc);
 
 public:
     CLONE(CObject_BtnUI);
