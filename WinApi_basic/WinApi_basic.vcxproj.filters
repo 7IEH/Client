@@ -136,6 +136,9 @@
     <Filter Include="Engine\07. Component\Rigidbody">
       <UniqueIdentifier>{9cba2d94-75af-4da2-9fd8-ba0d5b9d4308}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\Scene_MapEditor">
+      <UniqueIdentifier>{1d4a9abd-05a4-460e-b624-7c7143584a2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -262,6 +265,9 @@
     <ClInclude Include="CRigidBody.h">
       <Filter>Engine\07. Component\Rigidbody</Filter>
     </ClInclude>
+    <ClInclude Include="CScene_MapEditor.h">
+      <Filter>Engine\05. Scene\Scene_MapEditor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -368,6 +374,9 @@
     </ClCompile>
     <ClCompile Include="CRigidBody.cpp">
       <Filter>Engine\07. Component\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_MapEditor.cpp">
+      <Filter>Engine\05. Scene\Scene_MapEditor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
