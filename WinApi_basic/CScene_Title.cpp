@@ -2,6 +2,8 @@
 #include "CScene_Title.h"
 
 #include "CKeyMgr.h"
+#include "CResMgr.h"
+#include "CTexture.h"
 #include "CObject.h"
 #include "CObject_UI.h"
 #include "CObject_BtnUI.h"
@@ -33,14 +35,19 @@ void CScene_Title::update()
 
 void CScene_Title::Enter()
 {
-	CObject* bObj = new Background_Title;
+	/*CObject* bObj = new Background_Title;
 	bObj->SetPos(vec2(640.f, 384.f));
-	pushObject((UINT)GROUP_TYPE::DEFAULT,bObj);
+	pushObject((UINT)GROUP_TYPE::DEFAULT,bObj);*/
 
+	CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"RoadTile", L"texture\\road_tile.bmp");
+
+
+	// button texture bitblt 좀 더 알아보기
 	CObject_BtnUI* BtnObj = new CObject_BtnUI;
-	BtnObj->SetPos(vec2(940.f, 400.f));
-	BtnObj->SetScale(vec2(300.f, 50.f));
+	BtnObj->SetPos(vec2(0.f, 0.f));
+	BtnObj->SetScale(vec2(100.f, 100.f));
 	BtnObj->SetClickedCallBack(StartScene, 0, 0);
+	BtnObj->SetTexture(_pTex);
 	pushObject((UINT)GROUP_TYPE::UI,BtnObj);
 
 	CObject_BtnUI* BtnObj2 = new CObject_BtnUI;

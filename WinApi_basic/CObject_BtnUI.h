@@ -46,7 +46,7 @@ public:
 
     void SetTexture(CTexture* _pTex) { m_pTex = _pTex; }
 
-    //virtual void render(HDC _dc);
+    virtual void render(HDC _dc);
 
 public:
     CLONE(CObject_BtnUI);

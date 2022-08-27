@@ -15,30 +15,30 @@ CObject_BtnUI::CObject_BtnUI()
 {
 }
 
-//void CObject_BtnUI::render(HDC _dc)
-//{
-//	if (nullptr != m_pTex)
-//	{
-//		vec2 vCurPos = GetPos();
-//		int Width = m_pTex->Width();
-//		int Height = m_pTex->Height();
-//
-//
-//		BitBlt(_dc
-//			, (int)vCurPos.x
-//			, (int)vCurPos.y
-//			, Width
-//			, Height
-//			, m_pTex->GetDC()
-//			, Width
-//			, Height
-//			, SRCCOPY);
-//	}
-//	else 
-//	{
-//		CObject_UI::render(_dc);
-//	}
-//}
+void CObject_BtnUI::render(HDC _dc)
+{
+	if (nullptr != m_pTex)
+	{
+		vec2 vCurPos = GetPos();
+		int Width = m_pTex->Width();
+		int Height = m_pTex->Height();
+
+
+		BitBlt(_dc
+			, (int)vCurPos.x
+			, (int)vCurPos.y
+			, Width
+			, Height
+			, m_pTex->GetDC()
+			, (int)vCurPos.x
+			, (int)vCurPos.y
+			, SRCCOPY);
+	}
+	else 
+	{
+		CObject_UI::render(_dc);
+	}
+}
 
 CObject_BtnUI::~CObject_BtnUI()
 {
