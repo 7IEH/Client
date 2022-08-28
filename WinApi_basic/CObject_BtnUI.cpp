@@ -30,8 +30,8 @@ void CObject_BtnUI::render(HDC _dc)
 			, Width
 			, Height
 			, m_pTex->GetDC()
-			, (int)vCurPos.x
-			, (int)vCurPos.y
+			, 0
+			, 0
 			, SRCCOPY);
 	}
 	else 
