@@ -24,15 +24,20 @@ void CObject_BtnUI::render(HDC _dc)
 		int Height = m_pTex->Height();
 
 
-		BitBlt(_dc
-			, (int)vCurPos.x
-			, (int)vCurPos.y
-			, Width
-			, Height
+		BLENDFUNCTION bf = {};
+
+		bf.BlendOp = AC_SRC_OVER;
+		bf.BlendFlags = 0;
+		bf.AlphaFormat = AC_SRC_ALPHA;
+		bf.SourceConstantAlpha = 127;
+
+		AlphaBlend(_dc
+			, (int)(vCurPos.x)
+			, (int)(vCurPos.y)
+			, Width, Height
 			, m_pTex->GetDC()
-			, 0
-			, 0
-			, SRCCOPY);
+			, 0, 0, Width, Height
+			, bf);
 	}
 	else 
 	{

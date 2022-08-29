@@ -35,31 +35,37 @@ void CScene_Title::update()
 
 void CScene_Title::Enter()
 {
-	/*CObject* bObj = new Background_Title;
+	CObject* bObj = new Background_Title;
 	bObj->SetPos(vec2(640.f, 384.f));
-	pushObject((UINT)GROUP_TYPE::DEFAULT,bObj);*/
+	pushObject((UINT)GROUP_TYPE::DEFAULT,bObj);
 
-	CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"RoadTile", L"texture\\road_tile.bmp");
-
+	CTexture* _start_tex = CResMgr::GetInst()->LoadTexture(L"startbutton", L"texture\\startbutton.bmp");
+	CTexture* _tool_tex = CResMgr::GetInst()->LoadTexture(L"toolbutton", L"texture\\toolbutton.bmp");
+	CTexture* _exit_tex = CResMgr::GetInst()->LoadTexture(L"exitbutton", L"texture\\exitbutton.bmp");
 
 	// button texture bitblt 좀 더 알아보기
 	CObject_BtnUI* BtnObj = new CObject_BtnUI;
-	BtnObj->SetPos(vec2(0.f, 0.f));
-	BtnObj->SetScale(vec2(100.f, 100.f));
+	BtnObj->SetPos(vec2(940.f, 400.f));
+	BtnObj->SetScale(vec2(300.f, 50.f));
 	BtnObj->SetClickedCallBack(StartScene, 0, 0);
-	BtnObj->SetTexture(_pTex);
+	BtnObj->SetTexture(_start_tex);
+	BtnObj->SetName(L"Start_button");
 	pushObject((UINT)GROUP_TYPE::UI,BtnObj);
 
 	CObject_BtnUI* BtnObj2 = new CObject_BtnUI;
 	BtnObj2->SetPos(vec2(940.f, 490.f));
-	BtnObj2->SetScale(vec2(300.f, 50.f));
+	BtnObj2->SetScale(vec2(300.f, 50.f));	
 	BtnObj2->SetClickedCallBack(ToolScene, 0, 0);
+	BtnObj2->SetTexture(_tool_tex);
+	BtnObj2->SetName(L"Tool_button");
 	pushObject((UINT)GROUP_TYPE::UI, BtnObj2);
 
 	CObject_BtnUI* BtnObj3 = new CObject_BtnUI;
 	BtnObj3->SetPos(vec2(940.f, 580.f));
 	BtnObj3->SetScale(vec2(300.f, 50.f));
 	BtnObj3->SetClickedCallBack(WindowExit, 0, 0);
+	BtnObj3->SetTexture(_exit_tex);
+	BtnObj3->SetName(L"Exit_button");
 	pushObject((UINT)GROUP_TYPE::UI, BtnObj3);
 }
 
@@ -73,6 +79,7 @@ void CScene_Title::Exit()
 void StartScene(DWORD_PTR, DWORD_PTR)
 {
 	ChangeScene(SCENE_TYPE::START);
+	
 }
 
 void ToolScene(DWORD_PTR, DWORD_PTR)
