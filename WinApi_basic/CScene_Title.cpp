@@ -3,6 +3,7 @@
 
 #include "CKeyMgr.h"
 #include "CResMgr.h"
+#include "CSceneMgr.h"
 #include "CTexture.h"
 #include "CObject.h"
 #include "CObject_UI.h"
@@ -79,7 +80,6 @@ void CScene_Title::Exit()
 void StartScene(DWORD_PTR, DWORD_PTR)
 {
 	ChangeScene(SCENE_TYPE::START);
-	
 }
 
 void ToolScene(DWORD_PTR, DWORD_PTR)

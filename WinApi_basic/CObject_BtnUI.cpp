@@ -4,6 +4,10 @@
 #include "CObject_BtnUI.h"
 #include "CTexture.h"
 
+#include "CResMgr.h"
+#include "CSceneMgr.h"
+#include "CUIMgr.h"
+
 CObject_BtnUI::CObject_BtnUI()
 	: CObject_UI(false)
 	, m_pFunc(nullptr)
@@ -51,14 +55,25 @@ CObject_BtnUI::~CObject_BtnUI()
 
 void CObject_BtnUI::MouseOn()
 {
+	if (this->GetName()==L"Start_button")
+	{
+		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"startbutton2", L"texture\\startbutton2.bmp");
+		this->SetTexture(_pTex);
+	}
 }
 
 void CObject_BtnUI::MouseLbtnDown()
 {
+	
 }
 
 void CObject_BtnUI::MouseLbtnUp()
 {
+	if (this->GetName() == L"Start_button")
+	{
+		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"startbutton", L"texture\\startbutton.bmp");
+		this->SetTexture(_pTex);
+	}
 }
 
 void CObject_BtnUI::MouseLbtnClicked()

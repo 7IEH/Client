@@ -6,6 +6,10 @@
 #include "SelectGDI.h"
 #include "CCamera.h"
 
+#include "CSceneMgr.h"
+#include "CUIMgr.h"
+#include "CScene.h"
+
 CObject_UI::CObject_UI(bool _bCamAff)
 	: m_pParentUI(nullptr)
 	, m_bCamAffected(_bCamAff)

@@ -34,6 +34,7 @@ void CObject_PanelUI::MouseOn()
 
 		m_vDragStart = MOUSE_POS;
 	}
+	int a = 3;
 }
 
 void CObject_PanelUI::MouseLbtnDown()
