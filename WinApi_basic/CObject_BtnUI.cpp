@@ -55,9 +55,19 @@ CObject_BtnUI::~CObject_BtnUI()
 
 void CObject_BtnUI::MouseOn()
 {
-	if (this->GetName()==L"Start_button")
+	if (IsLbtnDown() && this->GetName()==L"Start_button")
 	{
 		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"startbutton2", L"texture\\startbutton2.bmp");
+		this->SetTexture(_pTex);
+	}
+	if (IsLbtnDown() && this->GetName() == L"Tool_button")
+	{
+		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"toolbutton2", L"texture\\toolbutton2.bmp");
+		this->SetTexture(_pTex);
+	}
+	if (IsLbtnDown() && this->GetName() == L"Exit_button")
+	{
+		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"exitbutton2", L"texture\\exitbutton2.bmp");
 		this->SetTexture(_pTex);
 	}
 }
@@ -72,6 +82,16 @@ void CObject_BtnUI::MouseLbtnUp()
 	if (this->GetName() == L"Start_button")
 	{
 		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"startbutton", L"texture\\startbutton.bmp");
+		this->SetTexture(_pTex);
+	}
+	if (this->GetName() == L"Tool_button")
+	{
+		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"toolbutton", L"texture\\toolbutton.bmp");
+		this->SetTexture(_pTex);
+	}
+	if (this->GetName() == L"Exit_button")
+	{
+		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"exitbutton", L"texture\\exitbutton.bmp");
 		this->SetTexture(_pTex);
 	}
 }

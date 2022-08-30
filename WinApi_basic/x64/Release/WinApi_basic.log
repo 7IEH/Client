@@ -1,12 +1,8 @@
 ﻿  unity_2JZXPYOYMAL6CVMW.cpp
-  unity_3CJNI9LR72PPLECD.cpp
-  unity_ND5WME2UCUD55MPR.cpp
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
   코드를 생성하고 있습니다.
-  1077 of 1090 functions (98.8%) were compiled, the rest were copied from previous compilation.
-    21 functions were new in current compilation
-    6 functions had inline decision re-evaluated but remain unchanged
+  1 of 1090 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   WinApi_basic.vcxproj -> C:\Users\youki\source\repos\graphics\WinApi_basic\Output\bin\WinApi_basic.exe
