@@ -8,6 +8,12 @@ public:
     virtual void Enter();
     virtual void Exit();
 
+private:
+    UINT m_iScore;
+
+public:
+    void SetScore(UINT _iScore) { m_iScore = _iScore; }
+    UINT GetScore() { return m_iScore; }
 
 public:
     CScene_Start();

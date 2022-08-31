@@ -30,3 +30,11 @@ void ChangeScene(SCENE_TYPE _eNext)
 
 	CEventMgr::GetInst()->AddEvent(evn);
 }
+
+void ScoreCaculate()
+{
+	tEvent evn = {};
+	evn.eEven = EVENT_TYPE::SCORE_CACULATE;
+
+	CEventMgr::GetInst()->AddEvent(evn);
+}

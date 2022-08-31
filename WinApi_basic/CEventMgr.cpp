@@ -1,5 +1,6 @@
 #include "pch.h"
 
+#include "CScene_Start.h"
 #include "CEventMgr.h"
 #include "CScene.h"
 #include "CSceneMgr.h"
@@ -36,7 +37,7 @@ void CEventMgr::update()
 
 	for (size_t i = 0; i < m_vecEvent.size(); ++i)
 	{
-		Excute(m_vecEvent[i]);
+		Excute(m_vecEvent[i]);	
 	}
 	m_vecEvent.clear();
 }
@@ -78,6 +79,13 @@ void CEventMgr::Excute(const tEvent& _eve)
 	}
 		break;
 
+	case EVENT_TYPE::SCORE_CACULATE:
+	{
+		UINT	_iScore = (UINT)(((CScene_Start*)pCurScene)->GetScore() + 0.5f);
+		((CScene_Start*)pCurScene)->SetScore(_iScore);
+	}
+	break;
+	
 	case EVENT_TYPE::END:
 		break;
 

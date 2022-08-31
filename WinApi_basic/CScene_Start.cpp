@@ -21,6 +21,7 @@
 #include"CCore.h"
 
 CScene_Start::CScene_Start()
+	:m_iScore(0)
 {
 
 }
@@ -32,6 +33,10 @@ CScene_Start::~CScene_Start()
 
 void CScene_Start::update()
 {
+	ScoreCaculate();
+	wchar_t szBuffer[255] = {};
+	swprintf_s(szBuffer, L"Score : %d", m_iScore);
+	SetWindowText(CCore::GetInst()->getHWND(), szBuffer);
 	CScene::update();
 	if (KEY_CHECK(ENTER, TAP))
 	{
