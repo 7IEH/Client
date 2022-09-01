@@ -139,6 +139,9 @@
     <Filter Include="Engine\05. Scene\Scene_MapEditor">
       <UniqueIdentifier>{1d4a9abd-05a4-460e-b624-7c7143584a2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Object_UI\TextUI">
+      <UniqueIdentifier>{1331adee-cad5-4e5d-be23-b81b7966f511}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -268,6 +271,9 @@
     <ClInclude Include="CScene_MapEditor.h">
       <Filter>Engine\05. Scene\Scene_MapEditor</Filter>
     </ClInclude>
+    <ClInclude Include="CObject_TextUI.h">
+      <Filter>Engine\04. Object\Object_UI\TextUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -377,6 +383,9 @@
     </ClCompile>
     <ClCompile Include="CScene_MapEditor.cpp">
       <Filter>Engine\05. Scene\Scene_MapEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_TextUI.cpp">
+      <Filter>Engine\04. Object\Object_UI\TextUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

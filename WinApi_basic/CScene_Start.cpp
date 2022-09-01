@@ -53,13 +53,13 @@ void CScene_Start::update()
 void CScene_Start::Enter()
 {
 	// player_object Ãß°¡
-	/*CObject* pObj = new CObject_Player;
+	CObject* pObj = new CObject_Player;
 	
 	pObj->SetName(L"Player");
 	pObj->SetPos(vec2(640.f,640.f));
 	pObj->SetScale(vec2(100.f,100.f));
 
-	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);*/
+	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);
 
 	//CCamera::GetInst()->SetTarget(pObj);
 

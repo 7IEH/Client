@@ -171,6 +171,7 @@
     <ClInclude Include="CObject_Monster.h" />
     <ClInclude Include="CObject_PanelUI.h" />
     <ClInclude Include="CObject_Player.h" />
+    <ClInclude Include="CObject_TextUI.h" />
     <ClInclude Include="CObject_Tile.h" />
     <ClInclude Include="CObject_UI.h" />
     <ClInclude Include="CPathMgr.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="CObject_Monster.cpp" />
     <ClCompile Include="CObject_PanelUI.cpp" />
     <ClCompile Include="CObject_Player.cpp" />
+    <ClCompile Include="CObject_TextUI.cpp" />
     <ClCompile Include="CObject_Tile.cpp" />
     <ClCompile Include="CObject_UI.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
