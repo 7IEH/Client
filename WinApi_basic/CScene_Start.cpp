@@ -8,6 +8,7 @@
 #include "CObject_UI.h"
 #include "CObject_PanelUI.h"
 #include "CObject_BtnUI.h"
+#include "CObject_TextUI.h"
 
 #include "CTexture.h"
 //#include "CPathMgr.h"
@@ -18,7 +19,9 @@
 #include "CKeyMgr.h"
 //#include"CEventMgr.h"
 #include "CCamera.h"
+#include "CSceneMgr.h"
 #include"CCore.h"
+
 
 CScene_Start::CScene_Start()
 	:m_iScore(0)
@@ -34,9 +37,18 @@ CScene_Start::~CScene_Start()
 void CScene_Start::update()
 {
 	ScoreCaculate();
-	wchar_t szBuffer[255] = {};
-	swprintf_s(szBuffer, L"Score : %d", m_iScore);
-	SetWindowText(CCore::GetInst()->getHWND(), szBuffer);
+	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
+	vector<CObject*>& vUI = pCurScene->GetUIGroup();
+	vector<CObject*>::iterator iter = vUI.begin();
+	for (; iter != vUI.end(); ++iter)
+	{
+		if ((*iter)->GetName() == L"Score_Text")
+		{
+			((CObject_TextUI*)(*iter))->SetStr(std::to_wstring(m_iScore).c_str());
+		}
+	}
+
+
 	CScene::update();
 	if (KEY_CHECK(ENTER, TAP))
 	{
@@ -109,6 +121,11 @@ void CScene_Start::Enter()
 	PanelUI->AddChild(BtnUI);
 	
 	pushObject((UINT)GROUP_TYPE::UI, PanelUI);
+	CObject_TextUI* textObj = new CObject_TextUI;
+	textObj->SetPos(vec2(100.f, 100.f));
+	textObj->SetStr(std::to_wstring(m_iScore).c_str());
+	textObj->SetName(L"Score_Text");
+	pushObject((UINT)GROUP_TYPE::UI, textObj);
 
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크

@@ -68,6 +68,7 @@ void CScene_Title::Enter()
 	BtnObj3->SetTexture(_exit_tex);
 	BtnObj3->SetName(L"Exit_button");
 	pushObject((UINT)GROUP_TYPE::UI, BtnObj3);
+
 }
 
 void CScene_Title::Exit()
