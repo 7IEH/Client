@@ -130,6 +130,7 @@ void CScene::DeleteAll()
 	}
 }
 
+
 void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 {
 	DeleteGroup(GROUP_TYPE::TILE);
@@ -137,7 +138,7 @@ void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 	m_iTileX = _iXCount;
 	m_iTileY = _iYCount;
 
-	CTexture* pTileTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\TILE_TREE.bmp");
+	CTexture* pTileTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\road_tile.bmp");
 
 	for (UINT i = 0; i < _iYCount; ++i)
 	{
@@ -146,7 +147,7 @@ void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 			CObject_Tile* pTile = new CObject_Tile();
 
 			// j * tile 가로 + i * tile 세로
-			pTile->SetPos(vec2((float)(j * 60), (float)(i * 80)));
+			pTile->SetPos(vec2((float)(j * 64), (float)(i * 64)));
 			pTile->SetTexture(pTileTex);
 
 			pushObject((UINT)GROUP_TYPE::TILE, pTile);

@@ -5,7 +5,7 @@
 
 CObject_Tile::CObject_Tile()
 	: m_pTileTex(nullptr)
-	, m_iImgIdx(4)
+	, m_iImgIdx(0)
 {
 	SetScale(vec2(TILE_SIZE, TILE_SIZE));
 }
@@ -28,8 +28,8 @@ void CObject_Tile::render(HDC _dc)
 	UINT iWidth = m_pTileTex->Width();
 	UINT iHeight = m_pTileTex->Height();
 
-	UINT iMaxCol = iWidth / 60;
-	UINT iMaxRow = iHeight / 80;
+	UINT iMaxCol = iWidth / 64;
+	UINT iMaxRow = iHeight / 64;
 	
 	UINT iCurRow = (UINT)m_iImgIdx / iMaxCol;
 	UINT iCurCol = (UINT)m_iImgIdx % iMaxCol;
@@ -40,18 +40,19 @@ void CObject_Tile::render(HDC _dc)
 
 	vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(GetPos());
 	vec2 vScale = GetScale();
-	
+
 	BitBlt(_dc
 		, (int)vRenderPos.x
 		, (int)vRenderPos.y
-		, 60
-		, 80
+		, 64
+		, 64
 		, m_pTileTex->GetDC()
-		, (int)(iCurCol * 60)
-		, (int)(iCurRow * 80)
+		, (int)(iCurCol * 64)
+		, (int)(iCurRow * 64)
 		, SRCCOPY
 	);
 }
+
 
 void CObject_Tile::Save(FILE* _pFile)
 {

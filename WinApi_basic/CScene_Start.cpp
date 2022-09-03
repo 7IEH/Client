@@ -9,6 +9,7 @@
 #include "CObject_PanelUI.h"
 #include "CObject_BtnUI.h"
 #include "CObject_TextUI.h"
+#include "CObject_Tile.h"
 
 #include "CTexture.h"
 //#include "CPathMgr.h"
@@ -111,13 +112,13 @@ void CScene_Start::Enter()
 	PanelUI->SetPos(vec2(vResolution.x - 400.f, 50.f));
 	PanelUI->SetScale(vec2(390.f, 500.f));
 	
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\road_tile.bmp");
 
-	CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"RoadTile", L"texture\\road_tile.bmp");
 
 	CObject_BtnUI* BtnUI = new CObject_BtnUI;
 	BtnUI->SetPos(vec2(0.f,0.f));
 	BtnUI->SetScale(vec2(100.f, 100.f));
-	BtnUI->SetTexture(_pTex);
+	BtnUI->SetTexture(m_pTex);
 	PanelUI->AddChild(BtnUI);
 	
 	pushObject((UINT)GROUP_TYPE::UI, PanelUI);
@@ -126,6 +127,12 @@ void CScene_Start::Enter()
 	textObj->SetStr(std::to_wstring(m_iScore).c_str());
 	textObj->SetName(L"Score_Text");
 	pushObject((UINT)GROUP_TYPE::UI, textObj);
+	
+	
+	CObject_Tile* pTile = new CObject_Tile();
+	pTile->SetPos(vec2(300.f, 300.f));
+	pTile->SetTexture(m_pTex);
+	pushObject((UINT)GROUP_TYPE::TILE, pTile);
 
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크

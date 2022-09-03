@@ -22,7 +22,7 @@ public:
         ++m_iImgIdx;
     }
 
-private:
+public:
     virtual void update();
     virtual void render(HDC _dc);
 
