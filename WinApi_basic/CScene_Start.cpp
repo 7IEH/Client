@@ -115,13 +115,14 @@ void CScene_Start::Enter()
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\road_tile.bmp");
 
 
-	CObject_BtnUI* BtnUI = new CObject_BtnUI;
+	/*CObject_BtnUI* BtnUI = new CObject_BtnUI;
 	BtnUI->SetPos(vec2(0.f,0.f));
 	BtnUI->SetScale(vec2(100.f, 100.f));
 	BtnUI->SetTexture(m_pTex);
 	PanelUI->AddChild(BtnUI);
-	
-	pushObject((UINT)GROUP_TYPE::UI, PanelUI);
+	pushObject((UINT)GROUP_TYPE::UI, PanelUI);*/
+
+
 	CObject_TextUI* textObj = new CObject_TextUI;
 	textObj->SetPos(vec2(100.f, 100.f));
 	textObj->SetStr(std::to_wstring(m_iScore).c_str());
@@ -129,7 +130,8 @@ void CScene_Start::Enter()
 	pushObject((UINT)GROUP_TYPE::UI, textObj);
 	
 	
-	CObject_Tile* pTile = new CObject_Tile();
+	// m_iTilex,m_itiley °íÄ¡±â
+	CObject_Tile* pTile = new CObject_Tile;
 	pTile->SetPos(vec2(300.f, 300.f));
 	pTile->SetTexture(m_pTex);
 	pushObject((UINT)GROUP_TYPE::TILE, pTile);

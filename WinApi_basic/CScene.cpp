@@ -86,7 +86,7 @@ void CScene::render_tile(HDC _dc)
 	vec2 vResolution = CCore::GetInst()->GetResolution();
 	vec2 vLeftTop = vCurLookAt - vResolution / 2.f;
 	
-	vec2 vTileSize = vec2(60, 80);
+	vec2 vTileSize = vec2(64, 64);
 
 	int iLTCol = (int)(vLeftTop.x / vTileSize.x);
 	int iLTRow = (int)(vLeftTop.y / vTileSize.y);

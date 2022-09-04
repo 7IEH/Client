@@ -36,10 +36,10 @@ void CScene_Title::update()
 
 void CScene_Title::Enter()
 {
-	/*CObject* bObj = new Background_Title;
+	CObject* bObj = new Background_Title;
 	bObj->SetPos(vec2(640.f, 384.f));
 	pushObject((UINT)GROUP_TYPE::DEFAULT,bObj);
-	*/
+
 
 	CTexture* _start_tex = CResMgr::GetInst()->LoadTexture(L"startbutton", L"texture\\startbutton.bmp");
 	CTexture* _tool_tex = CResMgr::GetInst()->LoadTexture(L"toolbutton", L"texture\\toolbutton.bmp");
