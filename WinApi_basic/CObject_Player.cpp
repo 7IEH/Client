@@ -20,7 +20,8 @@
 
 
 CObject_Player::CObject_Player()
-	:m_IsJump(false)
+	: m_IsJump(false)
+	, m_iHP(3)
 {
 	// Texture 로딩하기
 	//m_pTex=CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\player.bmp");
@@ -31,14 +32,14 @@ CObject_Player::CObject_Player()
 
 	 CreateRigidBody();
 
-	 CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\player_ani.bmp");
+	 /*CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\player_ani.bmp");
 	 CreateAnimator();
 	 GetAnimator()->CreateAnimation(L"WALK_DOWN",pTex, vec2(0.f, 0.f), vec2(94.5f, 133.f), vec2(94.5f, 0.f),0.2f, 4);
 	 GetAnimator()->Play(L"WALK_DOWN", true);
 
 	 CAnimation* pAnim=GetAnimator()->FindAnimation(L"WALK_DOWN");
 	 for(UINT i=0;i<pAnim->GetMaxFrame();++i)
-	 pAnim->GetFrame(i).vOffset=vec2(0.f,-20.f);
+	 pAnim->GetFrame(i).vOffset=vec2(0.f,-20.f);*/
 }
 
 CObject_Player::~CObject_Player()
@@ -47,6 +48,12 @@ CObject_Player::~CObject_Player()
 
 void CObject_Player::update()
 {
+
+	if (m_iHP == 0)
+	{
+		DeleteObject(this);
+	}
+
 	CRigidBody* pRigid = GetRigidBody();
 
 	/*if (KEY_CHECK(W,HOLD))
@@ -89,6 +96,7 @@ void CObject_Player::update()
 	}
 	if (KEY_CHECK(SPACE, TAP))
 	{
+		SetOnFloor(false);
 		m_IsJump = true;
 		pRigid->AddVelocity(vec2(0.f,-200.f));
 	}
@@ -115,8 +123,6 @@ void CObject_Player::render(HDC _dc)
 		, RGB(165,72,201));*/
 
 	// 컴포넌트(충돌체, etc ...) 가 있는 경우 렌더
-		//component_Render(_dc);
-
 		CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"Player", L"texture\\player_A.bmp");
 
 		vec2 vPos = GetPos();
@@ -140,8 +146,8 @@ void CObject_Player::render(HDC _dc)
 			, pTex->GetDC()
 			, 0, 0, (int)width, (int)height
 			, bf);
+		component_Render(_dc);
 }
-
 
 void CObject_Player::createMissile()
 {
@@ -158,4 +164,19 @@ void CObject_Player::createMissile()
 
 	/*CScene *pCurScene=CSceneMgr::GetInst()->GetCurScene();
 	pCurScene->pushObject((UINT)GROUP_TYPE::PROJ_PLAYER, miObj);*/
+}
+
+void CObject_Player::OnCollisionEnter(CCollider* _pOther)
+{
+	CObject* m_pOwner = _pOther->GetObj();
+
+	if (m_pOwner->GetName() == L"FLOOR")
+	{
+		SetOnFloor(true);
+	}
+
+	if (m_pOwner->GetName() == L"OBSTACLE")
+	{
+		m_iHP--;
+	}
 }

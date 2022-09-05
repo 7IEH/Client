@@ -9,6 +9,7 @@
 #include "CSceneMgr.h"
 #include "CUIMgr.h"
 #include "CScene.h"
+#include "CObject_BtnUI.h"
 
 CObject_UI::CObject_UI(bool _bCamAff)
 	: m_pParentUI(nullptr)
@@ -64,6 +65,7 @@ void CObject_UI::render(HDC _dc)
 {
 	vec2 vPos = m_vFinalPos;
 	vec2 vScale = GetScale();
+
 
 	if (m_bCamAffected)
 	{

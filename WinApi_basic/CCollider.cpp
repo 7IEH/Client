@@ -11,7 +11,7 @@
 UINT CCollider::g_iNextID = 0;
 
 CCollider::CCollider()
-	:m_pOwner(nullptr)
+	: m_pOwner(nullptr)
 	, m_vOffsetPos(vec2(0, 0))
 	, m_vFinalPos(vec2(0, 0))
 	, m_iID(g_iNextID++)
@@ -51,12 +51,13 @@ void CCollider::render(HDC _dc)
 
 	vec2 vRenderPos = RENDERPOS(m_vFinalPos);
 
-	Rectangle(_dc,
-		  (int)(vRenderPos.x - m_vScale.x / 2.f)
+	Rectangle(
+		  _dc
+		, (int)(vRenderPos.x - m_vScale.x / 2.f)
 		, (int)(vRenderPos.y - m_vScale.y / 2.f)
 		, (int)(vRenderPos.x + m_vScale.x / 2.f)
 		, (int)(vRenderPos.y + m_vScale.y / 2.f)
-		);
+		);		
 
 }
 

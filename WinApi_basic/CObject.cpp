@@ -13,6 +13,7 @@ CObject::CObject()
 	, m_pAnimator(nullptr)
 	, m_pRigidBody(nullptr)
 	, m_bAlive(true)
+	, m_bOnFloor(false)
 {
 }
 
@@ -24,6 +25,7 @@ CObject::CObject(const CObject& _origin)
 	, m_pAnimator(nullptr)
 	, m_pRigidBody(nullptr)
 	, m_bAlive(true)
+	, m_bOnFloor(false)
 {
 	if (_origin.m_pCollider)
 	{

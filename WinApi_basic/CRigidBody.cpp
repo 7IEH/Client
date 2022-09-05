@@ -57,10 +57,7 @@ void CRigidBody::finalupdate()
 		}
 	}
 
-	vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_pOwner->GetPos());
-	vec2 vCurPos = m_pOwner->GetPos();
-
-	if (vCurPos.y < 718.f)
+	if (!(m_pOwner->GetOnFloor()))
 	{
 		vec2 vFriction = vec2(0.f,7.f) * m_fACLRT_GRVTY * fDT;
 		m_vVelocity += vFriction;

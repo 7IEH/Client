@@ -55,11 +55,11 @@ void CScene::render(HDC _dc)
 {
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i)
 	{
-		if ((UINT)GROUP_TYPE::TILE == i)
+		/*if ((UINT)GROUP_TYPE::TILE == i)
 		{
 			render_tile(_dc);
 			continue;
-		}
+		}*/
 
 		vector<CObject*>::iterator iter = m_arrObj[i].begin();
 

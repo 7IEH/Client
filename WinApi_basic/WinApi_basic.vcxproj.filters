@@ -142,6 +142,9 @@
     <Filter Include="Engine\04. Object\Object_UI\TextUI">
       <UniqueIdentifier>{1331adee-cad5-4e5d-be23-b81b7966f511}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Object_ScoreBox">
+      <UniqueIdentifier>{61c1cea3-8502-44ce-bcab-df67f92b0909}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -274,6 +277,9 @@
     <ClInclude Include="CObject_TextUI.h">
       <Filter>Engine\04. Object\Object_UI\TextUI</Filter>
     </ClInclude>
+    <ClInclude Include="CObject_ScoreBox.h">
+      <Filter>Engine\04. Object\Object_ScoreBox</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -386,6 +392,9 @@
     </ClCompile>
     <ClCompile Include="CObject_TextUI.cpp">
       <Filter>Engine\04. Object\Object_UI\TextUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_ScoreBox.cpp">
+      <Filter>Engine\04. Object\Object_ScoreBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -45,6 +45,7 @@ void CObject_BtnUI::render(HDC _dc)
 	}
 	else 
 	{
+		vec2 scacle = GetScale();
 		CObject_UI::render(_dc);
 	}
 }

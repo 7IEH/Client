@@ -20,6 +20,7 @@ private:
 	CRigidBody*		m_pRigidBody;
 
 	bool					m_bAlive;
+	bool					m_bOnFloor;
 
 public:
 	void SetName(const wstring _strName)	{ m_strName = _strName; }
@@ -33,7 +34,9 @@ public:
 
 	bool IsDead() { return !m_bAlive; }
 	
-
+	void SetOnFloor(bool _bOnFloor) { m_bOnFloor = _bOnFloor; }
+	bool GetOnFloor() { return m_bOnFloor; }
+	
 	void CreateCollider();
 	void CreateAnimator();
 	void CreateRigidBody();

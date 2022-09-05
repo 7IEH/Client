@@ -14,6 +14,7 @@
 #include "CTexture.h"
 //#include "CPathMgr.h"
 #include "CCollisionMgr.h"
+#include "CCollider.h"
 
 #include "CResMgr.h"
 #include "CTimeMgr.h"
@@ -43,6 +44,10 @@ void CScene_Start::update()
 	vector<CObject*>::iterator iter = vUI.begin();
 	for (; iter != vUI.end(); ++iter)
 	{
+		if ((*iter)->GetName() == L"Score_Text")
+		{
+			((CObject_TextUI*)(*iter))->SetStr(std::to_wstring(m_iScore).c_str());
+		}
 		if ((*iter)->GetName() == L"Score_Text")
 		{
 			((CObject_TextUI*)(*iter))->SetStr(std::to_wstring(m_iScore).c_str());
@@ -115,32 +120,46 @@ void CScene_Start::Enter()
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\road_tile.bmp");
 
 
-	/*CObject_BtnUI* BtnUI = new CObject_BtnUI;
+	CObject_BtnUI* BtnUI = new CObject_BtnUI;
 	BtnUI->SetPos(vec2(0.f,0.f));
 	BtnUI->SetScale(vec2(100.f, 100.f));
 	BtnUI->SetTexture(m_pTex);
+	BtnUI->SetName(L"childbutton");
 	PanelUI->AddChild(BtnUI);
-	pushObject((UINT)GROUP_TYPE::UI, PanelUI);*/
-
-
+	pushObject((UINT)GROUP_TYPE::UI, PanelUI);
+	
 	CObject_TextUI* textObj = new CObject_TextUI;
 	textObj->SetPos(vec2(100.f, 100.f));
 	textObj->SetStr(std::to_wstring(m_iScore).c_str());
 	textObj->SetName(L"Score_Text");
 	pushObject((UINT)GROUP_TYPE::UI, textObj);
 	
-	
-	// m_iTilex,m_itiley 고치기
-	CObject_Tile* pTile = new CObject_Tile;
-	pTile->SetPos(vec2(300.f, 300.f));
-	pTile->SetTexture(m_pTex);
-	pushObject((UINT)GROUP_TYPE::TILE, pTile);
+	for (size_t i = 0; i < 20; ++i)
+	{
+		CObject_Tile* pTile = new CObject_Tile;
+		pTile->SetPos(vec2((i*64.f)+32.f, 736.f));
+		pTile->SetName(L"FLOOR");
+		pTile->SetTexture(m_pTex);
+		pTile->CreateCollider();
+		pTile->GetCollider()->SetScale(vec2(64.f, 64.f));
+		pushObject((UINT)GROUP_TYPE::TILE, pTile);
+	}
 
+	CObject_Tile* pTile = new CObject_Tile;
+	pTile->SetPos(vec2(992.f,672.f));
+	pTile->SetName(L"OBSTACLE");
+	pTile->SetTexture(m_pTex);
+	pTile->CreateCollider();
+	pTile->GetCollider()->SetScale(vec2(40.f, 40.f));
+	pushObject((UINT)GROUP_TYPE::TILE, pTile);
+	
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PLAYER);
 	// stupid
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
+	// player 그룹과 Tile 그룹 간의 충돌 체크
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::TILE);
 
 	// Camera Look 지정
 	CCamera::GetInst()->SetLookAt(vResolution/2.f);

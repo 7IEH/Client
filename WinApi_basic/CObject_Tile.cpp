@@ -42,8 +42,8 @@ void CObject_Tile::render(HDC _dc)
 	vec2 vScale = GetScale();
 
 	BitBlt(_dc
-		, (int)vRenderPos.x
-		, (int)vRenderPos.y
+		, (int)(vRenderPos.x - iWidth/2)
+		, (int)(vRenderPos.y - iHeight/2)
 		, 64
 		, 64
 		, m_pTileTex->GetDC()
@@ -51,6 +51,7 @@ void CObject_Tile::render(HDC _dc)
 		, (int)(iCurRow * 64)
 		, SRCCOPY
 	);
+	component_Render(_dc);
 }
 
 
