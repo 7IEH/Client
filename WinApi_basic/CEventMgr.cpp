@@ -81,7 +81,7 @@ void CEventMgr::Excute(const tEvent& _eve)
 
 	case EVENT_TYPE::SCORE_CACULATE:
 	{
-		UINT	_iScore = (UINT)(((CScene_Start*)pCurScene)->GetScore() + 1.f);
+		UINT	_iScore = (UINT)(((CScene_Start*)pCurScene)->GetScore() + 0.f);
 		((CScene_Start*)pCurScene)->SetScore(_iScore);
 	}
 	break;

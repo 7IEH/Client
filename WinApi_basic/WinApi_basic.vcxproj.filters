@@ -145,6 +145,12 @@
     <Filter Include="Engine\04. Object\Object_ScoreBox">
       <UniqueIdentifier>{61c1cea3-8502-44ce-bcab-df67f92b0909}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Loading">
+      <UniqueIdentifier>{0ba4dd98-dffc-4aaf-98c1-de3b4e186669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Object_LoadingBar">
+      <UniqueIdentifier>{30eb00ab-ace4-484a-bb9c-842d9358e8fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -280,6 +286,12 @@
     <ClInclude Include="CObject_ScoreBox.h">
       <Filter>Engine\04. Object\Object_ScoreBox</Filter>
     </ClInclude>
+    <ClInclude Include="CScene_Loading.h">
+      <Filter>Engine\05. Scene\Scene_Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject_LoadingBar.h">
+      <Filter>Engine\04. Object\Object_LoadingBar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -395,6 +407,12 @@
     </ClCompile>
     <ClCompile Include="CObject_ScoreBox.cpp">
       <Filter>Engine\04. Object\Object_ScoreBox</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Loading.cpp">
+      <Filter>Engine\05. Scene\Scene_Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_LoadingBar.cpp">
+      <Filter>Engine\04. Object\Object_LoadingBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

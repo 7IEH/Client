@@ -10,6 +10,7 @@
 #include "CObject_BtnUI.h"
 #include "CObject_TextUI.h"
 #include "CObject_Tile.h"
+#include "CObject_ScoreBox.h"
 
 #include "CTexture.h"
 //#include "CPathMgr.h"
@@ -153,6 +154,11 @@ void CScene_Start::Enter()
 	pTile->GetCollider()->SetScale(vec2(40.f, 40.f));
 	pushObject((UINT)GROUP_TYPE::TILE, pTile);
 	
+	CObject_ScoreBox* pSB = new CObject_ScoreBox;
+	pSB->SetPos(vec2(992.f, 572.f));
+	pSB->SetName(L"SCORE_BOX");
+	pushObject((UINT)GROUP_TYPE::SCORE_BOX, pSB);
+
 	// 충돌 지정
 	// player 그룹과 Monster 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PLAYER);
@@ -160,6 +166,8 @@ void CScene_Start::Enter()
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
 	// player 그룹과 Tile 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::TILE);
+	// player 그룹과 ScoreBox 그룹 간의 충돌 체크
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::SCORE_BOX);
 
 	// Camera Look 지정
 	CCamera::GetInst()->SetLookAt(vResolution/2.f);

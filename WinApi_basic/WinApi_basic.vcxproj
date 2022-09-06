@@ -167,6 +167,7 @@
     <ClInclude Include="CObject.h" />
     <ClInclude Include="CObject_Background.h" />
     <ClInclude Include="CObject_BtnUI.h" />
+    <ClInclude Include="CObject_LoadingBar.h" />
     <ClInclude Include="CObject_Missile.h" />
     <ClInclude Include="CObject_Monster.h" />
     <ClInclude Include="CObject_PanelUI.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="CRigidBody.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneMgr.h" />
+    <ClInclude Include="CScene_Loading.h" />
     <ClInclude Include="CScene_MapEditor.h" />
     <ClInclude Include="CScene_Start.h" />
     <ClInclude Include="CScene_Title.h" />
@@ -214,6 +216,7 @@
     <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CObject_Background.cpp" />
     <ClCompile Include="CObject_BtnUI.cpp" />
+    <ClCompile Include="CObject_LoadingBar.cpp" />
     <ClCompile Include="CObject_Missile.cpp" />
     <ClCompile Include="CObject_Monster.cpp" />
     <ClCompile Include="CObject_PanelUI.cpp" />
@@ -228,6 +231,7 @@
     <ClCompile Include="CRigidBody.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CSceneMgr.cpp" />
+    <ClCompile Include="CScene_Loading.cpp" />
     <ClCompile Include="CScene_MapEditor.cpp" />
     <ClCompile Include="CScene_Start.cpp" />
     <ClCompile Include="CScene_Title.cpp" />

@@ -1,8 +1,9 @@
-﻿  unity_2JZXPYOYMAL6CVMW.cpp
+﻿  unity_F4DG7EL0HSZG1YXN.cpp
+  unity_RXSHPTNW5F23U4D4.cpp
+  unity_9EK63N9QAQQUXJ5F.cpp
+  unity_LF7H884IRCUTS0EV.cpp
+C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CObject_Background.cpp(26,21): error C2653: 'CTimeMgr': 클래스 또는 네임스페이스 이름이 아닙니다. (소스 파일 컴파일 중 C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\Unity\unity_RXSHPTNW5F23U4D4.cpp)
+C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\CObject_Background.cpp(26,21): error C3861: 'GetInst': 식별자를 찾을 수 없습니다. (소스 파일 컴파일 중 C:\Users\youki\source\repos\graphics\WinApi_basic\WinApi_basic\Unity\unity_RXSHPTNW5F23U4D4.cpp)
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  코드를 생성하고 있습니다.
-  1 of 1090 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  코드를 생성했습니다.
-  WinApi_basic.vcxproj -> C:\Users\youki\source\repos\graphics\WinApi_basic\Output\bin\WinApi_basic.exe
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800

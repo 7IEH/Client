@@ -2,6 +2,7 @@
 #include "CObject_Background.h"
 #include "CResMgr.h"
 #include "CTexture.h"
+#include "CTimeMgr.h"
 
 CObject_Background::CObject_Background()
 	:m_pTex(nullptr)

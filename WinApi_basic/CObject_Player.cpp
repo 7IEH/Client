@@ -5,6 +5,7 @@
 #include "CObject_Missile.h"
 
 #include "CScene.h"
+#include "CScene_Start.h"
 #include "CSceneMgr.h"
 
 #include"CTexture.h"
@@ -178,5 +179,11 @@ void CObject_Player::OnCollisionEnter(CCollider* _pOther)
 	if (m_pOwner->GetName() == L"OBSTACLE")
 	{
 		m_iHP--;
+	}
+
+	if (m_pOwner->GetName() == L"SCORE_BOX")
+	{
+		CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
+		((CScene_Start*)pCurScene)->SetScore(((CScene_Start*)pCurScene)->GetScore() + 50);
 	}
 }

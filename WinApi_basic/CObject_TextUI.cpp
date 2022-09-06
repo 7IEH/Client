@@ -18,5 +18,5 @@ void CObject_TextUI::render(HDC _dc)
 {
 	vec2 vCurPos = GetPos();
 
-	TextOut(_dc, vCurPos.x, vCurPos.y, m_Str.c_str(), (int)m_Str.size());
+	TextOut(_dc,(int)vCurPos.x,(int)vCurPos.y, m_Str.c_str(), (int)m_Str.size());
 }

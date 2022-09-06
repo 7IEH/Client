@@ -80,7 +80,7 @@ void CScene_Title::Exit()
 
 void StartScene(DWORD_PTR, DWORD_PTR)
 {
-	ChangeScene(SCENE_TYPE::START);
+	ChangeScene(SCENE_TYPE::LOADING);
 }
 
 void ToolScene(DWORD_PTR, DWORD_PTR)

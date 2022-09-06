@@ -28,7 +28,9 @@ private:
 public:
     CObject_Player();
     CObject_Player(const CObject_Player& _origin)
-        :CObject(_origin)
+        : CObject(_origin)
+        , m_IsJump(false)
+        , m_iHP(3)
     {}
     ~CObject_Player();
 };
