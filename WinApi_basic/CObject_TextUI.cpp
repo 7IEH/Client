@@ -18,5 +18,6 @@ void CObject_TextUI::render(HDC _dc)
 {
 	vec2 vCurPos = GetPos();
 
+	SetBkMode(_dc, TRANSPARENT);
 	TextOut(_dc,(int)vCurPos.x,(int)vCurPos.y, m_Str.c_str(), (int)m_Str.size());
 }

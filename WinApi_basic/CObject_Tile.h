@@ -10,6 +10,7 @@ class CObject_Tile :
 private:
     CTexture*           m_pTileTex;
     int                         m_iImgIdx;
+    bool                      m_bSlide;
 
 public:
     void SetTexture(CTexture* _pTex)
@@ -29,6 +30,8 @@ public:
 public:
     virtual void Save(FILE* _pFile);
     virtual void Load(FILE* _pFile);
+
+    void SetSlide(bool _bSlide) { m_bSlide = _bSlide; }
 
     CLONE(CObject_Tile);
 public:

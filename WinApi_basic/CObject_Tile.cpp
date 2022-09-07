@@ -1,11 +1,13 @@
 #include "pch.h"
 #include "CObject_Tile.h"
 
+#include "CTimeMgr.h"
 #include "CTexture.h"
 
 CObject_Tile::CObject_Tile()
 	: m_pTileTex(nullptr)
 	, m_iImgIdx(0)
+	, m_bSlide(false)
 {
 	SetScale(vec2(TILE_SIZE, TILE_SIZE));
 }
@@ -17,6 +19,12 @@ CObject_Tile::~CObject_Tile()
 
 void CObject_Tile::update()
 {
+	if (m_bSlide)
+	{
+		vec2 vCurPos = GetPos();
+		vCurPos.x -= 50.f * fDT;
+		SetPos(vCurPos);
+	}
 }
 
 void CObject_Tile::render(HDC _dc)

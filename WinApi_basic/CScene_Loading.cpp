@@ -35,7 +35,6 @@ void CScene_Loading::update()
 		}
 	}
 }
-// github commit
 
 void CScene_Loading::Enter()
 {

@@ -39,8 +39,8 @@ void CObject_Background::render(HDC _dc)
 	int iHeight = (int)m_pTex->Height();
 
 	BitBlt(_dc
-		, (int)GetPos().x
-		, (int)GetPos().y
+		, (int)(GetPos().x-iWidth/2)
+		, (int)(GetPos().y-iHeight/2)
 		, iWidth
 		, iHeight
 		, m_pTex->GetDC()

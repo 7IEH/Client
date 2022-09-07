@@ -105,21 +105,18 @@ void CScene_Start::Enter()
 	vec2 vResolution = CCore::GetInst()->GetResolution();
 
 	CObject* bObj = new CObject_Background;
-	bObj->SetPos(vec2(0.f, 0.f));
+	bObj->SetPos(vec2(640.f, 384.f));
 	bObj->SetName(L"BACK_IMAGE");
 	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj);
 
 	CObject* bObj2 = new CObject_Background;
-	bObj2->SetPos(vec2(1280.f, 0.f));
-	bObj2->SetName(L"BACK_IMAGE");
+	bObj2->SetPos(vec2(1920.f, 384.f));
+	bObj2->SetName(L"BACK_IMAGE2");
 	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj2);
 
-	CObject_UI* PanelUI = new CObject_PanelUI;
+	/*CObject_UI* PanelUI = new CObject_PanelUI;
 	PanelUI->SetPos(vec2(vResolution.x - 400.f, 50.f));
 	PanelUI->SetScale(vec2(390.f, 500.f));
-	
-	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\road_tile.bmp");
-
 
 	CObject_BtnUI* BtnUI = new CObject_BtnUI;
 	BtnUI->SetPos(vec2(0.f,0.f));
@@ -127,7 +124,8 @@ void CScene_Start::Enter()
 	BtnUI->SetTexture(m_pTex);
 	BtnUI->SetName(L"childbutton");
 	PanelUI->AddChild(BtnUI);
-	pushObject((UINT)GROUP_TYPE::UI, PanelUI);
+	pushObject((UINT)GROUP_TYPE::UI, PanelUI);*/
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\road_tile.bmp");
 	
 	CObject_TextUI* textObj = new CObject_TextUI;
 	textObj->SetPos(vec2(100.f, 100.f));
@@ -152,6 +150,7 @@ void CScene_Start::Enter()
 	pTile->SetTexture(m_pTex);
 	pTile->CreateCollider();
 	pTile->GetCollider()->SetScale(vec2(40.f, 40.f));
+	pTile->SetSlide(true);
 	pushObject((UINT)GROUP_TYPE::TILE, pTile);
 	
 	CObject_ScoreBox* pSB = new CObject_ScoreBox;
