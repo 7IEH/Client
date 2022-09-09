@@ -75,7 +75,7 @@ void CScene_Start::Enter()
 	CObject* pObj = new CObject_Player;
 	
 	pObj->SetName(L"Player");
-	pObj->SetPos(vec2(640.f,640.f));
+	pObj->SetPos(vec2(240.f,640.f));
 	pObj->SetScale(vec2(100.f,100.f));
 
 	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);
@@ -156,6 +156,7 @@ void CScene_Start::Enter()
 	CObject_ScoreBox* pSB = new CObject_ScoreBox;
 	pSB->SetPos(vec2(992.f, 572.f));
 	pSB->SetName(L"SCORE_BOX");
+	pSB->SetSlide(true);
 	pushObject((UINT)GROUP_TYPE::SCORE_BOX, pSB);
 
 	// 충돌 지정

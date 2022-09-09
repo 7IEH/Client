@@ -16,6 +16,7 @@
 void StartScene(DWORD_PTR, DWORD_PTR);
 void ToolScene(DWORD_PTR, DWORD_PTR);
 void WindowExit(DWORD_PTR, DWORD_PTR);
+void EditorScene(DWORD_PTR, DWORD_PTR);
 
 CScene_Title::CScene_Title()
 {
@@ -43,6 +44,7 @@ void CScene_Title::Enter()
 
 	CTexture* _start_tex = CResMgr::GetInst()->LoadTexture(L"startbutton", L"texture\\startbutton.bmp");
 	CTexture* _tool_tex = CResMgr::GetInst()->LoadTexture(L"toolbutton", L"texture\\toolbutton.bmp");
+	CTexture* _editor_tex= CResMgr::GetInst()->LoadTexture(L"editorbutton", L"texture\\editorbutton.bmp");
 	CTexture* _exit_tex = CResMgr::GetInst()->LoadTexture(L"exitbutton", L"texture\\exitbutton.bmp");
 
 	// button texture bitblt 좀 더 알아보기
@@ -54,21 +56,21 @@ void CScene_Title::Enter()
 	BtnObj->SetName(L"Start_button");
 	pushObject((UINT)GROUP_TYPE::UI,BtnObj);
 
-	CObject_BtnUI* BtnObj2 = new CObject_BtnUI;
-	BtnObj2->SetPos(vec2(940.f, 490.f));
-	BtnObj2->SetScale(vec2(300.f, 50.f));	
-	BtnObj2->SetClickedCallBack(ToolScene, 0, 0);
-	BtnObj2->SetTexture(_tool_tex);
-	BtnObj2->SetName(L"Tool_button");
-	pushObject((UINT)GROUP_TYPE::UI, BtnObj2);
+	BtnObj = new CObject_BtnUI;
+	BtnObj->SetPos(vec2(940.f, 490.f));
+	BtnObj->SetScale(vec2(300.f, 50.f));	
+	BtnObj->SetClickedCallBack(EditorScene, 0, 0);
+	BtnObj->SetTexture(_editor_tex);
+	BtnObj->SetName(L"Editor_button");
+	pushObject((UINT)GROUP_TYPE::UI, BtnObj);
 
-	CObject_BtnUI* BtnObj3 = new CObject_BtnUI;
-	BtnObj3->SetPos(vec2(940.f, 580.f));
-	BtnObj3->SetScale(vec2(300.f, 50.f));
-	BtnObj3->SetClickedCallBack(WindowExit, 0, 0);
-	BtnObj3->SetTexture(_exit_tex);
-	BtnObj3->SetName(L"Exit_button");
-	pushObject((UINT)GROUP_TYPE::UI, BtnObj3);
+    BtnObj = new CObject_BtnUI;
+	BtnObj->SetPos(vec2(940.f, 580.f));
+	BtnObj->SetScale(vec2(300.f, 50.f));
+	BtnObj->SetClickedCallBack(WindowExit, 0, 0);
+	BtnObj->SetTexture(_exit_tex);
+	BtnObj->SetName(L"Exit_button");
+	pushObject((UINT)GROUP_TYPE::UI, BtnObj);
 }
 
 void CScene_Title::Exit()
@@ -86,6 +88,11 @@ void StartScene(DWORD_PTR, DWORD_PTR)
 void ToolScene(DWORD_PTR, DWORD_PTR)
 {
 	ChangeScene(SCENE_TYPE::TOOL);
+}
+
+void EditorScene(DWORD_PTR, DWORD_PTR)
+{
+	ChangeScene(SCENE_TYPE::EDITOR);
 }
 
 void WindowExit(DWORD_PTR, DWORD_PTR)

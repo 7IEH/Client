@@ -15,6 +15,7 @@ CObject_UI::CObject_UI(bool _bCamAff)
 	: m_pParentUI(nullptr)
 	, m_bCamAffected(_bCamAff)
 	, m_bMouseOn(false)
+	, m_bLbtnDown(false)
 {
 
 }

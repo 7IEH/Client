@@ -22,7 +22,7 @@ void CObject_Tile::update()
 	if (m_bSlide)
 	{
 		vec2 vCurPos = GetPos();
-		vCurPos.x -= 50.f * fDT;
+		vCurPos.x -= 100.f * fDT;
 		SetPos(vCurPos);
 	}
 }

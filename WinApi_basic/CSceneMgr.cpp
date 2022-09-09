@@ -7,6 +7,7 @@
 //#include"CScene_Stage_01.h"
 //#include "CScene_Stage_02.h"
 #include "CScene_Loading.h"
+#include "CScene_MapEditor.h"
 #include "CScene_Tool.h"
 #include "CEventMgr.h"
 
@@ -38,6 +39,8 @@ void CSceneMgr::init()
 	m_arrScene[(UINT)SCENE_TYPE::TITLE]->SetName(L"Title Scene");
 	m_arrScene[(UINT)SCENE_TYPE::LOADING] = new CScene_Loading;
 	m_arrScene[(UINT)SCENE_TYPE::LOADING]->SetName(L"Loading Scene");
+	m_arrScene[(UINT)SCENE_TYPE::EDITOR] = new CScene_MapEditor;
+	m_arrScene[(UINT)SCENE_TYPE::EDITOR]->SetName(L"Editor Scene");
 
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new CScene_Stage_01;
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new CScene_Stage_02;

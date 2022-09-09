@@ -45,6 +45,7 @@ enum class SCENE_TYPE
 	TOOL,
 	START,
 	LOADING,
+	EDITOR,
 
 	STAGE_01,
 	STAGE_02,

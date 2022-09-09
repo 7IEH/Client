@@ -99,7 +99,7 @@ void CObject_Player::update()
 	{
 		SetOnFloor(false);
 		m_IsJump = true;
-		pRigid->AddVelocity(vec2(0.f,-200.f));
+		pRigid->AddVelocity(vec2(0.f,-400.f));
 	}
 }
 
