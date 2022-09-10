@@ -15,7 +15,7 @@ CScene_MapEditor::~CScene_MapEditor()
 
 void CScene_MapEditor::update()
 {
-
+	//Ãß¼®~
 }
 
 void CScene_MapEditor::Enter()
