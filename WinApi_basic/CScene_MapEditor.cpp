@@ -24,21 +24,25 @@ void CScene_MapEditor::Enter()
 	pUI->SetPos(vec2(1160.f, 20.f));
 	pUI->SetScale(vec2(232.f, 400.f));
 
+	// 버튼 UI DRAG AND TILE UI로 정착시키기까지
 	CObject_BtnUI* bUI = new CObject_BtnUI;
 	bUI->SetPos(vec2(10.f, 10.f));
 	bUI->SetScale(vec2(64.f, 64.f));
 	pUI->AddChild(bUI);
 
+	// 다음 버튼
 	bUI = new CObject_BtnUI;
 	bUI->SetPos(vec2(10.f, 340.f));
 	bUI->SetScale(vec2(64.f, 20.f));
 	pUI->AddChild(bUI);
 
+	// 이전 버튼
 	bUI = new CObject_BtnUI;
 	bUI->SetPos(vec2(158.f, 340.f));
 	bUI->SetScale(vec2(64.f, 20.f));
 	pUI->AddChild(bUI);
 
+	// 다음 버튼 이전 버튼으로 이동하여 tile 교체
 	CObject_TextUI* tUI = new CObject_TextUI;
 	tUI->SetPos(vec2(84.f, 340.f));
 	tUI->SetStr(L"패널");
