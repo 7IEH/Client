@@ -27,21 +27,48 @@ void CObject_BtnUI::render(HDC _dc)
 		int Width = m_pTex->Width();
 		int Height = m_pTex->Height();
 
+		if (GetParent())
+		{
+			vCurPos = GetFinalPos();
+		}
 
-		BLENDFUNCTION bf = {};
+		if (GetParent() && GetbSQNC())
+		{
+			if (GetParent()->GetpSQNC()==GetSQNC())
+			{
+				BLENDFUNCTION bf = {};
 
-		bf.BlendOp = AC_SRC_OVER;
-		bf.BlendFlags = 0;
-		bf.AlphaFormat = AC_SRC_ALPHA;
-		bf.SourceConstantAlpha = 127;
+				bf.BlendOp = AC_SRC_OVER;
+				bf.BlendFlags = 0;
+				bf.AlphaFormat = AC_SRC_ALPHA;
+				bf.SourceConstantAlpha = 127;
 
-		AlphaBlend(_dc
-			, (int)(vCurPos.x)
-			, (int)(vCurPos.y)
-			, Width, Height
-			, m_pTex->GetDC()
-			, 0, 0, Width, Height
-			, bf);
+				AlphaBlend(_dc
+					, (int)(vCurPos.x)
+					, (int)(vCurPos.y)
+					, Width, Height
+					, m_pTex->GetDC()
+					, 0, 0, Width, Height
+					, bf);
+			}
+		}
+		else
+		{
+			BLENDFUNCTION bf = {};
+
+			bf.BlendOp = AC_SRC_OVER;
+			bf.BlendFlags = 0;
+			bf.AlphaFormat = AC_SRC_ALPHA;
+			bf.SourceConstantAlpha = 127;
+
+			AlphaBlend(_dc
+				, (int)(vCurPos.x)
+				, (int)(vCurPos.y)
+				, Width, Height
+				, m_pTex->GetDC()
+				, 0, 0, Width, Height
+				, bf);
+		}
 	}
 	else 
 	{

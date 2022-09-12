@@ -16,12 +16,24 @@ void CObject_TextUI::update()
 
 void CObject_TextUI::render(HDC _dc)
 {
+
 	vec2 vCurPos = GetPos();
 	if (GetParent())
 	{
 		vCurPos = GetFinalPos();
 	}
 
-	SetBkMode(_dc, TRANSPARENT);
-	TextOut(_dc,(int)vCurPos.x,(int)vCurPos.y, m_Str.c_str(), (int)m_Str.size());
+	if (GetParent() && GetbSQNC())
+	{
+		if (GetParent()->GetpSQNC() == GetSQNC())
+		{
+			SetBkMode(_dc, TRANSPARENT);
+			TextOut(_dc, (int)vCurPos.x, (int)vCurPos.y, m_Str.c_str(), (int)m_Str.size());
+		}
+	}
+	else
+	{
+		SetBkMode(_dc, TRANSPARENT);
+		TextOut(_dc, (int)vCurPos.x, (int)vCurPos.y, m_Str.c_str(), (int)m_Str.size());
+	}
 }

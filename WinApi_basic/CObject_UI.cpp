@@ -16,6 +16,9 @@ CObject_UI::CObject_UI(bool _bCamAff)
 	, m_bCamAffected(_bCamAff)
 	, m_bMouseOn(false)
 	, m_bLbtnDown(false)
+	, m_iSQNC(0)
+	, m_bSQNC(false)
+	, m_ipSQNC(0)
 {
 
 }
@@ -26,6 +29,9 @@ CObject_UI::CObject_UI(const CObject_UI& _origin)
 	, m_bCamAffected(_origin.m_bCamAffected)
 	, m_bMouseOn(false)
 	, m_bLbtnDown(false)
+	, m_iSQNC(_origin.m_iSQNC)
+	, m_bSQNC(_origin.m_bSQNC)
+	, m_ipSQNC(_origin.m_iSQNC)
 {
 	for (size_t i = 0; i < _origin.m_vecChildUI.size(); ++i)
 	{
@@ -67,29 +73,60 @@ void CObject_UI::render(HDC _dc)
 	vec2 vPos = m_vFinalPos;
 	vec2 vScale = GetScale();
 
-
-	if (m_bCamAffected)
+	if (GetParent() && m_bSQNC)
 	{
-		vPos = CCamera::GetInst()->GetRenderPos(vPos);
-	}
+		if (GetParent()->m_ipSQNC == m_iSQNC)
+		{
+			if (m_bCamAffected)
+			{
+				vPos = CCamera::GetInst()->GetRenderPos(vPos);
+			}
 
-	if (m_bLbtnDown)
-	{
-		SelectGDI select(_dc, PEN_TYPE::GREEN);
+			if (m_bLbtnDown)
+			{
+				SelectGDI select(_dc, PEN_TYPE::GREEN);
 
-		Rectangle(_dc
-			, int(vPos.x)
-			, int(vPos.y)
-			, int(vPos.x + vScale.x)
-			, int(vPos.y + vScale.y));
+				Rectangle(_dc
+					, int(vPos.x)
+					, int(vPos.y)
+					, int(vPos.x + vScale.x)
+					, int(vPos.y + vScale.y));
+			}
+			else
+			{
+				Rectangle(_dc
+					, int(vPos.x)
+					, int(vPos.y)
+					, int(vPos.x + vScale.x)
+					, int(vPos.y + vScale.y));
+			}
+		}
 	}
 	else
-	{ 
-		Rectangle(_dc
-			, int(vPos.x)
-			, int(vPos.y)
-			, int(vPos.x + vScale.x)
-			, int(vPos.y + vScale.y));
+	{
+		if (m_bCamAffected)
+		{
+			vPos = CCamera::GetInst()->GetRenderPos(vPos);
+		}
+
+		if (m_bLbtnDown)
+		{
+			SelectGDI select(_dc, PEN_TYPE::GREEN);
+
+			Rectangle(_dc
+				, int(vPos.x)
+				, int(vPos.y)
+				, int(vPos.x + vScale.x)
+				, int(vPos.y + vScale.y));
+		}
+		else
+		{
+			Rectangle(_dc
+				, int(vPos.x)
+				, int(vPos.y)
+				, int(vPos.x + vScale.x)
+				, int(vPos.y + vScale.y));
+		}
 	}
 
 	// child ui render
