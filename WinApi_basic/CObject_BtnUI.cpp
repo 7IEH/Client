@@ -5,6 +5,7 @@
 #include "CTexture.h"
 
 #include "CResMgr.h"
+#include "CKeyMgr.h"
 #include "CSceneMgr.h"
 #include "CUIMgr.h"
 
@@ -83,6 +84,18 @@ CObject_BtnUI::~CObject_BtnUI()
 
 void CObject_BtnUI::MouseOn()
 {
+	if (IsLbtnDown())
+	{
+		vec2 vDiff = MOUSE_POS - m_vDragStart;
+
+		vec2 vCurPos = GetPos();
+		vCurPos += vDiff;
+		SetPos(vCurPos);
+
+		m_vDragStart = MOUSE_POS;
+	}
+
+
 	if (IsLbtnDown() && this->GetName()==L"Start_button")
 	{
 		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"startbutton2", L"texture\\startbutton2.bmp");
@@ -102,7 +115,7 @@ void CObject_BtnUI::MouseOn()
 
 void CObject_BtnUI::MouseLbtnDown()
 {
-	
+	m_vDragStart = MOUSE_POS;
 }
 
 void CObject_BtnUI::MouseLbtnUp()
