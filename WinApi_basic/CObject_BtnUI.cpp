@@ -12,6 +12,7 @@
 CObject_BtnUI::CObject_BtnUI()
 	: CObject_UI(false)
 	, m_pFunc(nullptr)
+	, m_pFunc2(nullptr)
 	, m_param1(0)
 	, m_param2(0)
 	, m_pSceneInst(nullptr)
@@ -84,18 +85,6 @@ CObject_BtnUI::~CObject_BtnUI()
 
 void CObject_BtnUI::MouseOn()
 {
-	if (IsLbtnDown())
-	{
-		vec2 vDiff = MOUSE_POS - m_vDragStart;
-
-		vec2 vCurPos = GetPos();
-		vCurPos += vDiff;
-		SetPos(vCurPos);
-
-		m_vDragStart = MOUSE_POS;
-	}
-
-
 	if (IsLbtnDown() && this->GetName()==L"Start_button")
 	{
 		CTexture* _pTex = CResMgr::GetInst()->LoadTexture(L"startbutton2", L"texture\\startbutton2.bmp");
@@ -139,6 +128,11 @@ void CObject_BtnUI::MouseLbtnUp()
 
 void CObject_BtnUI::MouseLbtnClicked()
 {
+	if (nullptr != m_pFunc2)
+	{
+		m_pFunc2(m_param3);
+	}
+
 	if (nullptr != m_pFunc)
 	{
 		m_pFunc(m_param1, m_param2);

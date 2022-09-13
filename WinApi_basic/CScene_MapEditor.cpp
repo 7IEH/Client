@@ -3,7 +3,9 @@
 #include "CObject_PanelUI.h"
 #include "CObject_BtnUI.h"
 #include "CObject_TextUI.h"
+#include "CObject_TileUI.h"
 #include "CCollisionMgr.h"
+#include "CKeyMgr.h"
 
 #include "CResMgr.h"
 
@@ -15,6 +17,7 @@
 
 void RightPanel(DWORD_PTR, DWORD_PTR);
 void LeftPanel(DWORD_PTR, DWORD_PTR);
+void TileCreated(wstring);
 
 CScene_MapEditor::CScene_MapEditor()
 {
@@ -39,20 +42,23 @@ void CScene_MapEditor::Enter()
 	pUI->SetScale(vec2(232.f, 400.f));
 	pUI->SetpSQNC(0);
 
+	// ÇØ´ç
 	CObject_BtnUI* bUI = new CObject_BtnUI;
 	bUI->SetPos(vec2(10.f, 10.f));
 	bUI->SetScale(vec2(64.f, 64.f));
 	bUI->SetSQNC(0);
 	bUI->SetbSQNC(true);
 	bUI->SetTexture(m_pTex);
+	bUI->SetName(L"Road_Tile");
+	bUI->SetClickedCallBack(TileCreated, L"Road_Tile");
 	pUI->AddChild(bUI);
 
-	bUI = new CObject_BtnUI;
+	/*bUI = new CObject_BtnUI;
 	bUI->SetPos(vec2(10.f, 10.f));
 	bUI->SetScale(vec2(64.f, 64.f));
 	bUI->SetSQNC(1);
 	bUI->SetbSQNC(true);
-	pUI->AddChild(bUI);
+	pUI->AddChild(bUI);*/
 
 	// 
 	bUI = new CObject_BtnUI;
@@ -137,4 +143,22 @@ void LeftPanel(DWORD_PTR, DWORD_PTR)
 			}
 		}
 	}
+}
+
+void TileCreated(wstring a)
+{
+	if (a == L"")
+	{
+
+	}
+
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(a, L"");
+	CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
+
+
+
+	CObject_TileUI* m_TUI = new CObject_TileUI;
+	m_TUI->SetTexture(m_pTex);
+	m_TUI->SetPos(MOUSE_POS);
+	CurScene->pushObject((UINT)GROUP_TYPE::UI,m_TUI);
 }

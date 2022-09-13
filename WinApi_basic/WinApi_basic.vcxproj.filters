@@ -151,6 +151,9 @@
     <Filter Include="Engine\04. Object\Object_LoadingBar">
       <UniqueIdentifier>{30eb00ab-ace4-484a-bb9c-842d9358e8fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Object_UI\TileUI">
+      <UniqueIdentifier>{aea474f8-f669-49df-b756-c6575790a5f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -292,6 +295,9 @@
     <ClInclude Include="CObject_LoadingBar.h">
       <Filter>Engine\04. Object\Object_LoadingBar</Filter>
     </ClInclude>
+    <ClInclude Include="CObject_TileUI.h">
+      <Filter>Engine\04. Object\Object_UI\TileUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -413,6 +419,9 @@
     </ClCompile>
     <ClCompile Include="CObject_LoadingBar.cpp">
       <Filter>Engine\04. Object\Object_LoadingBar</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_TileUI.cpp">
+      <Filter>Engine\04. Object\Object_UI\TileUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -175,6 +175,7 @@
     <ClInclude Include="CObject_ScoreBox.h" />
     <ClInclude Include="CObject_TextUI.h" />
     <ClInclude Include="CObject_Tile.h" />
+    <ClInclude Include="CObject_TileUI.h" />
     <ClInclude Include="CObject_UI.h" />
     <ClInclude Include="CPathMgr.h" />
     <ClInclude Include="CRes.h" />
@@ -224,6 +225,7 @@
     <ClCompile Include="CObject_ScoreBox.cpp" />
     <ClCompile Include="CObject_TextUI.cpp" />
     <ClCompile Include="CObject_Tile.cpp" />
+    <ClCompile Include="CObject_TileUI.cpp" />
     <ClCompile Include="CObject_UI.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
     <ClCompile Include="CRes.cpp" />
