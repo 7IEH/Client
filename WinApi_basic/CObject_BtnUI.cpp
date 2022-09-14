@@ -104,8 +104,8 @@ void CObject_BtnUI::MouseOn()
 
 void CObject_BtnUI::MouseLbtnDown()
 {
-	m_vDragStart = MOUSE_POS;
 }
+
 
 void CObject_BtnUI::MouseLbtnUp()
 {

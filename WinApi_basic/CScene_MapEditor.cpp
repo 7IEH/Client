@@ -34,6 +34,8 @@ void CScene_MapEditor::update()
 
 void CScene_MapEditor::Enter()
 {
+	CCamera::GetInst()->SetLookAt(vec2(640.f, 384.f));
+
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"Road_Tile", L"texture\\road_tile.bmp");
 
 	CObject_PanelUI* pUI = new CObject_PanelUI;
@@ -147,18 +149,15 @@ void LeftPanel(DWORD_PTR, DWORD_PTR)
 
 void TileCreated(wstring a)
 {
-	if (a == L"")
-	{
-
-	}
-
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(a, L"");
 	CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
 
 
 
 	CObject_TileUI* m_TUI = new CObject_TileUI;
+	m_TUI->SetName(L"타일생성");
 	m_TUI->SetTexture(m_pTex);
+	m_TUI->SetScale(vec2(64.f, 64.f));
 	m_TUI->SetPos(MOUSE_POS);
 	CurScene->pushObject((UINT)GROUP_TYPE::UI,m_TUI);
 }

@@ -56,6 +56,7 @@ void CObject_UI::finalupdate()
 
 	// UI의 최종 좌표를 구한다.
 	m_vFinalPos = GetPos();
+	
 
 	if (GetParent())
 	{
@@ -178,6 +179,7 @@ void CObject_UI::MouseOnCheck()
 	vec2 vMousePos = MOUSE_POS;
 	vec2 vScale = GetScale();
 
+	wstring a = GetName();
 
 	if (m_bCamAffected)
 	{
@@ -187,6 +189,7 @@ void CObject_UI::MouseOnCheck()
 	if (m_vFinalPos.x <= vMousePos.x && vMousePos.x <= m_vFinalPos.x + vScale.x
 		&& m_vFinalPos.y <= vMousePos.y && vMousePos.y <= m_vFinalPos.y + vScale.y)
 	{
+		
 		m_bMouseOn = true;
 	}
 	else

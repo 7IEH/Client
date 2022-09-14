@@ -30,6 +30,8 @@ void CObject_Tile::update()
 void CObject_Tile::render(HDC _dc)
 {
 
+	wstring a = GetName();
+
 	if (nullptr == m_pTileTex || -1 == m_iImgIdx)
 		return;
 
@@ -60,6 +62,8 @@ void CObject_Tile::render(HDC _dc)
 		, SRCCOPY
 	);
 	component_Render(_dc);
+
+
 }
 
 
