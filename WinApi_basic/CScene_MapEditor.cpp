@@ -12,6 +12,7 @@
 #include "CSceneMgr.h"
 #include "CScene.h"
 #include "CObject.h"
+#include "CCamera.h"
 
 #include "CTexture.h"
 
@@ -55,12 +56,12 @@ void CScene_MapEditor::Enter()
 	bUI->SetClickedCallBack(TileCreated, L"Road_Tile");
 	pUI->AddChild(bUI);
 
-	/*bUI = new CObject_BtnUI;
+	bUI = new CObject_BtnUI;
 	bUI->SetPos(vec2(10.f, 10.f));
 	bUI->SetScale(vec2(64.f, 64.f));
 	bUI->SetSQNC(1);
 	bUI->SetbSQNC(true);
-	pUI->AddChild(bUI);*/
+	pUI->AddChild(bUI);
 
 	// 
 	bUI = new CObject_BtnUI;
@@ -92,8 +93,6 @@ void CScene_MapEditor::Enter()
 	pUI->AddChild(tUI);
 
 	pushObject((UINT)GROUP_TYPE::UI, pUI);
-
-
 }
 
 void CScene_MapEditor::Exit()
@@ -106,7 +105,7 @@ void CScene_MapEditor::Exit()
 void RightPanel(DWORD_PTR, DWORD_PTR)
 {
 	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
-	vector<CObject*> UI = pCurScene->GetUIGroup();
+	vector<CObject*>& UI = pCurScene->GetUIGroup();
 	vector<CObject*>::iterator iter = UI.begin();
 
 	for (; iter != UI.end(); ++iter)
@@ -158,6 +157,6 @@ void TileCreated(wstring a)
 	m_TUI->SetName(L"타일생성");
 	m_TUI->SetTexture(m_pTex);
 	m_TUI->SetScale(vec2(64.f, 64.f));
-	m_TUI->SetPos(MOUSE_POS);
+	m_TUI->SetPos(RENDERPOS(MOUSE_POS));
 	CurScene->pushObject((UINT)GROUP_TYPE::UI,m_TUI);
 }

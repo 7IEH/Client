@@ -15,6 +15,8 @@ public:
     void SetScore(UINT _iScore) { m_iScore = _iScore; }
     UINT GetScore() { return m_iScore; }
 
+    void DiePanel();
+
 public:
     CScene_Start();
     ~CScene_Start();

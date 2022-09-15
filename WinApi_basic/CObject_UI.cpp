@@ -31,7 +31,7 @@ CObject_UI::CObject_UI(const CObject_UI& _origin)
 	, m_bLbtnDown(false)
 	, m_iSQNC(_origin.m_iSQNC)
 	, m_bSQNC(_origin.m_bSQNC)
-	, m_ipSQNC(_origin.m_iSQNC)
+	, m_ipSQNC(_origin.m_ipSQNC)
 {
 	for (size_t i = 0; i < _origin.m_vecChildUI.size(); ++i)
 	{
@@ -46,6 +46,28 @@ CObject_UI::~CObject_UI()
 
 void CObject_UI::update()
 {
+
+	if (GetParent()&&m_bSQNC)
+	{
+		vector<CObject_UI*>& ChildUI = GetParent()->GetChildUI();
+		vector<CObject_UI*>::iterator iter = ChildUI.begin();
+
+		if (GetParent()->m_ipSQNC == m_iSQNC)
+		{
+			for (; iter != ChildUI.end(); ++iter)
+			{
+				if (this == *iter)
+				{
+					CObject_UI* temp = *iter;
+					ChildUI.erase(iter);
+					ChildUI.push_back(temp);
+					break;
+				}
+			}
+		}
+	}
+
+
 	// child ui update
 	update_child();
 }

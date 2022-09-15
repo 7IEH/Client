@@ -36,7 +36,7 @@ public:
     void SetpSQNC(UINT _ipSQNC) { m_ipSQNC = _ipSQNC; }      // 부모 UI 시퀸스 상태
     
     void AddChild(CObject_UI* _pUI) { m_vecChildUI.push_back(_pUI); _pUI->m_pParentUI = this; }
-    const vector<CObject_UI*>& GetChildUI() { return m_vecChildUI; }
+    vector<CObject_UI*>& GetChildUI() { return m_vecChildUI; }
 
 public:
     virtual void update();

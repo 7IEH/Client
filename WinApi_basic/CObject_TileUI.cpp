@@ -7,6 +7,7 @@
 
 #include "CSceneMgr.h"
 #include "CScene.h"
+#include "CCamera.h"
 
 
 CObject_TileUI::CObject_TileUI()
@@ -71,7 +72,8 @@ void CObject_TileUI::MouseLbtnDown()
 
 void CObject_TileUI::MouseLbtnUp()
 {
-	vec2 vCurPos = MOUSE_POS;
+	vec2 setpos = MOUSE_POS;
+	vec2 vCurPos = CCamera::GetInst()->GetRealPos(MOUSE_POS);
 	CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
 
 	vCurPos = vCurPos/64.f;

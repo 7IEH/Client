@@ -154,6 +154,9 @@
     <Filter Include="Engine\04. Object\Object_UI\TileUI">
       <UniqueIdentifier>{aea474f8-f669-49df-b756-c6575790a5f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Object_UI\ObstacleUI">
+      <UniqueIdentifier>{bd916bc2-34a2-4e5a-873d-7520870f8c74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">

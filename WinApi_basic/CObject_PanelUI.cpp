@@ -17,9 +17,7 @@ CObject_PanelUI::~CObject_PanelUI()
 
 void CObject_PanelUI::update()
 {
-
-
-
+	CObject_UI::update();
 }
 
 void CObject_PanelUI::MouseOn()

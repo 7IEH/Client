@@ -26,6 +26,9 @@
 #include"CCore.h"
 
 
+void MenuReturn(DWORD_PTR, DWORD_PTR);
+void ReStart(DWORD_PTR, DWORD_PTR);
+
 CScene_Start::CScene_Start()
 	:m_iScore(0)
 {
@@ -150,7 +153,7 @@ void CScene_Start::Enter()
 	pTile->SetTexture(m_pTex);
 	pTile->CreateCollider();
 	pTile->GetCollider()->SetScale(vec2(40.f, 40.f));
-	pTile->SetSlide(true);
+	/*pTile->SetSlide(true);*/
 	pushObject((UINT)GROUP_TYPE::TILE, pTile);
 	
 	CObject_ScoreBox* pSB = new CObject_ScoreBox;
@@ -180,4 +183,41 @@ void CScene_Start::Exit()
 	DeleteAll();
 
 	CCollisionMgr::GetInst()->Reset();
+}
+
+void CScene_Start::DiePanel()
+{
+	CObject_PanelUI* _pUI = new CObject_PanelUI;
+	_pUI->SetPos(vec2(300.f, 384.f));
+	_pUI->SetScale(vec2(700.f, 400.f));
+	
+	CObject_TextUI* _tUI = new CObject_TextUI;
+	_tUI->SetStr(L"다시 시작하시겠습니까?");
+	_tUI->SetPos(vec2(350.f, 100.f));
+	_pUI->AddChild(_tUI);
+
+	CObject_BtnUI* _bUI = new CObject_BtnUI;
+	_bUI->SetPos(vec2(175.f, 200.f));
+	_bUI->SetScale(vec2(150.f, 50.f));
+	_bUI->SetClickedCallBack(ReStart,0,0);
+	_pUI->AddChild(_bUI);
+
+	_bUI = new CObject_BtnUI;
+	_bUI->SetPos(vec2(525.f, 200.f));
+	_bUI->SetScale(vec2(150.f, 50.f));
+	_bUI->SetClickedCallBack(MenuReturn, 0, 0);
+	_pUI->AddChild(_bUI);
+
+
+	pushObject((UINT)GROUP_TYPE::UI,_pUI);
+}
+
+void MenuReturn(DWORD_PTR, DWORD_PTR)
+{
+	ChangeScene(SCENE_TYPE::TITLE);
+}
+
+void ReStart(DWORD_PTR, DWORD_PTR)
+{
+	ChangeScene(SCENE_TYPE::START);
 }

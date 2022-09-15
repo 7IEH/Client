@@ -52,7 +52,10 @@ void CObject_Player::update()
 
 	if (m_iHP == 0)
 	{
-		DeleteObject(this);
+
+
+		CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
+		((CScene_Start*)(CurScene))->DiePanel();
 	}
 
 	CRigidBody* pRigid = GetRigidBody();
