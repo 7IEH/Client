@@ -35,6 +35,7 @@ void CScene_MapEditor::update()
 
 void CScene_MapEditor::Enter()
 {
+	// 맵 세이브 로드 만들기
 	CCamera::GetInst()->SetLookAt(vec2(640.f, 384.f));
 
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"Road_Tile", L"texture\\road_tile.bmp");
