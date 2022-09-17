@@ -35,7 +35,7 @@ void CScene_MapEditor::update()
 
 void CScene_MapEditor::Enter()
 {
-	// 맵 세이브 로드 만들기
+	// 맵 세이브 로드 만들기 
 	CCamera::GetInst()->SetLookAt(vec2(640.f, 384.f));
 
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"Road_Tile", L"texture\\road_tile.bmp");
@@ -160,4 +160,14 @@ void TileCreated(wstring a)
 	m_TUI->SetScale(vec2(64.f, 64.f));
 	m_TUI->SetPos(RENDERPOS(MOUSE_POS));
 	CurScene->pushObject((UINT)GROUP_TYPE::UI,m_TUI);
+}
+
+void TileLoad()
+{
+
+}
+
+void TileSave()
+{
+
 }
