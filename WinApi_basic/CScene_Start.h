@@ -17,6 +17,8 @@ public:
 
     void DiePanel();
 
+    void LoadMapData();
+
 public:
     CScene_Start();
     ~CScene_Start();

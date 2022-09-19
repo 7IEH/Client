@@ -10,6 +10,9 @@ public:
     virtual void Exit();
 
 private:
+    void SaveMapData();
+    void SaveMap(const wstring& _strFilePath);
+   
 
 
 public:

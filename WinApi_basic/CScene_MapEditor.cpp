@@ -6,6 +6,9 @@
 #include "CObject_TileUI.h"
 #include "CCollisionMgr.h"
 #include "CKeyMgr.h"
+#include "CPathMgr.h"
+#include "CCore.h"
+
 
 #include "CResMgr.h"
 
@@ -31,11 +34,14 @@ CScene_MapEditor::~CScene_MapEditor()
 void CScene_MapEditor::update()
 {
 	CScene::update();
+	if (KEY_CHECK(ALT, TAP)) 
+	{
+		SaveMapData();
+	}
 }
 
 void CScene_MapEditor::Enter()
 {
-	// 맵 세이브 로드 만들기 
 	CCamera::GetInst()->SetLookAt(vec2(640.f, 384.f));
 
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"Road_Tile", L"texture\\road_tile.bmp");
@@ -103,6 +109,58 @@ void CScene_MapEditor::Exit()
 	CCollisionMgr::GetInst()->Reset();
 }
 
+void CScene_MapEditor::SaveMapData()
+{
+	wchar_t szName[256] = {};
+
+	OPENFILENAME ofn = {};
+
+	ofn.lStructSize = sizeof(OPENFILENAME);						// 구조체 사이즈
+	ofn.hwndOwner = CCore::GetInst()->getHWND();		// 윈도우 핸들 지정
+	ofn.lpstrFile = szName;														// 경로	
+	ofn.nMaxFile = sizeof(szName);											// 경로 이름 byte 수
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";					// 필터 들
+	ofn.nFilterIndex = 0;															// 처음 열었을 때 filter 지정자
+	ofn.lpstrFileTitle = nullptr;
+	ofn.nMaxFileTitle = 0;
+
+	wstring strTileFolder = CPathMgr::GetInst()->GetContentPath();
+	strTileFolder += L"map";
+
+	ofn.lpstrInitialDir = strTileFolder.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+	// Modal
+	if (GetSaveFileName(&ofn))
+	{
+		SaveMap(szName);
+	}
+}
+
+void CScene_MapEditor::SaveMap(const wstring& _strFilePath)
+{
+	wstring strFilePath = _strFilePath;
+
+	// 커널 오브젝트
+	FILE* pFile = nullptr;
+
+	_wfopen_s(&pFile, strFilePath.c_str(), L"wb");
+	assert(pFile);
+
+	const vector<CObject*>& vecMap = vGetObject(GROUP_TYPE::TILE);
+
+	size_t size = vecMap.size();
+
+	fwrite(&size, sizeof(size_t), 1, pFile);
+
+	for (size_t i = 0; i < vecMap.size(); ++i)
+	{
+		fwrite(vecMap[i], sizeof(vecMap[i]), 1, pFile);
+	}
+
+	fclose(pFile);
+}
+
 void RightPanel(DWORD_PTR, DWORD_PTR)
 {
 	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
@@ -155,19 +213,8 @@ void TileCreated(wstring a)
 
 
 	CObject_TileUI* m_TUI = new CObject_TileUI;
-	m_TUI->SetName(L"타일생성");
 	m_TUI->SetTexture(m_pTex);
 	m_TUI->SetScale(vec2(64.f, 64.f));
 	m_TUI->SetPos(RENDERPOS(MOUSE_POS));
 	CurScene->pushObject((UINT)GROUP_TYPE::UI,m_TUI);
-}
-
-void TileLoad()
-{
-
-}
-
-void TileSave()
-{
-
 }

@@ -8,6 +8,7 @@
 
 #include "CCamera.h"
 #include "CCore.h"
+#include "CSceneMgr.h"
 
 CScene::CScene()
 	: m_iTileX(0)
@@ -186,4 +187,34 @@ void CScene::LoadTile(const wstring& _strRelativePath)
 
 	fclose(pFile);
 
+}
+
+void CScene::LoadMap(const wstring& _strRelativePath)
+{
+	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
+
+	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+	strFilePath += _strRelativePath;
+
+	FILE* pFile = nullptr;
+
+
+
+
+	_wfopen_s(&pFile, strFilePath.c_str(), L"rb");
+	assert(pFile);
+
+	size_t size;
+
+	fread(&size, sizeof(size_t), 1, pFile);
+
+	size;
+
+	for (size_t i = 0; i < size; ++i)
+	{
+		CObject_Tile* temp = new CObject_Tile;
+		fread((void*)temp, sizeof(*temp), 1, pFile);
+		pCurScene->pushObject((UINT)GROUP_TYPE::TILE, temp);
+	}
+	fclose(pFile);
 }

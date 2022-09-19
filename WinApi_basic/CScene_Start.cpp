@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CScene_Start.h"
 
 #include "CObject.h"
@@ -13,7 +13,7 @@
 #include "CObject_ScoreBox.h"
 
 #include "CTexture.h"
-//#include "CPathMgr.h"
+#include "CPathMgr.h"
 #include "CCollisionMgr.h"
 #include "CCollider.h"
 
@@ -57,24 +57,25 @@ void CScene_Start::update()
 			((CObject_TextUI*)(*iter))->SetStr(std::to_wstring(m_iScore).c_str());
 		}
 	}
-
-
-	CScene::update();
 	if (KEY_CHECK(ENTER, TAP))
 	{
-		ChangeScene(SCENE_TYPE::TOOL);
+		LoadMapData();
 	}
 
 	if (KEY_CHECK(LBTN, TAP))
 	{
-		vec2 vLookAt=CCamera::GetInst()->GetRealPos(MOUSE_POS);
+		vec2 vLookAt = CCamera::GetInst()->GetRealPos(MOUSE_POS);
 		CCamera::GetInst()->SetLookAt(vLookAt);
 	}
+
+	CScene::update();
+
+
 }
 
 void CScene_Start::Enter()
 {
-	// player_object �߰�
+	// player_object 추가
 	CObject* pObj = new CObject_Player;
 	
 	pObj->SetName(L"Player");
@@ -162,17 +163,17 @@ void CScene_Start::Enter()
 	pSB->SetSlide(true);
 	pushObject((UINT)GROUP_TYPE::SCORE_BOX, pSB);
 
-	// �浹 ����
-	// player �׷�� Monster �׷� ���� �浹 üũ
+	// 충돌 지정
+	// player 그룹과 Monster 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PLAYER);
 	// stupid
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
-	// player �׷�� Tile �׷� ���� �浹 üũ
+	// player 그룹과 Tile 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::TILE);
-	// player �׷�� ScoreBox �׷� ���� �浹 üũ
+	// player 그룹과 ScoreBox 그룹 간의 충돌 체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::SCORE_BOX);
 
-	// Camera Look ����
+	// Camera Look 지정
 	CCamera::GetInst()->SetLookAt(vResolution/2.f);
 }
 
@@ -192,7 +193,7 @@ void CScene_Start::DiePanel()
 	_pUI->SetScale(vec2(700.f, 400.f));
 	
 	CObject_TextUI* _tUI = new CObject_TextUI;
-	_tUI->SetStr(L"�ٽ� �����Ͻðڽ��ϱ�?");
+	_tUI->SetStr(L"다시 시작하시겠습니까?");
 	_tUI->SetPos(vec2(350.f, 100.f));
 	_pUI->AddChild(_tUI);
 
@@ -210,6 +211,34 @@ void CScene_Start::DiePanel()
 
 
 	pushObject((UINT)GROUP_TYPE::UI,_pUI);
+}
+
+void CScene_Start::LoadMapData()
+{
+	wchar_t szName[256] = {};
+
+	OPENFILENAME ofn = {};
+
+	ofn.lStructSize = sizeof(OPENFILENAME);						// 구조체 사이즈
+	ofn.hwndOwner = CCore::GetInst()->getHWND();		// 윈도우 핸들 지정
+	ofn.lpstrFile = szName;														// 경로	
+	ofn.nMaxFile = sizeof(szName);											// 경로 이름 byte 수
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";					// 필터 들
+	ofn.nFilterIndex = 0;															// 처음 열었을 때 filter 지정자
+	ofn.lpstrFileTitle = nullptr;
+	ofn.nMaxFileTitle = 0;
+
+	wstring strTileFolder = CPathMgr::GetInst()->GetContentPath();
+	strTileFolder += L"tile";
+
+	ofn.lpstrInitialDir = strTileFolder.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+	// Modal
+	if (GetOpenFileName(&ofn))
+	{
+		LoadMap(CPathMgr::GetInst()->GetRelativePath(szName));
+	}
 }
 
 void MenuReturn(DWORD_PTR, DWORD_PTR)
