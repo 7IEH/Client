@@ -109,6 +109,7 @@ void CScene_MapEditor::Exit()
 	CCollisionMgr::GetInst()->Reset();
 }
 
+// savemapdata position °³¼±
 void CScene_MapEditor::SaveMapData()
 {
 	wchar_t szName[256] = {};
