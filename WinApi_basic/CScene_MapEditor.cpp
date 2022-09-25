@@ -109,7 +109,7 @@ void CScene_MapEditor::Exit()
 	CCollisionMgr::GetInst()->Reset();
 }
 
-// savemapdata position 개선
+// savemapdata position 개선 내일~
 void CScene_MapEditor::SaveMapData()
 {
 	wchar_t szName[256] = {};
