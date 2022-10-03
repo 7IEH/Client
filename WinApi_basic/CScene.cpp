@@ -3,6 +3,8 @@
 #include "CObject.h"
 #include "CObject_Tile.h"
 
+#include "CCollider.h"
+
 #include "CPathMgr.h"
 #include "CResMgr.h"
 
@@ -198,9 +200,6 @@ void CScene::LoadMap(const wstring& _strRelativePath)
 
 	FILE* pFile = nullptr;
 
-
-
-
 	_wfopen_s(&pFile, strFilePath.c_str(), L"rb");
 	assert(pFile);
 
@@ -213,8 +212,40 @@ void CScene::LoadMap(const wstring& _strRelativePath)
 	for (size_t i = 0; i < size; ++i)
 	{
 		CObject_Tile* temp = new CObject_Tile;
+		CObject_Tile* pushObject = new CObject_Tile;
 		fread((void*)temp, sizeof(*temp), 1, pFile);
-		pCurScene->pushObject((UINT)GROUP_TYPE::TILE, temp);
+
+
+		if (temp->GetLOADTYPE() == 0)
+		{
+			CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"");
+
+			pushObject->SetPos(temp->GetPos());
+			pushObject->SetScale(temp->GetScale());
+			pushObject->SetTexture(pTex);
+			pushObject->SetOnFloor(true);
+			pushObject->CreateCollider();
+			pushObject->GetCollider()->SetScale(vec2(64.f, 64.f));
+			pushObject->SetName(L"FLOOR");
+			pCurScene->pushObject((UINT)GROUP_TYPE::TILE, pushObject);
+
+		}
+		else if (temp->GetLOADTYPE() == 1)
+		{
+			CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"");
+
+			pushObject->SetPos(temp->GetPos());
+			pushObject->SetScale(temp->GetScale());
+			pushObject->SetTexture(pTex);
+			pushObject->CreateCollider();
+			pushObject->GetCollider()->SetScale(vec2(40.f, 40.f));
+			pushObject->SetName(L"OBSTACLE");
+			pCurScene->pushObject((UINT)GROUP_TYPE::TILE, pushObject);
+		}
+		else 		
+		{
+			//SCORE_BOX
+		}
 	}
 	fclose(pFile);
 }

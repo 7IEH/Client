@@ -22,6 +22,8 @@ private:
 	bool					m_bAlive;
 	bool					m_bOnFloor;
 
+	UINT					m_iLOADTYPE;
+
 public:
 	void SetName(const wstring _strName)	{ m_strName = _strName; }
 	const wstring& GetName()	{ return m_strName; }		
@@ -31,6 +33,9 @@ public:
 
 	void SetScale(vec2 _vScale) { m_vScale = _vScale; }
 	vec2 GetScale() { return m_vScale; }	
+
+	void SetLOADTYPE(UINT _iLOADTYPE) { m_iLOADTYPE = _iLOADTYPE; }
+	UINT GetLOADTYPE() { return m_iLOADTYPE; }
 
 	bool IsDead() { return !m_bAlive; }
 	

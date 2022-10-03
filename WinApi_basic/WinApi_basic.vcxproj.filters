@@ -46,12 +46,6 @@
     <Filter Include="Engine\05. Scene\Scene_Tool">
       <UniqueIdentifier>{c30d49b6-f1de-4dc1-b9c2-0db33763ff07}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\05. Scene\Scene_Stage_01">
-      <UniqueIdentifier>{9056d669-7197-4af8-a054-bf6ce176e9e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\05. Scene\Scene_Stage_02">
-      <UniqueIdentifier>{6a34af24-64fc-4ffc-bbb5-b4190f3867a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\06. Resource">
       <UniqueIdentifier>{263fa1cb-c868-446d-a8bd-ec350d8c5f82}</UniqueIdentifier>
     </Filter>

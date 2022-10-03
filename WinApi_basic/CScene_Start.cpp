@@ -229,7 +229,7 @@ void CScene_Start::LoadMapData()
 	ofn.nMaxFileTitle = 0;
 
 	wstring strTileFolder = CPathMgr::GetInst()->GetContentPath();
-	strTileFolder += L"tile";
+	strTileFolder += L"map";
 
 	ofn.lpstrInitialDir = strTileFolder.c_str();
 	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;

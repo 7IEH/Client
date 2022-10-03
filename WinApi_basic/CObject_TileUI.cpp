@@ -82,11 +82,24 @@ void CObject_TileUI::MouseLbtnUp()
 	vCurPos *= 64.f;
 	vCurPos += 32.f;
 
-	CObject_Tile* _pTile = new CObject_Tile;
-	_pTile->SetPos(vCurPos);
-	_pTile->SetTexture(m_pTex);
-	_pTile->SetScale(vec2(64.f, 64.f));
-	_pTile->SetName(L"¿Ö»ý¼º¾ÈµÅ");
-	CurScene->pushObject((UINT)GROUP_TYPE::TILE,_pTile);
+	if (GetName() == L"TILE")
+	{
+		CObject_Tile* _pTile = new CObject_Tile;
+		_pTile->SetPos(vCurPos);
+		_pTile->SetLOADTYPE(0);
+		_pTile->SetTexture(m_pTex);
+		_pTile->SetScale(vec2(64.f, 64.f));
+		CurScene->pushObject((UINT)GROUP_TYPE::TILE, _pTile);
+	}
+	else if (GetName() == L"OBSTACLE")
+	{
+		CObject_Tile* _pTile = new CObject_Tile;
+		_pTile->SetPos(vCurPos);
+		_pTile->SetLOADTYPE(1);
+		_pTile->SetTexture(m_pTex);
+		_pTile->SetScale(vec2(64.f, 64.f));
+		CurScene->pushObject((UINT)GROUP_TYPE::TILE, _pTile);
+	}
+	
 }
 

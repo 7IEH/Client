@@ -4,6 +4,7 @@
 #include "CObject_BtnUI.h"
 #include "CObject_TextUI.h"
 #include "CObject_TileUI.h"
+#include "CObject_Tile.h"
 #include "CCollisionMgr.h"
 #include "CKeyMgr.h"
 #include "CPathMgr.h"
@@ -44,7 +45,8 @@ void CScene_MapEditor::Enter()
 {
 	CCamera::GetInst()->SetLookAt(vec2(640.f, 384.f));
 
-	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"Road_Tile", L"texture\\road_tile.bmp");
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\road_tile.bmp");
+	CTexture* m_Tex = CResMgr::GetInst()->LoadTexture(L"OBSTACLE", L"texture\\road_tile.bmp");
 
 	CObject_PanelUI* pUI = new CObject_PanelUI;
 	pUI->SetName(L"EditorPanel");
@@ -59,8 +61,7 @@ void CScene_MapEditor::Enter()
 	bUI->SetSQNC(0);
 	bUI->SetbSQNC(true);
 	bUI->SetTexture(m_pTex);
-	bUI->SetName(L"Road_Tile");
-	bUI->SetClickedCallBack(TileCreated, L"Road_Tile");
+	bUI->SetClickedCallBack(TileCreated, L"TILE");
 	pUI->AddChild(bUI);
 
 	bUI = new CObject_BtnUI;
@@ -68,6 +69,8 @@ void CScene_MapEditor::Enter()
 	bUI->SetScale(vec2(64.f, 64.f));
 	bUI->SetSQNC(1);
 	bUI->SetbSQNC(true);
+	bUI->SetTexture(m_Tex);
+	bUI->SetClickedCallBack(TileCreated, L"OBSTACLE");
 	pUI->AddChild(bUI);
 
 	// 
@@ -156,7 +159,7 @@ void CScene_MapEditor::SaveMap(const wstring& _strFilePath)
 
 	for (size_t i = 0; i < vecMap.size(); ++i)
 	{
-		fwrite(vecMap[i], sizeof(vecMap[i]), 1, pFile);
+		fwrite(vecMap[i], sizeof(CObject_Tile), 1, pFile);
 	}
 
 	fclose(pFile);
@@ -208,14 +211,16 @@ void LeftPanel(DWORD_PTR, DWORD_PTR)
 
 void TileCreated(wstring a)
 {
-	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(a, L"");
 	CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
 
-
-
 	CObject_TileUI* m_TUI = new CObject_TileUI;
-	m_TUI->SetTexture(m_pTex);
 	m_TUI->SetScale(vec2(64.f, 64.f));
 	m_TUI->SetPos(RENDERPOS(MOUSE_POS));
+	m_TUI->SetName(a);
+	if (a != L"SCORE_BOX")
+	{
+		CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(a, L"");
+		m_TUI->SetTexture(m_pTex);
+	}
 	CurScene->pushObject((UINT)GROUP_TYPE::UI,m_TUI);
 }
