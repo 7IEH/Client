@@ -209,6 +209,7 @@ void CScene::LoadMap(const wstring& _strRelativePath)
 
 	size;
 
+	// 해당 기능 모듈화
 	for (size_t i = 0; i < size; ++i)
 	{
 		CObject_Tile* temp = new CObject_Tile;
@@ -245,6 +246,7 @@ void CScene::LoadMap(const wstring& _strRelativePath)
 		else 		
 		{
 			//SCORE_BOX
+			//
 		}
 	}
 	fclose(pFile);
