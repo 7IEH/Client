@@ -9,6 +9,7 @@
 #include "CObject_PanelUI.h"
 #include "CObject_BtnUI.h"
 #include "CObject_TextUI.h"
+#include "CObject_ImgUI.h"
 #include "CObject_Tile.h"
 #include "CObject_ScoreBox.h"
 
@@ -52,21 +53,17 @@ void CScene_Start::update()
 		{
 			((CObject_TextUI*)(*iter))->SetStr(std::to_wstring(m_iScore).c_str());
 		}
-		if ((*iter)->GetName() == L"Score_Text")
-		{
-			((CObject_TextUI*)(*iter))->SetStr(std::to_wstring(m_iScore).c_str());
-		}
 	}
 	if (KEY_CHECK(ENTER, TAP))
 	{
 		LoadMapData();
 	}
 
-	if (KEY_CHECK(LBTN, TAP))
+	/*if (KEY_CHECK(LBTN, TAP))
 	{
 		vec2 vLookAt = CCamera::GetInst()->GetRealPos(MOUSE_POS);
 		CCamera::GetInst()->SetLookAt(vLookAt);
-	}
+	}*/
 
 	CScene::update();
 
@@ -75,6 +72,17 @@ void CScene_Start::update()
 
 void CScene_Start::Enter()
 {
+	// UI
+	// Portrait
+	CTexture* Portrait = CResMgr::GetInst()->LoadTexture(L"PORTRAIT", L"texture//player_A.bmp");
+	CObject_ImgUI* pUI = new CObject_ImgUI;
+	pUI->SetPos(vec2(60.f, 60.f));
+	pUI->SetLT(vec2(36.f, 7.f));
+	pUI->SetRB(vec2(86.f, 57.f));
+	pUI->SetTexture(Portrait);
+	pushObject((UINT)GROUP_TYPE::UI, pUI);
+
+
 	// player_object 추가
 	CObject* pObj = new CObject_Player;
 	
@@ -83,28 +91,6 @@ void CScene_Start::Enter()
 	pObj->SetScale(vec2(100.f,100.f));
 
 	pushObject((UINT)GROUP_TYPE::PLAYER, pObj);
-
-	//CCamera::GetInst()->SetTarget(pObj);
-
-	/*CObject_Monster* mObj = new CObject_Monster;
-
-	mObj->SetName(L"Monster");
-	mObj->SetPos(vec2(200.f, 200.f));
-	mObj->SetScale(vec2(50, 50));
-	mObj->SetCenterPos(vec2(200.f, 200.f));
-	mObj->SetHp(100);
-
-	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);
-
-	mObj = new CObject_Monster;
-
-	mObj->SetName(L"Monster");
-	mObj->SetPos(vec2(500.f, 200.f));
-	mObj->SetScale(vec2(50, 50));
-	mObj->SetCenterPos(vec2(500.f, 200.f));
-	mObj->SetHp(100);
-
-	pushObject((UINT)GROUP_TYPE::MONSTER, mObj);*/
 
 	vec2 vResolution = CCore::GetInst()->GetResolution();
 
@@ -118,17 +104,6 @@ void CScene_Start::Enter()
 	bObj2->SetName(L"BACK_IMAGE2");
 	pushObject((UINT)GROUP_TYPE::BACK_IMAGE, bObj2);
 
-	/*CObject_UI* PanelUI = new CObject_PanelUI;
-	PanelUI->SetPos(vec2(vResolution.x - 400.f, 50.f));
-	PanelUI->SetScale(vec2(390.f, 500.f));
-
-	CObject_BtnUI* BtnUI = new CObject_BtnUI;
-	BtnUI->SetPos(vec2(0.f,0.f));
-	BtnUI->SetScale(vec2(100.f, 100.f));
-	BtnUI->SetTexture(m_pTex);
-	BtnUI->SetName(L"childbutton");
-	PanelUI->AddChild(BtnUI);
-	pushObject((UINT)GROUP_TYPE::UI, PanelUI);*/
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"TILE", L"texture\\road_tile.bmp");
 	
 	CObject_TextUI* textObj = new CObject_TextUI;

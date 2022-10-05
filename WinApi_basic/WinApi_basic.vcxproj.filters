@@ -151,6 +151,9 @@
     <Filter Include="Engine\04. Object\Object_UI\ObstacleUI">
       <UniqueIdentifier>{bd916bc2-34a2-4e5a-873d-7520870f8c74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Object_UI\ImgUI">
+      <UniqueIdentifier>{6b96213d-32f3-4a22-b418-cd9360b2f7b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -295,6 +298,9 @@
     <ClInclude Include="CObject_TileUI.h">
       <Filter>Engine\04. Object\Object_UI\TileUI</Filter>
     </ClInclude>
+    <ClInclude Include="CObject_ImgUI.h">
+      <Filter>Engine\04. Object\Object_UI\ImgUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -419,6 +425,9 @@
     </ClCompile>
     <ClCompile Include="CObject_TileUI.cpp">
       <Filter>Engine\04. Object\Object_UI\TileUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject_ImgUI.cpp">
+      <Filter>Engine\04. Object\Object_UI\ImgUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

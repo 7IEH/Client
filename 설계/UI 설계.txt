@@ -1,0 +1,12 @@
+1. 캐릭터 UI
+-> unity때에는 gamemanager 컴포넌트에서 사용
+-> scene안에서 update
+-> image UI 설계
+2. 캐릭터 Life 
+-> 하트 모양 3개 뛰우고
+-> scene안에서 update할때 해당 image없애고 사라지게 만듬
+3. 캐릭터 필살기 게이지
+4. 스테이지 점수
+-> textui 좀 더 이쁘게 고칠방법?
+
+bitblt -> 해당 핸들

@@ -27,9 +27,9 @@ void CObject_Background::update()
 	vCurPos.x -=50.f * fDT;
 	SetPos(vCurPos);
 
-	if (vCurPos.x <= -1280.f) 
+	if (vCurPos.x <= -640.f) 
 	{
-		SetPos(vec2(1280.f, 0.f));
+		SetPos(vec2(1920.f, 384.f));
 	}
 }
 

@@ -167,6 +167,7 @@
     <ClInclude Include="CObject.h" />
     <ClInclude Include="CObject_Background.h" />
     <ClInclude Include="CObject_BtnUI.h" />
+    <ClInclude Include="CObject_ImgUI.h" />
     <ClInclude Include="CObject_LoadingBar.h" />
     <ClInclude Include="CObject_Missile.h" />
     <ClInclude Include="CObject_Monster.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CObject_Background.cpp" />
     <ClCompile Include="CObject_BtnUI.cpp" />
+    <ClCompile Include="CObject_ImgUI.cpp" />
     <ClCompile Include="CObject_LoadingBar.cpp" />
     <ClCompile Include="CObject_Missile.cpp" />
     <ClCompile Include="CObject_Monster.cpp" />

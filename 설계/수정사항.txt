@@ -1,0 +1,38 @@
+mouse button 클릭
+-> 해당 pos에 object 생성 후
+-> 현재 scene에 해당 mouse 좌표에 tileUI 생성
+-> 계속 따라오게끔 하기(로직 생각)
+-> 놓았을때 MOUSEPOS를 기준으로 생각
+-> MOUSEPOS X Y 좌표 받아와서 -> X Y
+X 64 Y 64 나누고
+-> (0*64,1*64)
++32,+32
+1.
+카메라 시점 고치기(완)
+이거 한번 집에가서 리딩
+
+2.
+선행 끝 포인트 지정 // 이거 굳이
+and 죽으면 나올 패널 지정 // 만듬
+tile 추가 //이건 해야됨
+
+-> obstacle, score point 3 하고 합시다
+3.
+tile 저장하고 scene start에 입히
+
+-> 	
+
+4.
+캐릭터 애니메이션 넣고 돌려보기(완)
+
+5.
+UI 꾸미기 사운드 넣기
+
+
+타일 저장하는법
+-> file 객체로 저장하고 불러오기
+-> texture은 따로 저장
+
+mousepos 
+
+update
